@@ -1,7 +1,5 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -67,19 +65,19 @@ public class Aktivitaet implements EntityInterface {
 		this.bez_aktivitaet = bez_aktivitaet;
 	}
 
-	public String getMin_persanzahl() {
+	public int getMin_persanzahl() {
 		return min_persanzahl;
 	}
 
-	public void setMin_persanzahl(String min_persanzahl) {
+	public void setMin_persanzahl(int min_persanzahl) {
 		this.min_persanzahl = min_persanzahl;
 	}
 
-	public String getMax_persanzahl() {
+	public int getMax_persanzahl() {
 		return max_persanzahl;
 	}
 
-	public void setMax_persanzahl(String max_persanzahl) {
+	public void setMax_persanzahl(int max_persanzahl) {
 		this.max_persanzahl = max_persanzahl;
 	}
 

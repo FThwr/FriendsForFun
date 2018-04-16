@@ -97,5 +97,114 @@ public class PersistenceManager {
 
 		save((Object) benutzer, true);
 	}
+	
+	/**
+	 * Erstellt eine Aktivität
+	 * @param aktivitaet
+	 */
+	public void create(Aktivitaet aktivitaet) {
+
+		save((Object) aktivitaet, false);
+	}
+	
+	/**
+	 * Speichert eine Aktivität
+	 * @param aktivitaet
+	 */
+	public void save(Aktivitaet aktivitaet) {
+
+		save((Object) aktivitaet, true);
+	}
+
+	/**
+	 * Erstellt ein Event
+	 * @param event
+	 */
+	public void create(Event event) {
+
+		save((Object) event, false);
+	}
+	
+	/**
+	 * Speichert ein Event
+	 * @param event
+	 */
+	public void save(Event event) {
+
+		save((Object) event, true);
+	}
+
+	/**
+	 * Erstellt einen Ort
+	 * @param ort
+	 */
+	public void create(Ort ort) {
+
+		save((Object) ort, false);
+	}
+	
+	/**
+	 * Speichert einen Ort
+	 * @param ort
+	 */
+	public void save(Ort ort) {
+
+		save((Object) ort, true);
+	}
+
+	/**
+	 * Erstellt eine Kategorie
+	 * @param kategorie
+	 */
+	public void create(Kategorie kategorie) {
+
+		save((Object) kategorie, false);
+	}
+	
+	/**
+	 * Speichert eine Kategorie
+	 * @param kategorie
+	 */
+	public void save(Kategorie kategorie) {
+
+		save((Object) kategorie, true);
+	}
+
+	/**
+	 * Erstellt einen Status
+	 * @param status
+	 */
+	public void create(Status status) {
+
+		save((Object) status, false);
+	}
+	
+	/**
+	 * Speichert eine Status
+	 * @param status
+	 */
+	public void save(Status status) {
+
+		save((Object) status, true);
+	}
+	
+	/**
+	 * Erstellt eine Meldung
+	 * @param meldung
+	 */
+	public void create(Meldung meldung) {
+
+		save((Object) meldung, false);
+	}
+	
+	/**
+	 * Speichert eine Meldung
+	 * @param meldung
+	 */
+	public void save(Meldung meldung) {
+
+		save((Object) meldung, true);
+	}
+
 
 }
