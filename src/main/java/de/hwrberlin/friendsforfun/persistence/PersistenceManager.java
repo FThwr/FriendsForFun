@@ -206,5 +206,59 @@ public class PersistenceManager {
 		save((Object) meldung, true);
 	}
 
+	/**
+	 * Erstellt einen Meldungstyp
+	 * @param typ
+	 */
+	public void create(Typ typ) {
+
+		save((Object) typ, false);
+	}
+	
+	/**
+	 * Speichert einen Meldungstyp
+	 * @param typ
+	 */
+	public void save(Typ typ) {
+
+		save((Object) typ, true);
+	}
+
+	/**
+	 * Erstellt einen Aktivitätsort
+	 * @param aktivitaetsort
+	 */
+	public void create(Aktivitaetsort aktivitaetsort) {
+
+		save((Object) aktivitaetsort, false);
+	}
+	
+	/**
+	 * Speichert einen Aktivitätsort
+	 * @param aktivitaetsort
+	 */
+	public void save(Aktivitaetsort aktivitaetsort) {
+
+		save((Object) aktivitaetsort, true);
+	}
+	
+	/**
+	 * Erstellt einen Eventteilnehmer
+	 * @param eventteilnehmer
+	 */
+	public void create(Eventteilnehmer eventteilnehmer) {
+
+		save((Object) eventteilnehmer, false);
+	}
+	
+	/**
+	 * Speichert einen Eventteilnehmer
+	 * @param eventteilnehmer
+	 */
+	public void save(Eventteilnehmer eventteilnehmer) {
+
+		save((Object) eventteilnehmer, true);
+	}
+	
 
 }
