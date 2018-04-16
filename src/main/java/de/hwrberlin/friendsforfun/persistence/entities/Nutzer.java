@@ -38,6 +38,7 @@ public class Nutzer implements EntityInterface {
 	String passwort;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Status_ID")
 	Status status;
 	
 	@OneToMany(mappedBy = "nutzer")
@@ -45,18 +46,23 @@ public class Nutzer implements EntityInterface {
 	
 	@OneToMany(mappedBy = "nutzer")
 	Set<Event> event;
+	
+	@OneToMany(mappedBy = "nutzer")
+	Set<Meldung> meldung;
+	
 
 	public Nutzer() {
 
 	}
 
-	public Nutzer(String mail, String username, Date geburtsdatum, char geschlecht, String passwort) {
+	public Nutzer(String mail, String username, Date geburtsdatum, char geschlecht, String passwort, Status status) {
 
 		this.mail = mail;
 		this.username = username;
 		this.geburtsdatum = geburtsdatum;
 		this.geschlecht = geschlecht;
 		this.passwort = passwort;
+		this.status = status;
 
 		PersistenceManager pm = PersistenceManager.getPersistenceManager();
 		pm.create(this);
@@ -108,6 +114,14 @@ public class Nutzer implements EntityInterface {
 
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override

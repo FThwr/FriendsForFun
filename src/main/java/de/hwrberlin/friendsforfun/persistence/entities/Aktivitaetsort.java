@@ -19,16 +19,22 @@ public class Aktivitaetsort implements EntityInterface {
 	private int id;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Aktivität_ID")
 	Aktivitaet aktivitaet;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Ort_ID")
 	Ort ort;
 
 //	public Aktivitaetsort() {
 //
 //	}
 	
-	public Aktivitaetsort() {
+	public Aktivitaetsort(Aktivitaet aktivitaet, Ort ort) {
+		
+		this.aktivitaet = aktivitaet;
+		this.ort =ort;
+		
 		PersistenceManager pm=PersistenceManager.getPersistenceManager();
 		pm.create(this);
 	}
@@ -41,9 +47,25 @@ public class Aktivitaetsort implements EntityInterface {
 		this.id = id;
 	}
 	
+	public Aktivitaet getAktivitaet() {
+		return aktivitaet;
+	}
+
+	public void setAktivitaet(Aktivitaet aktivitaet) {
+		this.aktivitaet = aktivitaet;
+	}
+
+	public Ort getOrt() {
+		return ort;
+	}
+
+	public void setOrt(Ort ort) {
+		this.ort = ort;
+	}
+
 	@Override
 	public String toString() {
-		return "ID: " + id;
+		return "ID: " + id + "Aktivität: " + aktivitaet + "Ort: " + ort;
 	}
 
 }

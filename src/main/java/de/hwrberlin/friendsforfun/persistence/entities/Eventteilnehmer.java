@@ -19,16 +19,22 @@ public class Eventteilnehmer implements EntityInterface {
 	private int id;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Event_ID")
 	Event event;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Nutzer_ID")
 	Nutzer nutzer;
 
-//	public Eventteilnehmer() {
-//
-//	}
-	
 	public Eventteilnehmer() {
+
+	}
+	
+	public Eventteilnehmer(Event event, Nutzer nutzer) {
+		
+		this.event = event;
+		this.nutzer = nutzer;
+		
 		PersistenceManager pm=PersistenceManager.getPersistenceManager();
 		pm.create(this);
 	}
@@ -41,9 +47,25 @@ public class Eventteilnehmer implements EntityInterface {
 		this.id = id;
 	}
 
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public Nutzer getNutzer() {
+		return nutzer;
+	}
+
+	public void setNutzer(Nutzer nutzer) {
+		this.nutzer = nutzer;
+	}
+
 	@Override
 	public String toString() {
-		return "ID: " + id;
+		return "ID: " + id + "Event: " + event + "Nutzer: " + nutzer;
 	}
 
 }

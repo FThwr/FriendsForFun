@@ -39,9 +39,11 @@ public class Aktivitaet implements EntityInterface {
 	String beschreibung;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Status_ID")
 	Status status;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
+	@Column (name = "Kategorie_ID")
 	Kategorie kategorie;
 	
 	@OneToMany(mappedBy = "aktivitaet")
@@ -49,18 +51,23 @@ public class Aktivitaet implements EntityInterface {
 	
 	@OneToMany(mappedBy = "aktivitaet")
 	Set<Event> event;
+	
+	@OneToMany(mappedBy = "aktivitaet")
+	Set<Meldung> meldung;
 
 	public Aktivitaet() {
 
 	}
 
-	public Aktivitaet (String bez_aktivitaet, int min_persanzahl, int max_persanzahl, int altersempfehlung, String beschreibung) {
+	public Aktivitaet (String bez_aktivitaet, int min_persanzahl, int max_persanzahl, int altersempfehlung, String beschreibung, Status status, Kategorie kategorie) {
 
 		this.bez_aktivitaet = bez_aktivitaet;
 		this.min_persanzahl = min_persanzahl;
 		this.max_persanzahl = max_persanzahl;
 		this.altersempfehlung = altersempfehlung;
 		this.beschreibung = beschreibung;
+		this.status = status;
+		this.kategorie = kategorie;
 
 		PersistenceManager pm = PersistenceManager.getPersistenceManager();
 		pm.create(this);
@@ -112,6 +119,22 @@ public class Aktivitaet implements EntityInterface {
 
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Kategorie getKategorie() {
+		return kategorie;
+	}
+
+	public void setKategorie(Kategorie kategorie) {
+		this.kategorie = kategorie;
 	}
 
 	@Override

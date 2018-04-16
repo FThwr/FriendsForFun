@@ -36,6 +36,9 @@ public class Ort implements EntityInterface {
 	
 	@OneToMany(mappedBy = "ort")
 	Set<Event> event;
+	
+	@OneToMany(mappedBy = "ort")
+	Set<Meldung> meldung;
 
 
 	public Ort() {

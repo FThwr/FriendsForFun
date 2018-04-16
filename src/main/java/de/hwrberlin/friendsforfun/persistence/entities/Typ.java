@@ -1,10 +1,13 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -18,6 +21,9 @@ public class Typ implements EntityInterface {
 
 	@Column(name = "Bez_Typ")
 	String bez_typ;
+	
+	@OneToMany(mappedBy = "typ")
+	Set<Meldung> meldung;
 
 	public Typ() {
 
