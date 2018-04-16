@@ -84,7 +84,7 @@ public class PersistenceManager {
 	 * Erstellt einen Benutzer
 	 * @param benutzer
 	 */
-	public void create(Benutzer benutzer) {
+	public void create(Nutzer benutzer) {
 
 		save((Object) benutzer, false);
 	}
@@ -93,7 +93,7 @@ public class PersistenceManager {
 	 * Speichert einen Benutzer
 	 * @param benutzer
 	 */
-	public void save(Benutzer benutzer) {
+	public void save(Nutzer benutzer) {
 
 		save((Object) benutzer, true);
 	}
