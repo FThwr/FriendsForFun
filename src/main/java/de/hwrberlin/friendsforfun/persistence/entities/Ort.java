@@ -32,7 +32,10 @@ public class Ort implements EntityInterface {
 	String beschreibung;
 	
 	@OneToMany(mappedBy = "ort")
-	Set<Ort> ort;
+	Set<Aktivitaetsort> aktivitaetsort;
+	
+	@OneToMany(mappedBy = "ort")
+	Set<Event> event;
 
 
 	public Ort() {

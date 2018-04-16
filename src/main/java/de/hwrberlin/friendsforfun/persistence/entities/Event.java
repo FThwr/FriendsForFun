@@ -1,12 +1,16 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -23,6 +27,21 @@ public class Event implements EntityInterface {
 	
 	@Column (name = "Beschreibung")
 	String beschreibung;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Ort ort;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Aktivitaet aktivitaet;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Status status;
+	
+	@OneToMany(mappedBy = "event")
+	Set<Eventteilnehmer> eventteilnehmer;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Nutzer nutzer;
 
 
 	public Event() {

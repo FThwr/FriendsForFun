@@ -46,6 +46,9 @@ public class Aktivitaet implements EntityInterface {
 	
 	@OneToMany(mappedBy = "aktivitaet")
 	Set<Aktivitaetsort> aktivitaetsort;
+	
+	@OneToMany(mappedBy = "aktivitaet")
+	Set<Event> event;
 
 	public Aktivitaet() {
 

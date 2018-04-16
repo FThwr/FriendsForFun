@@ -28,6 +28,9 @@ public class Status implements EntityInterface {
 	
 	@OneToMany(mappedBy = "status")
 	Set<Aktivitaet> aktivitaet;
+	
+	@OneToMany(mappedBy = "status")
+	Set<Event> event;
 
 	public Status() {
 
