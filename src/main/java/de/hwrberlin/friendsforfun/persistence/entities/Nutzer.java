@@ -13,7 +13,7 @@ import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "BENUTZER_TYPE")
-public class Benutzer implements EntityInterface {
+public class Nutzer implements EntityInterface {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +35,11 @@ public class Benutzer implements EntityInterface {
 	@Column(name = "Passwort")
 	String passwort;
 
-	public Benutzer() {
+	public Nutzer() {
 
 	}
 
-	public Benutzer(String mail, String name, String vorname, String benutzername, String passwort) {
+	public Nutzer(String mail, String name, String vorname, String benutzername, String passwort) {
 
 		this.mail = mail;
 		this.name = name;
