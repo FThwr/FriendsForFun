@@ -2,12 +2,13 @@ package de.hwrberlin.friendsforfun.persistence.entities;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -33,6 +34,9 @@ public class Nutzer implements EntityInterface {
 
 	@Column(name = "Passwort")
 	String passwort;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Status status;
 
 	public Nutzer() {
 

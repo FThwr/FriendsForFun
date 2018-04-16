@@ -1,10 +1,13 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -18,6 +21,9 @@ public class Kategorie implements EntityInterface {
 
 	@Column(name = "Bez_Kategorie")
 	String bez_kategorie;
+	
+	@OneToMany(mappedBy = "kategorie")
+	Set<Aktivitaet> aktivitaet;
 
 
 	public Kategorie() {

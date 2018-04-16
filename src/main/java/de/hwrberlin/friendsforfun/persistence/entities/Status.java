@@ -1,10 +1,14 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -18,6 +22,12 @@ public class Status implements EntityInterface {
 
 	@Column(name = "Bez_Status")
 	String bez_status;
+	
+	@OneToMany(mappedBy = "status")
+	Set<Nutzer> nutzer;
+	
+	@OneToMany(mappedBy = "status")
+	Set<Aktivitaet> aktivitaet;
 
 	public Status() {
 

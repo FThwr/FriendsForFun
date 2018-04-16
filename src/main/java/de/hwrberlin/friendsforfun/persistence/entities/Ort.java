@@ -1,10 +1,13 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -27,6 +30,9 @@ public class Ort implements EntityInterface {
 	
 	@Column (name = "Beschreibung")
 	String beschreibung;
+	
+	@OneToMany(mappedBy = "ort")
+	Set<Ort> ort;
 
 
 	public Ort() {

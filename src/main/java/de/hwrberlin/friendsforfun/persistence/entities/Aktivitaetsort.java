@@ -1,10 +1,12 @@
 package de.hwrberlin.friendsforfun.persistence.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
 
@@ -15,6 +17,12 @@ public class Aktivitaetsort implements EntityInterface {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_Aktivitaetsort")
 	private int id;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Aktivitaet aktivitaet;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	Ort ort;
 
 //	public Aktivitaetsort() {
 //
