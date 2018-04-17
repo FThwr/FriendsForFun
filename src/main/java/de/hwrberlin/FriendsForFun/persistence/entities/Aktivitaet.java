@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 import java.util.Set;
 
@@ -10,10 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
 
 @Entity
 public class Aktivitaet implements EntityInterface {
@@ -39,11 +40,11 @@ public class Aktivitaet implements EntityInterface {
 	String beschreibung;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Status_ID")
+	@JoinColumn (name = "Status_ID")
 	Status status;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Kategorie_ID")
+	@JoinColumn (name = "Kategorie_ID")
 	Kategorie kategorie;
 	
 	@OneToMany(mappedBy = "aktivitaet")
@@ -163,7 +164,7 @@ public class Aktivitaet implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "; Aktivität: " + bez_aktivitaet;
+		return "ID: " + id + "; Aktivitï¿½t: " + bez_aktivitaet;
 	}
 
 }

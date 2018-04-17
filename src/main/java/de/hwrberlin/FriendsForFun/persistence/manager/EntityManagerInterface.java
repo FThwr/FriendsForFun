@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.manager;
+package de.hwrberlin.FriendsForFun.persistence.manager;
 
 public interface EntityManagerInterface {
 

@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
 
 @Entity
 public class Eventteilnehmer implements EntityInterface {
@@ -19,11 +20,11 @@ public class Eventteilnehmer implements EntityInterface {
 	private int id;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Event_ID")
+	@JoinColumn (name = "Event_ID")
 	Event event;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Nutzer_ID")
+	@JoinColumn (name = "Nutzer_ID")
 	Nutzer nutzer;
 
 	public Eventteilnehmer() {

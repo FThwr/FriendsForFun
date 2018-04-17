@@ -1,10 +1,10 @@
-package de.hwrberlin.friendsforfun.persistence;
+package de.hwrberlin.FriendsForFun.persistence;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import de.hwrberlin.friendsforfun.persistence.entities.*;
+import de.hwrberlin.FriendsForFun.persistence.entities.*;
 
 public class PersistenceManager {
 
@@ -17,7 +17,7 @@ public class PersistenceManager {
 	}
 
 	/**
-	 * Gibt die PeristenceManager Instanz zurück, erstellt eine neue Instanz, falls
+	 * Gibt die PeristenceManager Instanz zurï¿½ck, erstellt eine neue Instanz, falls
 	 * keine Vorhanden
 	 **/
 	public static PersistenceManager getPersistenceManager() {
@@ -32,7 +32,7 @@ public class PersistenceManager {
 	}
 
 	/**
-	 * Gibt eine EntityManagerFactory Instanz zurück, erstellt eine neue Instanz,
+	 * Gibt eine EntityManagerFactory Instanz zurï¿½ck, erstellt eine neue Instanz,
 	 * falls keine vorhanden
 	 **/
 	private EntityManagerFactory getEntityManagerFactory() {
@@ -46,7 +46,7 @@ public class PersistenceManager {
 		return emf;
 	}
 
-	// /** Gibt einen EntityManager zurück (wird für Tests benutzt) **/
+	// /** Gibt einen EntityManager zurï¿½ck (wird fï¿½r Tests benutzt) **/
 	// public EntityManager getNewEntityManager() {
 	//
 	// EntityManagerFactory emf = getEntityManagerFactory();
@@ -99,7 +99,7 @@ public class PersistenceManager {
 	}
 	
 	/**
-	 * Erstellt eine Aktivität
+	 * Erstellt eine Aktivitï¿½t
 	 * @param aktivitaet
 	 */
 	public void create(Aktivitaet aktivitaet) {
@@ -108,7 +108,7 @@ public class PersistenceManager {
 	}
 	
 	/**
-	 * Speichert eine Aktivität
+	 * Speichert eine Aktivitï¿½t
 	 * @param aktivitaet
 	 */
 	public void save(Aktivitaet aktivitaet) {
@@ -225,7 +225,7 @@ public class PersistenceManager {
 	}
 
 	/**
-	 * Erstellt einen Aktivitätsort
+	 * Erstellt einen Aktivitï¿½tsort
 	 * @param aktivitaetsort
 	 */
 	public void create(Aktivitaetsort aktivitaetsort) {
@@ -234,7 +234,7 @@ public class PersistenceManager {
 	}
 	
 	/**
-	 * Speichert einen Aktivitätsort
+	 * Speichert einen Aktivitï¿½tsort
 	 * @param aktivitaetsort
 	 */
 	public void save(Aktivitaetsort aktivitaetsort) {

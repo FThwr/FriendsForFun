@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
 
 @Entity
 public class Status implements EntityInterface {

@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 import java.sql.Date;
 import java.util.Set;
@@ -9,10 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
 
 @Entity
 public class Event implements EntityInterface {
@@ -29,22 +30,22 @@ public class Event implements EntityInterface {
 	String beschreibung;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Ort_ID")
+	@JoinColumn (name = "Ort_ID")
 	Ort ort;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Aktivität_ID")
+	@JoinColumn (name = "Aktivitaet_ID")
 	Aktivitaet aktivitaet;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Status_ID")
+	@JoinColumn (name = "Status_ID")
 	Status status;
 	
 	@OneToMany(mappedBy = "event")
 	Set<Eventteilnehmer> eventteilnehmer;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Organisator")
+	@JoinColumn (name = "Organisator")
 	Nutzer nutzer;
 	
 	@OneToMany(mappedBy = "event")
@@ -60,7 +61,7 @@ public class Event implements EntityInterface {
 		this.zeitpunkt = zeitpunkt;
 		this.beschreibung = beschreibung;
 		this.ort = ort;
-		this. aktivitaet = aktivitaet;
+		this.aktivitaet = aktivitaet;
 		this.status = status;
 		this.nutzer = nutzer;
 

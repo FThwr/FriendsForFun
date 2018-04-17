@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 public interface EntityInterface {
 

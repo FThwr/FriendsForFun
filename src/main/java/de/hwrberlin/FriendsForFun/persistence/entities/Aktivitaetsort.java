@@ -1,4 +1,4 @@
-package de.hwrberlin.friendsforfun.persistence.entities;
+package de.hwrberlin.FriendsForFun.persistence.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import de.hwrberlin.friendsforfun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
 
 @Entity
 public class Aktivitaetsort implements EntityInterface {
@@ -19,16 +20,16 @@ public class Aktivitaetsort implements EntityInterface {
 	private int id;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Aktivität_ID")
+	@JoinColumn (name = "Aktivitaet_ID")
 	Aktivitaet aktivitaet;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@Column (name = "Ort_ID")
+	@JoinColumn (name = "Ort_ID")
 	Ort ort;
 
-//	public Aktivitaetsort() {
-//
-//	}
+	public Aktivitaetsort() {
+
+	}
 	
 	public Aktivitaetsort(Aktivitaet aktivitaet, Ort ort) {
 		
@@ -65,7 +66,7 @@ public class Aktivitaetsort implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "Aktivität: " + aktivitaet + "Ort: " + ort;
+		return "ID: " + id + "Aktivitï¿½t: " + aktivitaet + "Ort: " + ort;
 	}
 
 }
