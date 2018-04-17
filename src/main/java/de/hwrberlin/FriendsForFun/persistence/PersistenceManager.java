@@ -1,8 +1,11 @@
 package de.hwrberlin.FriendsForFun.persistence;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.*;
 
@@ -260,5 +263,148 @@ public class PersistenceManager {
 		save((Object) eventteilnehmer, true);
 	}
 	
+	//
+	// GET METHODS
+	//
+
+	/** Gibt alle Nutzer zurück (läd aus DB) **/
+	public List<Nutzer> getNutzer() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Nutzer> query = em.createQuery("SELECT e FROM Nutzer e", Nutzer.class);
+			List<Nutzer> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+	
+	/** Gibt alle Aktivitaten zurück (läd aus DB) **/
+	public List<Aktivitaet> getAktivitaeten() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Aktivitaet> query = em.createQuery("SELECT e FROM Aktivitaet e", Aktivitaet.class);
+			List<Aktivitaet> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Aktivitaetsorte zurück (läd aus DB) **/
+	public List<Aktivitaetsort> getAktivitaetsorte() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Aktivitaetsort> query = em.createQuery("SELECT e FROM Aktivitaetsort e", Aktivitaetsort.class);
+			List<Aktivitaetsort> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Events zurück (läd aus DB) **/
+	public List<Event> getEvents() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e", Event.class);
+			List<Event> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Eventteilnehmer zurück (läd aus DB) **/
+	public List<Eventteilnehmer> getEventteilnehmer() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Eventteilnehmer> query = em.createQuery("SELECT e FROM Eventteilnehmer e", Eventteilnehmer.class);
+			List<Eventteilnehmer> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Kategorien zurück (läd aus DB) **/
+	public List<Kategorie> getKategorien() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Kategorie> query = em.createQuery("SELECT e FROM Kategorie e", Kategorie.class);
+			List<Kategorie> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Meldungen zurück (läd aus DB) **/
+	public List<Meldung> getMeldungen() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Meldung> query = em.createQuery("SELECT e FROM Meldung e", Meldung.class);
+			List<Meldung> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Orte zurück (läd aus DB) **/
+	public List<Ort> getOrte() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Ort> query = em.createQuery("SELECT e FROM Ort e", Ort.class);
+			List<Ort> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Status zurück (läd aus DB) **/
+	public List<Status> getStatus() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Status> query = em.createQuery("SELECT e FROM Status e", Status.class);
+			List<Status> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
+
+	/** Gibt alle Typen zurück (läd aus DB) **/
+	public List<Typ> getTypen() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Typ> query = em.createQuery("SELECT e FROM Typ e", Typ.class);
+			List<Typ> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
 
 }
