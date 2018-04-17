@@ -124,6 +124,30 @@ public class Nutzer implements EntityInterface {
 		this.status = status;
 	}
 
+	public Set<Eventteilnehmer> getEventteilnehmer() {
+		return eventteilnehmer;
+	}
+
+	public void setEventteilnehmer(Set<Eventteilnehmer> eventteilnehmer) {
+		this.eventteilnehmer = eventteilnehmer;
+	}
+
+	public Set<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(Set<Event> event) {
+		this.event = event;
+	}
+
+	public Set<Meldung> getMeldung() {
+		return meldung;
+	}
+
+	public void setMeldung(Set<Meldung> meldung) {
+		this.meldung = meldung;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "; Username: " + username;

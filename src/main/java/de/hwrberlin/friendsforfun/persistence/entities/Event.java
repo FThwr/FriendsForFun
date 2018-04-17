@@ -124,6 +124,22 @@ public class Event implements EntityInterface {
 		this.nutzer = nutzer;
 	}
 
+	public Set<Eventteilnehmer> getEventteilnehmer() {
+		return eventteilnehmer;
+	}
+
+	public void setEventteilnehmer(Set<Eventteilnehmer> eventteilnehmer) {
+		this.eventteilnehmer = eventteilnehmer;
+	}
+
+	public Set<Meldung> getMeldung() {
+		return meldung;
+	}
+
+	public void setMeldung(Set<Meldung> meldung) {
+		this.meldung = meldung;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id;

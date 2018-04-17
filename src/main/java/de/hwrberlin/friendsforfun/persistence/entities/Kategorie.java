@@ -54,6 +54,14 @@ public class Kategorie implements EntityInterface {
 		this.bez_kategorie = bez_kategorie;
 	}
 	
+	public Set<Aktivitaet> getAktivitaet() {
+		return aktivitaet;
+	}
+
+	public void setAktivitaet(Set<Aktivitaet> aktivitaet) {
+		this.aktivitaet = aktivitaet;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "; Kategorie: " + bez_kategorie;

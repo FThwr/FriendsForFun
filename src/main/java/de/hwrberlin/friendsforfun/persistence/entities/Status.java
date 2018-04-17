@@ -60,6 +60,30 @@ public class Status implements EntityInterface {
 		this.bez_status = bez_status;
 	}
 
+	public Set<Nutzer> getNutzer() {
+		return nutzer;
+	}
+
+	public void setNutzer(Set<Nutzer> nutzer) {
+		this.nutzer = nutzer;
+	}
+
+	public Set<Aktivitaet> getAktivitaet() {
+		return aktivitaet;
+	}
+
+	public void setAktivitaet(Set<Aktivitaet> aktivitaet) {
+		this.aktivitaet = aktivitaet;
+	}
+
+	public Set<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(Set<Event> event) {
+		this.event = event;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "Status: " + bez_status;

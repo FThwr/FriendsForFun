@@ -53,6 +53,14 @@ public class Typ implements EntityInterface {
 		this.bez_typ = bez_typ;
 	}
 	
+	public Set<Meldung> getMeldung() {
+		return meldung;
+	}
+
+	public void setMeldung(Set<Meldung> meldung) {
+		this.meldung = meldung;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "Typ: " + bez_typ;

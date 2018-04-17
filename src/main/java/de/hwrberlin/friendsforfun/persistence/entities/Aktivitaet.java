@@ -137,6 +137,30 @@ public class Aktivitaet implements EntityInterface {
 		this.kategorie = kategorie;
 	}
 
+	public Set<Aktivitaetsort> getAktivitaetsort() {
+		return aktivitaetsort;
+	}
+
+	public void setAktivitaetsort(Set<Aktivitaetsort> aktivitaetsort) {
+		this.aktivitaetsort = aktivitaetsort;
+	}
+
+	public Set<Event> getEvent() {
+		return event;
+	}
+
+	public void setEvent(Set<Event> event) {
+		this.event = event;
+	}
+
+	public Set<Meldung> getMeldung() {
+		return meldung;
+	}
+
+	public void setMeldung(Set<Meldung> meldung) {
+		this.meldung = meldung;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "; Aktivität: " + bez_aktivitaet;
