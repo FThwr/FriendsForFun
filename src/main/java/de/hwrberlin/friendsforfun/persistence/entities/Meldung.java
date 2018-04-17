@@ -37,7 +37,7 @@ public class Meldung implements EntityInterface {
 
 	}
 
-	public Meldung (String bez_status, Object object, Typ typ, Nutzer nutzer) {
+	public Meldung (Object object, Typ typ, Nutzer nutzer, String kommentar) {
 
 		this.kommentar = kommentar;
 		this.object =object;
