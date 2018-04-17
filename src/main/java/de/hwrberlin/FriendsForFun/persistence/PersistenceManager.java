@@ -14,7 +14,7 @@ public class PersistenceManager {
 	private static PersistenceManager instance = null;
 	private EntityManagerFactory emf = null;
 
-	// public static boolean IS_IN_TEST = false;
+	public static boolean IS_IN_TEST = false;
 
 	public PersistenceManager() {
 	}
@@ -41,21 +41,21 @@ public class PersistenceManager {
 	private EntityManagerFactory getEntityManagerFactory() {
 
 		if (emf == null) {
-			// if (!IS_IN_TEST)
-			emf = Persistence.createEntityManagerFactory("default");
-			// else
-			// emf = Persistence.createEntityManagerFactory("test");
+			if (!IS_IN_TEST)
+				emf = Persistence.createEntityManagerFactory("default");
+			else
+				emf = Persistence.createEntityManagerFactory("test");
 		}
 		return emf;
 	}
 
-	// /** Gibt einen EntityManager zur�ck (wird f�r Tests benutzt) **/
-	// public EntityManager getNewEntityManager() {
-	//
-	// EntityManagerFactory emf = getEntityManagerFactory();
-	// return emf.createEntityManager();
-	// }
-	
+	/** Gibt einen EntityManager zur�ck (wird f�r Tests benutzt) **/
+	public EntityManager getNewEntityManager() {
+
+		EntityManagerFactory emf = getEntityManagerFactory();
+		return emf.createEntityManager();
+	}
+
 	/**
 	 * Internal method for saving, exists determines if Objects needs to be created
 	 * first
@@ -73,8 +73,9 @@ public class PersistenceManager {
 				em.merge(obj);
 			else {
 				em.persist(obj);
-//				MyUI.logger.debug("DB-Objekt erstellt: " + obj.getClass().getName().split("\\.")[6] + " ("
-//						+ obj.toString() + ")");
+				// MyUI.logger.debug("DB-Objekt erstellt: " +
+				// obj.getClass().getName().split("\\.")[6] + " ("
+				// + obj.toString() + ")");
 			}
 			em.getTransaction().commit();
 		} finally {
@@ -82,36 +83,39 @@ public class PersistenceManager {
 		}
 	}
 
-	
 	/**
 	 * Erstellt einen Benutzer
+	 * 
 	 * @param benutzer
 	 */
 	public void create(Nutzer benutzer) {
 
 		save((Object) benutzer, false);
 	}
-	
+
 	/**
 	 * Speichert einen Benutzer
+	 * 
 	 * @param benutzer
 	 */
 	public void save(Nutzer benutzer) {
 
 		save((Object) benutzer, true);
 	}
-	
+
 	/**
 	 * Erstellt eine Aktivit�t
+	 * 
 	 * @param aktivitaet
 	 */
 	public void create(Aktivitaet aktivitaet) {
 
 		save((Object) aktivitaet, false);
 	}
-	
+
 	/**
 	 * Speichert eine Aktivit�t
+	 * 
 	 * @param aktivitaet
 	 */
 	public void save(Aktivitaet aktivitaet) {
@@ -121,15 +125,17 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt ein Event
+	 * 
 	 * @param event
 	 */
 	public void create(Event event) {
 
 		save((Object) event, false);
 	}
-	
+
 	/**
 	 * Speichert ein Event
+	 * 
 	 * @param event
 	 */
 	public void save(Event event) {
@@ -139,15 +145,17 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt einen Ort
+	 * 
 	 * @param ort
 	 */
 	public void create(Ort ort) {
 
 		save((Object) ort, false);
 	}
-	
+
 	/**
 	 * Speichert einen Ort
+	 * 
 	 * @param ort
 	 */
 	public void save(Ort ort) {
@@ -157,15 +165,17 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt eine Kategorie
+	 * 
 	 * @param kategorie
 	 */
 	public void create(Kategorie kategorie) {
 
 		save((Object) kategorie, false);
 	}
-	
+
 	/**
 	 * Speichert eine Kategorie
+	 * 
 	 * @param kategorie
 	 */
 	public void save(Kategorie kategorie) {
@@ -175,33 +185,37 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt einen Status
+	 * 
 	 * @param status
 	 */
 	public void create(Status status) {
 
 		save((Object) status, false);
 	}
-	
+
 	/**
 	 * Speichert eine Status
+	 * 
 	 * @param status
 	 */
 	public void save(Status status) {
 
 		save((Object) status, true);
 	}
-	
+
 	/**
 	 * Erstellt eine Meldung
+	 * 
 	 * @param meldung
 	 */
 	public void create(Meldung meldung) {
 
 		save((Object) meldung, false);
 	}
-	
+
 	/**
 	 * Speichert eine Meldung
+	 * 
 	 * @param meldung
 	 */
 	public void save(Meldung meldung) {
@@ -211,15 +225,17 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt einen Meldungstyp
+	 * 
 	 * @param typ
 	 */
 	public void create(Typ typ) {
 
 		save((Object) typ, false);
 	}
-	
+
 	/**
 	 * Speichert einen Meldungstyp
+	 * 
 	 * @param typ
 	 */
 	public void save(Typ typ) {
@@ -229,40 +245,44 @@ public class PersistenceManager {
 
 	/**
 	 * Erstellt einen Aktivit�tsort
+	 * 
 	 * @param aktivitaetsort
 	 */
 	public void create(Aktivitaetsort aktivitaetsort) {
 
 		save((Object) aktivitaetsort, false);
 	}
-	
+
 	/**
 	 * Speichert einen Aktivit�tsort
+	 * 
 	 * @param aktivitaetsort
 	 */
 	public void save(Aktivitaetsort aktivitaetsort) {
 
 		save((Object) aktivitaetsort, true);
 	}
-	
+
 	/**
 	 * Erstellt einen Eventteilnehmer
+	 * 
 	 * @param eventteilnehmer
 	 */
 	public void create(Eventteilnehmer eventteilnehmer) {
 
 		save((Object) eventteilnehmer, false);
 	}
-	
+
 	/**
 	 * Speichert einen Eventteilnehmer
+	 * 
 	 * @param eventteilnehmer
 	 */
 	public void save(Eventteilnehmer eventteilnehmer) {
 
 		save((Object) eventteilnehmer, true);
 	}
-	
+
 	//
 	// GET METHODS
 	//
@@ -280,7 +300,7 @@ public class PersistenceManager {
 			em.close();
 		}
 	}
-	
+
 	/** Gibt alle Aktivitaten zurück (läd aus DB) **/
 	public List<Aktivitaet> getAktivitaeten() {
 
@@ -329,7 +349,8 @@ public class PersistenceManager {
 		EntityManagerFactory emf = getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Eventteilnehmer> query = em.createQuery("SELECT e FROM Eventteilnehmer e", Eventteilnehmer.class);
+			TypedQuery<Eventteilnehmer> query = em.createQuery("SELECT e FROM Eventteilnehmer e",
+					Eventteilnehmer.class);
 			List<Eventteilnehmer> list = query.getResultList();
 			return list;
 		} finally {
