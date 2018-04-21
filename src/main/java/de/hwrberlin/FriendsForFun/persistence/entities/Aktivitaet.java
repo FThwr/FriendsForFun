@@ -4,17 +4,15 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 
 @Entity
 public class Aktivitaet implements EntityInterface {
@@ -70,8 +68,10 @@ public class Aktivitaet implements EntityInterface {
 		this.status = status;
 		this.kategorie = kategorie;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		AktivitaetManager am = new AktivitaetManager();
+		am.createObject(this);
+//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
+//		pm.create(this);
 	}
 
 	public int getId() {

@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 
 @Entity
 public class Nutzer implements EntityInterface {
@@ -65,8 +65,10 @@ public class Nutzer implements EntityInterface {
 		this.passwort = passwort;
 		this.status = status;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		NutzerManager nm = new NutzerManager();
+		nm.createObject(this); 
+//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
+//		pm.create(this);
 	}
 
 	public Nutzer(String mail, String username, Date geburtsdatum, char geschlecht, String passwort) {
@@ -77,8 +79,10 @@ public class Nutzer implements EntityInterface {
 		this.geschlecht = geschlecht;
 		this.passwort = passwort;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		NutzerManager nm = new NutzerManager();
+		nm.createObject(this); 
+//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
+//		pm.create(this);
 	}
 
 	

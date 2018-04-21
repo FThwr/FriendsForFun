@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 
 @Entity
 public class Event implements EntityInterface {
@@ -25,38 +25,37 @@ public class Event implements EntityInterface {
 
 	@Column(name = "Zeitpunkt")
 	Date zeitpunkt;
-	
-	@Column (name = "Beschreibung")
+
+	@Column(name = "Beschreibung")
 	String beschreibung;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Ort_ID")
+	@JoinColumn(name = "Ort_ID")
 	Ort ort;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Aktivitaet_ID")
+	@JoinColumn(name = "Aktivitaet_ID")
 	Aktivitaet aktivitaet;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Status_ID")
+	@JoinColumn(name = "Status_ID")
 	Status status;
-	
+
 	@OneToMany(mappedBy = "event")
 	Set<Eventteilnehmer> eventteilnehmer;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Organisator")
+	@JoinColumn(name = "Organisator")
 	Nutzer nutzer;
-	
+
 	@OneToMany(mappedBy = "event")
 	Set<Meldung> meldung;
-
 
 	public Event() {
 
 	}
 
-	public Event (Date zeitpunkt, String beschreibung, Ort ort, Aktivitaet aktivitaet, Status status, Nutzer nutzer) {
+	public Event(Date zeitpunkt, String beschreibung, Ort ort, Aktivitaet aktivitaet, Status status, Nutzer nutzer) {
 
 		this.zeitpunkt = zeitpunkt;
 		this.beschreibung = beschreibung;
@@ -65,8 +64,10 @@ public class Event implements EntityInterface {
 		this.status = status;
 		this.nutzer = nutzer;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		EventManager em = new EventManager();
+		em.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {
@@ -92,7 +93,7 @@ public class Event implements EntityInterface {
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
-	
+
 	public Ort getOrt() {
 		return ort;
 	}

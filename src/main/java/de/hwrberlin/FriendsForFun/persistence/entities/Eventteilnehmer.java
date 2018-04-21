@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.EventteilnehmerManager;
 
 @Entity
 public class Eventteilnehmer implements EntityInterface {
@@ -18,26 +18,28 @@ public class Eventteilnehmer implements EntityInterface {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_Eventteilnehmer")
 	private int id;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Event_ID")
+	@JoinColumn(name = "Event_ID")
 	Event event;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Nutzer_ID")
+	@JoinColumn(name = "Nutzer_ID")
 	Nutzer nutzer;
 
 	public Eventteilnehmer() {
 
 	}
-	
+
 	public Eventteilnehmer(Event event, Nutzer nutzer) {
-		
+
 		this.event = event;
 		this.nutzer = nutzer;
-		
-		PersistenceManager pm=PersistenceManager.getPersistenceManager();
-		pm.create(this);
+
+		EventteilnehmerManager etm = new EventteilnehmerManager();
+		etm.createObject(this);
+		// PersistenceManager pm=PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {

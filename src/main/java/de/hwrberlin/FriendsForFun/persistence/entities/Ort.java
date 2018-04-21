@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
 
 @Entity
 public class Ort implements EntityInterface {
@@ -21,39 +21,40 @@ public class Ort implements EntityInterface {
 
 	@Column(name = "Bez_Ort")
 	String bez_ort;
-	
+
 	@Column(name = "PLZ")
 	String plz;
-	
+
 	@Column(name = "Strasse")
 	String strasse;
-	
-	@Column (name = "Beschreibung")
+
+	@Column(name = "Beschreibung")
 	String beschreibung;
-	
+
 	@OneToMany(mappedBy = "ort")
 	Set<Aktivitaetsort> aktivitaetsort;
-	
+
 	@OneToMany(mappedBy = "ort")
 	Set<Event> event;
-	
+
 	@OneToMany(mappedBy = "ort")
 	Set<Meldung> meldung;
-
 
 	public Ort() {
 
 	}
 
-	public Ort (String bez_ort, String plz, String strasse, String beschreibung) {
+	public Ort(String bez_ort, String plz, String strasse, String beschreibung) {
 
 		this.bez_ort = bez_ort;
 		this.beschreibung = beschreibung;
 		this.plz = plz;
 		this.strasse = strasse;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		OrtManager om = new OrtManager();
+		om.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {
@@ -95,7 +96,7 @@ public class Ort implements EntityInterface {
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
-	
+
 	public Set<Aktivitaetsort> getAktivitaetsort() {
 		return aktivitaetsort;
 	}

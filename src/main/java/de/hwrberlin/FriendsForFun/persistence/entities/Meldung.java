@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.MeldungManager;
 
 @Entity
 public class Meldung implements EntityInterface {
@@ -21,48 +21,50 @@ public class Meldung implements EntityInterface {
 
 	@Column(name = "Kommentar")
 	String kommentar;
-	
-//	@ManyToOne(cascade = CascadeType.MERGE)
-//	@JoinColumn (name = "Objekt_ID")
-//	Object object;
-	
+
+	// @ManyToOne(cascade = CascadeType.MERGE)
+	// @JoinColumn (name = "Objekt_ID")
+	// Object object;
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Nutzer_ID")
+	@JoinColumn(name = "Nutzer_ID")
 	Nutzer nutzerFS;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Event_ID")
+	@JoinColumn(name = "Event_ID")
 	Event event;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Aktivitaet_ID")
+	@JoinColumn(name = "Aktivitaet_ID")
 	Aktivitaet aktivitaet;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Ort_ID")
+	@JoinColumn(name = "Ort_ID")
 	Ort ort;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Typ_ID")
+	@JoinColumn(name = "Typ_ID")
 	Typ typ;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Melder")
+	@JoinColumn(name = "Melder")
 	Nutzer nutzer;
 
 	public Meldung() {
 
 	}
 
-	public Meldung (String kommentar, Object object, Typ typ, Nutzer nutzer) {
+	public Meldung(String kommentar, Object object, Typ typ, Nutzer nutzer) {
 
 		this.kommentar = kommentar;
-//		this.object =object;
-		this.typ =typ;
-		this.nutzer =nutzer;
+		// this.object =object;
+		this.typ = typ;
+		this.nutzer = nutzer;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		MeldungManager mm = new MeldungManager();
+		mm.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {
@@ -80,14 +82,14 @@ public class Meldung implements EntityInterface {
 	public void setKommentar(String kommentar) {
 		this.kommentar = kommentar;
 	}
-	
-//	public Object getObject() {
-//		return object;
-//	}
-//
-//	public void setObject(Object object) {
-//		this.object = object;
-//	}
+
+	// public Object getObject() {
+	// return object;
+	// }
+	//
+	// public void setObject(Object object) {
+	// this.object = object;
+	// }
 
 	public Typ getTyp() {
 		return typ;

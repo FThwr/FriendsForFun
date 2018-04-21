@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetsortManager;
 
 @Entity
 public class Aktivitaetsort implements EntityInterface {
@@ -18,26 +18,28 @@ public class Aktivitaetsort implements EntityInterface {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_Aktivitaetsort")
 	private int id;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Aktivitaet_ID")
+	@JoinColumn(name = "Aktivitaet_ID")
 	Aktivitaet aktivitaet;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Ort_ID")
+	@JoinColumn(name = "Ort_ID")
 	Ort ort;
 
 	public Aktivitaetsort() {
 
 	}
-	
+
 	public Aktivitaetsort(Aktivitaet aktivitaet, Ort ort) {
-		
+
 		this.aktivitaet = aktivitaet;
-		this.ort =ort;
-		
-		PersistenceManager pm=PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		this.ort = ort;
+
+		AktivitaetsortManager aom = new AktivitaetsortManager();
+		aom.createObject(this);
+		// PersistenceManager pm=PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {
@@ -47,7 +49,7 @@ public class Aktivitaetsort implements EntityInterface {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public Aktivitaet getAktivitaet() {
 		return aktivitaet;
 	}

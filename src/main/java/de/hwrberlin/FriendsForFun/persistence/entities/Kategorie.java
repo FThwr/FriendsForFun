@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
-import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
+import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 
 @Entity
 public class Kategorie implements EntityInterface {
@@ -22,21 +21,22 @@ public class Kategorie implements EntityInterface {
 
 	@Column(name = "Bez_Kategorie")
 	String bez_kategorie;
-	
+
 	@OneToMany(mappedBy = "kategorie")
 	Set<Aktivitaet> aktivitaet;
-
 
 	public Kategorie() {
 
 	}
 
-	public Kategorie (String bez_kategorie) {
+	public Kategorie(String bez_kategorie) {
 
 		this.bez_kategorie = bez_kategorie;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+		KategorieManager km = new KategorieManager();
+		km.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public int getId() {
@@ -54,7 +54,7 @@ public class Kategorie implements EntityInterface {
 	public void setBez_kategorie(String bez_kategorie) {
 		this.bez_kategorie = bez_kategorie;
 	}
-	
+
 	public Set<Aktivitaet> getAktivitaet() {
 		return aktivitaet;
 	}

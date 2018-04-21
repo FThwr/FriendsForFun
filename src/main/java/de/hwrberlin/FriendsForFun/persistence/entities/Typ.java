@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import de.hwrberlin.FriendsForFun.persistence.PersistenceManager;
-
 @Entity
 public class Typ implements EntityInterface {
 
@@ -33,8 +31,8 @@ public class Typ implements EntityInterface {
 
 		this.bez_typ = bez_typ;
 
-		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-		pm.create(this);
+//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
+//		pm.create(this);
 	}
 
 	public int getId() {
