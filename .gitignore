@@ -1,2 +1,11 @@
+#Ignore bin
 /bin/
+
+#Ignore target
 /target/
+
+#Ignore persistence.xml
+/src/META-INF/
+
+#Ignore classpath
+.classpath
