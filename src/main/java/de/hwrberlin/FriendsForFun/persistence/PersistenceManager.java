@@ -216,26 +216,6 @@ public class PersistenceManager {
 //	}
 //
 //	/**
-//	 * Erstellt einen Meldungstyp
-//	 * 
-//	 * @param typ
-//	 */
-//	public void create(Typ typ) {
-//
-//		save((Object) typ, false);
-//	}
-//
-//	/**
-//	 * Speichert einen Meldungstyp
-//	 * 
-//	 * @param typ
-//	 */
-//	public void save(Typ typ) {
-//
-//		save((Object) typ, true);
-//	}
-//
-//	/**
 //	 * Erstellt einen Aktivit�tsort
 //	 * 
 //	 * @param aktivitaetsort
@@ -400,20 +380,6 @@ public class PersistenceManager {
 //		try {
 //			TypedQuery<Status> query = em.createQuery("SELECT e FROM Status e", Status.class);
 //			List<Status> list = query.getResultList();
-//			return list;
-//		} finally {
-//			em.close();
-//		}
-//	}
-//
-//	/** Gibt alle Typen zurück (läd aus DB) **/
-//	public List<Typ> getTypen() {
-//
-//		EntityManagerFactory emf = getEntityManagerFactory();
-//		EntityManager em = emf.createEntityManager();
-//		try {
-//			TypedQuery<Typ> query = em.createQuery("SELECT e FROM Typ e", Typ.class);
-//			List<Typ> list = query.getResultList();
 //			return list;
 //		} finally {
 //			em.close();

@@ -43,10 +43,6 @@ public class Meldung implements EntityInterface {
 	Ort ort;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "Typ_ID")
-	Typ typ;
-
-	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "Melder")
 	Nutzer nutzer;
 
@@ -54,11 +50,10 @@ public class Meldung implements EntityInterface {
 
 	}
 
-	public Meldung(String kommentar, Object object, Typ typ, Nutzer nutzer) {
+	public Meldung(String kommentar, Object object, Nutzer nutzer) {
 
 		this.kommentar = kommentar;
 		// this.object =object;
-		this.typ = typ;
 		this.nutzer = nutzer;
 
 		MeldungManager mm = new MeldungManager();
@@ -90,14 +85,6 @@ public class Meldung implements EntityInterface {
 	// public void setObject(Object object) {
 	// this.object = object;
 	// }
-
-	public Typ getTyp() {
-		return typ;
-	}
-
-	public void setTyp(Typ typ) {
-		this.typ = typ;
-	}
 
 	public Nutzer getNutzer() {
 		return nutzer;
