@@ -98,5 +98,5 @@ public class Meldung implements EntityInterface {
 	public String toString() {
 		return "ID: " + id + "Kommentar: " + kommentar;
 	}
-
+//das ist ein Test
 }
