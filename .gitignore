@@ -5,7 +5,7 @@
 /target/
 
 #Ignore persistence.xml
-/src/main/META-INF/persistence.xml
+/src/main/META-INF/resources/persistence.xml
 
 #Ignore classpath
 .classpath
