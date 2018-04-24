@@ -6,6 +6,6 @@
 
 #Ignore persistence.xml
 /src/main/resources/META-INF/persistence.xml
-
+/src/main/resources/
 #Ignore classpath
 .classpath
