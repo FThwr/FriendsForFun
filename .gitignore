@@ -9,3 +9,7 @@
 
 #Ignore classpath
 .classpath
+
+#Ignore IntelliJ-files
+/.idea/
+/FunForFriends.iml
