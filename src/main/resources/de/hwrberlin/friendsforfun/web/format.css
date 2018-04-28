@@ -1,59 +1,78 @@
-body {
-font-size: 14pt;
-font-family: Times New Roman;
+* {
+font-size: 1.0em;
+font-family: "Times New Roman";
+padding-left: 0.5%;
+line-height: 1.5em;
 }
 a {
 text-decoration: none;
 color: #c79100;
 }
-button {
-width: 125px;
-height= 30px;
-text-alignment: center;
-background-color: #fbc02d;
+button:hover {
+background-color: #c79100;
 color: #ffffff;
 }
-h1 {
-text-alignment: center;
+button {
+width: 7.5%;
+height: 5%;
 color: #ffffff;
-height: 45px;
+font-family: "Times New Roman";
+text-align: center;
+vertical-align: middle;
+background-color: #fbc02d;
+}
+h1 {
+color: #ffffff;
+text-align: left;
+vertical-align: center;
+height: 10%;
+margin: -5pt -5pt -10pt -5pt;
+font-size: 1.8em;;
 border-style: solid;
 border-width: 2px;
 background-color: #00bcd4;
 }
+h2 {
+font-size: 1.5em;
+}
 h3 {
 color: #fbc02d;
+font-size: 1.4em;
 }
 h4 {
 color: #008ba3;
-font-size: 20pt;
+font-size: 1.4em;
 }
 select {
-width: 200px;
-font-size: 12pt;
+width: 10%;
 border-style: solid;
 border-width: 1px;
 border-color: #008ba3;
 }
-input type="text" name="suche" { <!--das funktioniert hier noch nicht-->
-width: 100%;
-font-size: 12pt;
+.suche {
+width: 80%;
 border-style: solid;
 border-width: 1px;
 border-color: #008ba3;
 }
-div.kursiv_blau {
-color: #62efff;
-font-size: 10pt;
+.kursiv_blau {
+color: #00bcd4;
+font-size: 0.9em;
+font-style: italic;
 }
-div.hinweis_rot {
+.pflichtfeld {
 color: #ee0000;
-font-size: 10pt;
+font-size: 0.9em;
 }
-div id="menue" {
-border-style: solid;
-border-width: 2px;
-background-color: #62efff;
+.menue {
+margin-top: 50px;
+padding: 2px 5px 2px 5px;
+width: 20%;
+height: 10%;
+}
+.quadrat {
+list-style-type: square;
+list-style-position: inside;
 }
  <color name="colorPrimary">#00bcd4</color>
  <color name="colorPrimaryLight">#62efff</color>
