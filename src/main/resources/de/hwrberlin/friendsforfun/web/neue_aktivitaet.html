@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>M&aelig;ty</title>
+    <link rel="stylesheet" type="text/css" href="format.css"/>
+</head>
+<body>
+<header>
+    <h1>M&aelig;ty</h1>
+</header>
+<h3>Erstellen Sie eine neue Aktivität!</h3>
+<form name="neue_aktivitaet" action="neue_aktivitaet.php" method="post">
+    Bezeichnung*<br>
+    <input type="text" name="Bez_Aktivitaet" size="50" maxlength="25" required><br><br>
+    Kategorie*<br>
+    <select name="Kategorie" required>
+        <option>Mannschaftssportarten</option>
+        <option>Strategiespiele</option>
+        <option>Outddoraktivitäten</option>
+    </select><br><br>
+    Altersempfehlung<br>
+    <input type="number" name="Altersempfehlung" pattern="[0-9]{2}"><br><br>
+    Minimale Personenanzahl<br>
+    <input type="number" name="Min_PersAnzahl" min="2" max="20"><br><br>
+    Maximale Personenanzahl<br>
+    <input type="number" name="Max_PersAnzahl" min="2" max="50"><br><br><br>
+    Beschreibung<br>
+    <textarea name="Beschreibung_aktivitaet" cols="100" rows="5"></textarea><br><br>
+    <button>Speichern</button><br>
+    <div id="hinweis_rot">*Pflichtfeld</div><br>
+</form>
+<footer>
+    <p>&copy; FriendsForFun<sup>3</sup> </tab> <a href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a> </tab> Impressum </tab> Datenschutz</p>
+</footer>
+</body>
+</html>
