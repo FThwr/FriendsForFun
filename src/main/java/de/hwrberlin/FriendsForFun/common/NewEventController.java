@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HomepageController {
+public class NewEventController {
 
-	 @GetMapping("/homepage.html")
+	 @GetMapping("/neues_event.html")
 	    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 	        model.addAttribute("name", name);
-	        return "homepage";
+	        return "neues_event";
 	    }
 	
 }
