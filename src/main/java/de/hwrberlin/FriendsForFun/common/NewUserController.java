@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
@@ -27,7 +28,6 @@ public class NewUserController {
 //		return "neuer_nutzer";
 //	}
 //
-//	 Neuen Nutzer anlegen
 //	 @RequestMapping(method=RequestMethod.POST, value="/nutzer/add")
 //	 public String addNutzer(@ModelAttribute("nutzer") Nutzer nutzer,
 //	 BindingResult result) {
@@ -42,11 +42,18 @@ public class NewUserController {
 //	}
 
 	@PostMapping("/nutzer/add")
-	public String addNutzer(@ModelAttribute Nutzer nutzer) {
+	public String addNutzer(@ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
 		nutzerManager.addNutzer(nutzer);
 		System.out.println("should now add user '" + nutzer.getUsername() + "'");
 		return "homepage.html";
 	}
+	
+//	@PostMapping("/nutzer/add")
+//	public ModelAndView addNutzer(@ModelAttribute Nutzer nutzer) {
+//		nutzerManager.addNutzer(nutzer);
+//		return new ModelAndView("redirect:/homepage");
+//	}
+//	
 	@GetMapping("/neuer_nutzer")
 	public String addNutzer(Model model) {
         model.addAttribute("nutzer", new Nutzer());
