@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -12,18 +12,18 @@
 <div class="page-wrapper">
     <div class="preamble" id="zen-preamble" role="article">
         <h3>Erstellen Sie Ihr M&aelig;ty-Konto!</h3><br>
-        <form name="neuer_nutzer" action="/nutzer/add" method="post">
+        <form name="neuer_nutzer" th:action="@{/nutzer/add}" th:object="${nutzer}" method="post">
             Benutzername*<br>
-            <input type="text" name="Username" size="50" maxlength="25" required><br><br>
+            <input type="text" th:field="*{username}" name="Username" size="50" maxlength="25" required><br><br>
             Geschlecht*<br>
-            <input type="radio" name="Geschlecht" value="weiblich" checked>Weiblich
-            <input type="radio" name="Geschlecht" value="männlich">Männlich<br><br>
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="w" checked>Weiblich
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="m">Männlich<br><br>
             Geburtsdatum*<br>
-            <input type="date" name="Geburtsdatum" required><br><br>
+            <input type="date" th:field="*{geburtsdatum}" name="Geburtsdatum" required><br><br>
             E-Mail*<br>
-            <input type="email" name="Mail" size="50" required><br><br>
+            <input type="email" th:field="*{mail}" name="Mail" size="50" required><br><br>
             Passwort*<br>
-            <input type="password" name="Passwort" size="50" required><br><br>
+            <input type="password" th:field="*{passwort}" name="Passwort" size="50" required><br><br>
             <button>Speichern</button>
             <br>
             <p class="pflichtfeld">*Pflichtfeld</p><br>

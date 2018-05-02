@@ -15,16 +15,17 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Erstellen Sie Ihr M&aelig;ty-Konto!</h3>
 			<br>
-			<form name="neuer_nutzer" action="neuer_nutzer.xml" method="post">
+			<form name="neuer_nutzer" action="nutzer/add" method="post">
 				Benutzername*<br> <input type="text" name="Username" size="50"
-					maxlength="25" required><br> <br> Geschlecht*<br>
-				<input type="radio" name="Geschlecht" value="weiblich" checked>Weiblich
-				<input type="radio" name="Geschlecht" value="männlich">Männlich<br>
-				<br> Geburtsdatum*<br> <input type="date"
-					name="Geburtsdatum" required><br> <br> E-Mail*<br>
-				<input type="email" name="Mail" size="50" required><br>
-				<br> Passwort*<br> <input type="password" name="Passwort"
-					size="50" required><br> <br>
+					maxlength="25" required value="${username}"><br> <br>
+				Geschlecht*<br> <input type="radio" name="Geschlecht"
+					value="weiblich" checked>Weiblich <input type="radio"
+					name="Geschlecht" value="männlich">Männlich<br> <br>
+				Geburtsdatum*<br> <input type="date" name="Geburtsdatum"
+					required><br> <br> E-Mail*<br> <input
+					type="email" name="Mail" size="50" required><br> <br>
+				Passwort*<br> <input type="password" name="Passwort" size="50"
+					required><br> <br>
 				<button>Speichern</button>
 				<br>
 				<p class="pflichtfeld">*Pflichtfeld</p>

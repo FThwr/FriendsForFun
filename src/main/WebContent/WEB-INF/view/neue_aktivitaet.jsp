@@ -1,8 +1,9 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Neue Aktivit√§t</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Neue Aktivit‰t</title>
     <link rel="stylesheet" type="text/css" href="format.css"/>
 </head>
 <body>
@@ -11,7 +12,7 @@
         <h1>M&aelig;ty</h1>
     </header>
     <div class="preamble" id="zen-preamble" role="article">
-        <h3>Erstellen Sie eine neue Aktivit√§t!</h3><br>
+        <h3>Erstellen Sie eine neue Aktivit‰t!</h3><br>
         <form name="neue_aktivitaet" action="neue_aktivitaet.php" method="post">
             Bezeichnung*<br>
             <input type="text" name="Bez_Aktivitaet" size="50" maxlength="25" required><br><br>
@@ -19,7 +20,7 @@
             <select name="Kategorie" required>
                 <option>Mannschaftssportarten</option>
                 <option>Strategiespiele</option>
-                <option>Outddoraktivit√§ten</option>
+                <option>Outddoraktivit‰ten</option>
             </select><br><br>
             Altersempfehlung<br>
             <input type="number" name="Altersempfehlung" size="20" min="16" max="99"><br><br>
@@ -41,7 +42,7 @@
     <aside class="sidebar" role="complementary">
         <div class="wrapper">
             <div class="design-selection" id="design-selection">
-                <h1 class="gr√ºn_sidebar">Men√º</h1><br><br><br>
+                <h1 class="gr¸n_sidebar">Men¸</h1><br><br><br>
                 <li>
                     <ul><a href="homepage.html" class="menue">HOME</a></ul>
                     <br>

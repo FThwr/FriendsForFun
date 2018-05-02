@@ -12,10 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 
 @Entity
+@Table(name = "nutzer")
 public class Nutzer implements EntityInterface {
 
 	@Id
