@@ -3,7 +3,12 @@ package de.hwrberlin.FriendsForFun.persistence.manager;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.Transactional;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 
@@ -12,6 +17,9 @@ public class NutzerManager extends AbstractEntityManager {
 	public NutzerManager() {
 
 	}
+	
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	/**
 	 * @return Liste mit allen Nutzern
@@ -26,6 +34,11 @@ public class NutzerManager extends AbstractEntityManager {
 		} finally {
 			em.close();
 		}
+	}
+	
+	@Transactional
+	public void addNutzer(Nutzer nutzer) {
+		entityManager.merge(nutzer);
 	}
 	
 	// TODO: spezielle Abfragen (z.B. alle Datentupel von dieser Klasse zurückgeben)
