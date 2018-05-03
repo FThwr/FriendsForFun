@@ -34,7 +34,9 @@ public class NutzerManager extends AbstractEntityManager {
 	public void addNutzer(Nutzer nutzer) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		em.merge(nutzer);
+		em.getTransaction().commit();
 	}
 	
 	// TODO: spezielle Abfragen (z.B. alle Datentupel von dieser Klasse zurückgeben)
