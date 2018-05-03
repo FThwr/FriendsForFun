@@ -7,10 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
@@ -44,7 +40,6 @@ public class NewUserController {
 	@PostMapping("/nutzer/add")
 	public String addNutzer(@ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
 		nutzerManager.createObject(nutzer);
-//		nutzerManager.addNutzer(nutzer);
 		System.out.println("should now add user '" + nutzer.getUsername() + "'");
 		return "homepage.html";
 	}
