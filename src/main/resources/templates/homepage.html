@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>M&aelig;ty</title>
-    <link rel="stylesheet" type="text/css" href="format.css"/>
+    <link rel="stylesheet" type="text/css" href="format.css" th:href="@{format.css}"/>
 </head>
 <body>
 <div class="page-wrapper">
@@ -29,23 +29,21 @@
     </form>
     <div class="preamble" id="zen-preamble" role="article">
         <h3>Meine Events</h3>
-        <p>24. Mai 2018</p>
-        <ul>
-            <li class="quadrat">Volleyball in Schwerin um 11 Uhr</li>
-            <li class="quadrat">Poker in Ludwigslust um 20 Uhr</li>
-        </ul>
-        <p>01. Juni 2018</p>
-        <ul>
-            <li class="quadrat">Die Zwerge in Berlin um 15 Uhr</li>
-        </ul>
-        <p>28. August 2018</p>
-        <ul>
-            <li class="quadrat">Lagerfeuer in Warnemünde um 18 Uhr</li>
-        </ul>
-        <p>01. Januar 2019</p>
-        <ul>
-            <li class="quadrat">Eishockey um 13 Uhr</li>
-        </ul>
+        
+        <table>
+        <tr>
+        <th>BESCHREIBUNG</th>
+        <th>ZEITPUNKT</th>
+        <th>ORGANISATOR</th>
+        <th>STATUS</th>
+        </tr>
+        <tr th:each="event : ${events}">
+        <td th:text="${event.beschreibung}">Bowling</td>
+        <td th:text="${event.zeitpunkt}">2018-09-23</td>
+        <td th:text="${event.nutzer}">Idiot</td>
+        <td th:text="${event.status}">toll</td>
+        </tr>
+        </table>
     </div>
     <footer>
         <p>&copy; FriendsForFun<sup>4</sup> <a
