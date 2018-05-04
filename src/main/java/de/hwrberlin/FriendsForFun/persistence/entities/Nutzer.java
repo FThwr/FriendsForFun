@@ -170,6 +170,6 @@ public class Nutzer implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "; Username: " + username;
+		return username;
 	}
 }

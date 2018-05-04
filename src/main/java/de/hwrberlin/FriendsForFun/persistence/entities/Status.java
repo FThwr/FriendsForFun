@@ -87,7 +87,7 @@ public class Status implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "Status: " + bez_status;
+		return bez_status;
 	}
 
 }
