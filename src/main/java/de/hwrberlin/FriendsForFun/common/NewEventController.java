@@ -16,19 +16,19 @@ import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 
 @Controller
 public class NewEventController {
-	
+
 	@Autowired
 	private EventManager eventManager;
 
 	@PostMapping("/event/add")
-	public String addNutzer(@ModelAttribute ("event") Event event, BindingResult result) {
+	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
 		eventManager.createObject(event);
 		return "homepage.html";
 	}
-	
-		@GetMapping("/neues_event.html")
-		public String addEvent(Model model) {
-	        model.addAttribute("event", new Event());
-	        return "neues_event";
-	    }
+
+	@GetMapping("/neues_event.html")
+	public String addEvent(Model model) {
+		model.addAttribute("event", new Event());
+		return "neues_event";
+	}
 }

@@ -12,9 +12,9 @@
     </header>
     <div class="preamble" id="zen-preamble" role="article">
         <h3>Erstellen Sie eine neue Aktivität!</h3><br>
-        <form name="neue_aktivitaet" action="neue_aktivitaet.php" method="post">
+        <form name="neue_aktivitaet" th:action="@{/aktivitaet/add}" th:object="${aktivitaet}" method="post">
             Bezeichnung*<br>
-            <input type="text" name="Bez_Aktivitaet" size="50" maxlength="25" required><br><br>
+            <input type="text" name="Bez_Aktivitaet" th:field="*{bez_aktivitaet}" size="50" maxlength="25" required><br><br>
             Kategorie*<br>
             <select name="Kategorie" required>
                 <option>Mannschaftssportarten</option>
@@ -22,13 +22,13 @@
                 <option>Outddoraktivitäten</option>
             </select><br><br>
             Altersempfehlung<br>
-            <input type="number" name="Altersempfehlung" size="20" min="16" max="99"><br><br>
+            <input type="number" name="Altersempfehlung" th:field="*{altersempfehlung}" size="20" min="16" max="99"><br><br>
             Minimale Personenanzahl<br>
-            <input type="number" name="Min_PersAnzahl" size="20" min="2"><br><br>
+            <input type="number" name="Min_PersAnzahl" th:field="*{min_persanzahl}" size="20" min="2"><br><br>
             Maximale Personenanzahl<br>
-            <input type="number" name="Max_PersAnzahl" size="20" min="2" max="35"><br><br>
+            <input type="number" name="Max_PersAnzahl" th:field="*{max_persanzahl}" size="20" min="2" max="35"><br><br>
             Beschreibung<br>
-            <textarea name="Beschreibung_aktivitaet" cols="100" rows="5" maxlength="400"></textarea><br><br>
+            <textarea name="Beschreibung_aktivitaet" th:field="*{beschreibung}" cols="100" rows="5" maxlength="400"></textarea><br><br>
             <button>Speichern</button>
             <br>
             <p class="pflichtfeld">*Pflichtfeld</p><br>

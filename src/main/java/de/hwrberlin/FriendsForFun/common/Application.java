@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
@@ -21,6 +22,11 @@ public class Application {
     	@Bean
     	public NutzerManager nutzerManager() {
     		return new NutzerManager();
+    	}
+    	
+    	@Bean
+    	public AktivitaetManager aktivtaetManager() {
+    		return new AktivitaetManager();
     	}
     	
     	@Bean
