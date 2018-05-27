@@ -34,7 +34,7 @@
 					<th>BESCHREIBUNG</th>
 					<th>ZEITPUNKT</th>
 					<th>ORGANISATOR</th>
-					<th>STATUS</th>
+					<th>STATUS</th> <<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
 				</tr>
 				<tr th:each="event : ${events}">
 					<td th:text="${event.beschreibung}"></td>
