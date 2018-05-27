@@ -15,8 +15,8 @@
 			<br>
 			<form name="neues_event" th:action="@{/event/add}"
 				th:object="${event}" method="post">
-				Kategorie*<br>
-				<select name="Kategorie" th:object="${kategorien}" required>
+				Kategorie*<br> <select name="Kategorie"
+					th:object="${kategorien}" required>
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
 				</select> <br> <br> Aktivität*<br> <input type="text"
