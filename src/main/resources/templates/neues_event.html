@@ -1,61 +1,69 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Neues Event</title>
-    <link rel="stylesheet" type="text/css" href="format.css"/>
+<meta charset="UTF-8">
+<title>Neues Event</title>
+<link rel="stylesheet" type="text/css" href="format.css" />
 </head>
 <body>
-<div class="page-wrapper">
-    <header>
-        <h1>M&aelig;ty</h1>
-    </header>
-    <div class="preamble" id="zen-preamble" role="article">
-        <h3>Erstellen Sie ein neues Event!</h3><br>
-        <form name="neues_event" th:action="@{/event/add}" th:object="${event}" method="post">
-            Kategorie*<br>
-            <select name="Kategorie" required>
-                <option>Mannschaftssportarten</option>
-                <option>Strategiespiele</option>
-                <option>Outddoraktivitäten</option>
-            </select><br><br>
-            Aktivität*<br>
-            <input type="text" name="aktivitaet" th:field="*{aktivitaet}" list="list"><br>
-            <datalist id="list">
-                <option value="Volleyball">
-                <option value="Basketball">
-                <option value="Die Zwerge">
-                <option value="Poker">
-            </datalist>
-            <br>
-            Termin<br>
-            <input type="datetime-local" class="datetime-local" th:field="*{zeitpunkt}" required><br><br>
-            Beschreibung<br>
-            <textarea name="Beschreibung_event" th:field="*{beschreibung}" cols="100" rows="5" maxlength="400"></textarea><br><br>
-            <button>Speichern</button>
-            <br>
-            <p class="pflichtfeld">*Pflichtfeld</p><br>
-        </form>
-    </div>
-    <footer>
-        <p>&copy; FriendsForFun<sup>4</sup> <a
-                href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a></p>
-    </footer>
-    <aside class="sidebar" role="complementary">
-        <div class="wrapper">
-            <div class="design-selection" id="design-selection">
-                <h1 class="grün_sidebar">Menü</h1><br><br><br>
-                <li>
-                    <ul><a href="homepage.html" class="menue">HOME</a></ul>
-                    <br>
-                    <ul><a href="neue_aktivitaet.html" class="menue">Neue Aktivität</a></ul>
-                    <br>
-                    <ul><a href="neuer_ort.html" class="menue">Neuer Eventort</a></ul>
-                    <br>
-                </li>
-            </div>
-        </div>
-    </aside>
-</div>
+	<div class="page-wrapper">
+		<header>
+			<h1>M&aelig;ty</h1>
+		</header>
+		<div class="preamble" id="zen-preamble" role="article">
+			<h3>Erstellen Sie ein neues Event!</h3>
+			<br>
+			<form name="neues_event" th:action="@{/event/add}"
+				th:object="${event}" method="post">
+				Kategorie*<br>
+				<select name="Kategorie" th:object="${kategorien}" required>
+					<option th:each="kategorie : ${kategorien}"
+						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
+				</select> <br> <br> Aktivität*<br> <input type="text"
+					name="aktivitaet" th:field="*{aktivitaet}" list="list"><br>
+				<datalist id="list">
+					<option value="Volleyball">
+					<option value="Basketball">
+					<option value="Die Zwerge">
+					<option value="Poker">
+				</datalist>
+				<br> Termin<br> <input type="datetime-local"
+					class="datetime-local" th:field="*{zeitpunkt}" required><br>
+				<br> Beschreibung<br>
+				<textarea name="Beschreibung_event" th:field="*{beschreibung}"
+					cols="100" rows="5" maxlength="400"></textarea>
+				<br> <br>
+				<button>Speichern</button>
+				<br>
+				<p class="pflichtfeld">*Pflichtfeld</p>
+				<br>
+			</form>
+		</div>
+		<footer>
+			<p>
+				&copy; FriendsForFun<sup>4</sup> <a
+					href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a>
+			</p>
+		</footer>
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<div class="design-selection" id="design-selection">
+					<h1 class="grün_sidebar">Menü</h1>
+					<br> <br> <br>
+					<li>
+						<ul>
+							<a href="homepage.html" class="menue">HOME</a>
+						</ul> <br>
+						<ul>
+							<a href="neue_aktivitaet.html" class="menue">Neue Aktivität</a>
+						</ul> <br>
+						<ul>
+							<a href="neuer_ort.html" class="menue">Neuer Eventort</a>
+						</ul> <br>
+					</li>
+				</div>
+			</div>
+		</aside>
+	</div>
 </body>
 </html>
