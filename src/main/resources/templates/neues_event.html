@@ -20,12 +20,10 @@
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
 				</select> <br> <br> Aktivität*<br> <input type="text"
-					name="aktivitaet" th:field="*{aktivitaet}" list="list"><br>
+					name="aktivitaet" th:object="${aktivitaet}" list="list" autocomplete="off"><br>
 				<datalist id="list">
-					<option value="Volleyball">
-					<option value="Basketball">
-					<option value="Die Zwerge">
-					<option value="Poker">
+					<option th:each="aktivitaet : ${aktivitaeten}"
+						th:value="${aktivitaet.id}" th:text="${aktivitaet.bez_aktivitaet}"></option>
 				</datalist>
 				<br> Termin<br> <input type="datetime-local"
 					class="datetime-local" th:field="*{zeitpunkt}" required><br>

@@ -39,6 +39,11 @@ public class Application {
     	public OrtManager ortManager() {
     		return new OrtManager();
     	}
+    	
+    	@Bean
+    	public AktivitaetManager aktivitaetManager() {
+    		return new AktivitaetManager();
+    	}
     
     	@Bean
     	public EventManager eventManager() {

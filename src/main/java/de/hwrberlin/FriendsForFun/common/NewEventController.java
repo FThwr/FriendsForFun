@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
 import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
+import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
@@ -26,6 +28,10 @@ public class NewEventController {
 
 	@Autowired
 	private KategorieManager kategorieManager;
+	
+	@Autowired
+	private AktivitaetManager aktivitaetManager;
+
 
 	@PostMapping("/event/add")
 	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
@@ -42,6 +48,11 @@ public class NewEventController {
 	@ModelAttribute("kategorien")
 	public List<Kategorie> getKategorien(){
 		return kategorieManager.getKategorien();
+	}
+	
+	@ModelAttribute("aktivitaeten")
+	public List<Aktivitaet> getAktivitaeten(){
+		return aktivitaetManager.getAktivitaeten();
 	}
 	
 }
