@@ -1,5 +1,7 @@
 package de.hwrberlin.FriendsForFun.common;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
+import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 
 @Controller
 public class NewActivityController {
@@ -20,16 +24,25 @@ public class NewActivityController {
 	@Autowired
 	private AktivitaetManager aktivitaetManager;
 
+	@Autowired
+	private KategorieManager kategorieManager;
+	
 	@PostMapping("/aktivitaet/add")
 	public String addAktivitaet(@ModelAttribute("aktivitaet") Aktivitaet aktivitaet, BindingResult result) {
 		aktivitaetManager.createObject(aktivitaet);
 		return "homepage.html";
 	}
+	
 
 	@GetMapping("/neue_aktivitaet.html")
 	public String addEvent(Model model) {
 		model.addAttribute("aktivitaet", new Aktivitaet());
 		return "neue_aktivitaet";
+	}
+	
+	@ModelAttribute("kategorien")
+	public List<Kategorie> getKategorien(){
+		return kategorieManager.getKategorien();
 	}
 
 }
