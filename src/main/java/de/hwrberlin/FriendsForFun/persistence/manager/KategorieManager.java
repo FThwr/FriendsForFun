@@ -11,9 +11,9 @@ import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
 public class KategorieManager extends AbstractEntityManager {
 
 	public KategorieManager() {
-		
+
 	}
-	
+
 	/**
 	 * @return Liste mit allen Kategorien
 	 */
@@ -28,7 +28,7 @@ public class KategorieManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-	
+
 	/**
 	 * @return Liste mit allen Kategoriebezeichnungen
 	 */
@@ -38,6 +38,23 @@ public class KategorieManager extends AbstractEntityManager {
 			list.add(k.getBez_kategorie());
 		}
 		return list;
+	}
+
+	/**
+	 * @return Kategorie mit einer bestimmten ID
+	 * 
+	 * bin mir nicht ganz sicher, aber gibt glaube ich nur eine Kopie des Objektes zurück und nicht das Objekt selbst
+	 */
+	public Kategorie getKategorieByID(int ID) {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			Kategorie kategorie = em.createQuery("SELECT k FROM Kategorie k WHERE k.id = :katID", Kategorie.class)
+					.setParameter("katID", ID).setMaxResults(1).getSingleResult();
+			return kategorie;
+		} finally {
+			em.close();
+		}
 	}
 
 }

@@ -18,24 +18,20 @@
 				Bezeichnung*<br> <input type="text" name="Bez_Aktivitaet"
 					th:field="*{bez_aktivitaet}" size="50" maxlength="25" required><br>
 				<br> Kategorie*<br> <select name="Kategorie"
-					th:object="${kategorien}" required>
+					th:field="*{kategorie}" required>
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
-				</select><br>
-				<br> Altersempfehlung<br> <input type="number"
+				</select> <br> <br> Altersempfehlung<br> <input type="number"
 					name="Altersempfehlung" th:field="*{altersempfehlung}" size="20"
-					min="16" max="99"><br>
-				<br> Minimale Personenanzahl<br> <input type="number"
-					name="Min_PersAnzahl" th:field="*{min_persanzahl}" size="20"
-					min="2"><br>
-				<br> Maximale Personenanzahl<br> <input type="number"
+					min="16" max="99"><br> <br> Minimale
+				Personenanzahl<br> <input type="number" name="Min_PersAnzahl"
+					th:field="*{min_persanzahl}" size="20" min="2"><br> <br>
+				Maximale Personenanzahl<br> <input type="number"
 					name="Max_PersAnzahl" th:field="*{max_persanzahl}" size="20"
-					min="2" max="35"><br>
-				<br> Beschreibung<br>
+					min="2" max="35"><br> <br> Beschreibung<br>
 				<textarea name="Beschreibung_aktivitaet" th:field="*{beschreibung}"
 					cols="100" rows="5" maxlength="400"></textarea>
-				<br>
-				<br>
+				<br> <br>
 				<button>Speichern</button>
 				<br>
 				<p class="pflichtfeld">*Pflichtfeld</p>
@@ -52,9 +48,7 @@
 			<div class="wrapper">
 				<div class="design-selection" id="design-selection">
 					<h1 class="grün_sidebar">Menü</h1>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 					<li>
 						<ul>
 							<a href="homepage.html" class="menue">HOME</a>
