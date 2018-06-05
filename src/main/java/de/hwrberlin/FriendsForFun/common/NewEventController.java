@@ -55,4 +55,9 @@ public class NewEventController {
 		return aktivitaetManager.getAktivitaeten();
 	}
 	
+	@ModelAttribute("aktivitaetenListe")
+	public String getAktivitaetenJSON(){
+		return "var aktivitaetenListe = " + aktivitaetManager.getAktivitaetenJSON() + ";";
+	}
+	
 }

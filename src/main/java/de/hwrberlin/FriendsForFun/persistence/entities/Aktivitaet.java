@@ -164,7 +164,7 @@ public class Aktivitaet implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "; Aktivit�t: " + bez_aktivitaet;
+		return "{'id':" + id + ",'bezeichnung':'" + bez_aktivitaet + "','kategorie':" + kategorie.getId() + "}";
 	}
 
 }

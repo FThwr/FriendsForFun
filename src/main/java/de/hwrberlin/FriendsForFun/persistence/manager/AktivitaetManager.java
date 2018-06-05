@@ -28,6 +28,13 @@ public class AktivitaetManager extends AbstractEntityManager {
 		}
 	}
 
+	/**
+	 * @return Liste mit den Aktivitäten als JSON-String
+	 */
+	public String getAktivitaetenJSON() {
+		return getAktivitaeten().toString();
+	}
+	
 	// TODO: getAktivitaetFromKategorie (Kategorie kategorie)
 
 }
