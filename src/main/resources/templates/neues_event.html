@@ -18,14 +18,13 @@
 			<form name="neues_event" th:action="@{/event/add}"
 				th:object="${event}" method="post">
 				Kategorie*<br> <select name="Kategorie" id="kategorie"
-					th:object="${kategorien}" required onchange="onCategoryChange(this)">
+					th:object="${kategorien}" required
+					onchange="onCategoryChange(this)">
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
-				</select> <br> <br> Aktivität*<br> <input type="text"
-					name="aktivitaet" th:object="${aktivitaet}" list="list" autocomplete="off"><br>
-				<datalist id="list">
+				</select> <br> <br> Aktivität*<br> <select type="text"
+					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list" autocomplete="off"></select><br>
 					<!-- wird per Javascript befüllt -->
-				</datalist>
 				<br> Termin<br> <input type="datetime-local"
 					class="datetime-local" th:field="*{zeitpunkt}" required><br>
 				<br> Beschreibung<br>
