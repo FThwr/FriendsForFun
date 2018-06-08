@@ -1,5 +1,8 @@
 package de.hwrberlin.FriendsForFun.common;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,11 @@ public class NewEventController {
 
 	@PostMapping("/event/add")
 	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
+		try {
+			event.setZeitpunkt(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(event.getZeitpunktHelper()));
+		} catch (ParseException e) {
+			System.out.println("Kann Datumsformat nicht verarbeiten: " + event.getZeitpunktHelper());
+		}
 		eventManager.createObject(event);
 		return "homepage.html";
 	}

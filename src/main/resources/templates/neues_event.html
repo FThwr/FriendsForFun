@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Neues Event</title>
-<link rel="stylesheet" type="text/css" href="format.css" />
+<link rel="stylesheet" type="text/css" href="/format.css" />
 <script type="text/javascript" th:utext="${aktivitaetenListe}"></script>
 <script type="text/javascript" src="neues_event.js"></script>
 </head>
@@ -26,7 +26,8 @@
 					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list" autocomplete="off"></select><br>
 					<!-- wird per Javascript befüllt -->
 				<br> Termin<br> <input type="datetime-local"
-					class="datetime-local" th:field="*{zeitpunkt}" required><br>
+					class="datetime-local" th:field="*{zeitpunktHelper}" required>
+					<br>
 				<br> Beschreibung<br>
 				<textarea name="Beschreibung_event" th:field="*{beschreibung}"
 					cols="100" rows="5" maxlength="400"></textarea>

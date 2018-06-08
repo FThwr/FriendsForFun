@@ -1,6 +1,6 @@
 package de.hwrberlin.FriendsForFun.persistence.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 
@@ -23,8 +25,12 @@ public class Event implements EntityInterface {
 	@Column(name = "ID_Event")
 	private int id;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Zeitpunkt")
 	Date zeitpunkt;
+	
+	@Column(name = "ZeitpunktHelper")
+	String zeitpunktHelper;
 
 	@Column(name = "Beschreibung")
 	String beschreibung;
@@ -85,7 +91,15 @@ public class Event implements EntityInterface {
 	public void setZeitpunkt(Date zeitpunkt) {
 		this.zeitpunkt = zeitpunkt;
 	}
+	
+	public String getZeitpunktHelper() {
+		return zeitpunktHelper;
+	}
 
+	public void setZeitpunktHelper(String zeitpunktHelper) {
+		this.zeitpunktHelper = zeitpunktHelper;
+	}
+	
 	public String getBeschreibung() {
 		return beschreibung;
 	}
