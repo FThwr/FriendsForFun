@@ -13,6 +13,7 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Erstellen Sie einen neuen Eventort!</h3>
 			<br>
+			<p class="kursiv_blau">Hinweis: Erstellen Sie Privatadressen nicht als Eventort! Sollte Ihr Event an einer privaten Adresse stattfinden, schreiben Sie die Adresse z.B. in die Event-Beschreibung.</p>
 			<form name="neuer_ort" th:action="@{/ort/add}" th:object="${ort}"
 				method="post">
 				Bezeichnung*<br> <input type="text" name="Bez_Ort"
