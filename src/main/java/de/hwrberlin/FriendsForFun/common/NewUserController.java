@@ -37,7 +37,7 @@ public class NewUserController {
 //		return "" + nutzerManager.getNutzer().size();
 //	}
 
-	@PostMapping("/nutzer/add")
+	@PostMapping("/neuer_nutzer")
 	public String addNutzer(@ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
 		nutzerManager.createObject(nutzer);
 		System.out.println("should now add user '" + nutzer.getUsername() + "'");

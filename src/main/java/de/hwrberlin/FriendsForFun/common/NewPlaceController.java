@@ -20,16 +20,16 @@ public class NewPlaceController {
 	@Autowired
 	private OrtManager ortManager;
 
-	@PostMapping("/ort/add")
+	@PostMapping("/neuer_ort.html")
 	public String addOrt(@ModelAttribute("ort") Ort ort, BindingResult result) {
 		ortManager.createObject(ort);
-		return "homepage.html";
+		return "erfolgreich_ort.html";
 	}
 
 	@GetMapping("/neuer_ort.html")
 	public String addOrt(Model model) {
 		model.addAttribute("ort", new Ort());
-		return "neuer_ort";
+		return "neuer_ort.html";
 	}
 	
 }

@@ -21,10 +21,10 @@ public class ProfilController {
         return "profil";
     }
 	
-//	@GetMapping("/profil.html")
-//    @ModelAttribute("aktiver_nutzer")
-//    public Nutzer getAktivNutzer() {
-//    	return nutzermanager.getNutzer().get(0);
-//    }
+	@GetMapping("/profil.html")
+    @ModelAttribute("aktiver_nutzer")
+    public Nutzer getAktivNutzer() {
+    	return nutzermanager.getNutzer().get(1);
+    }
 	
 }
