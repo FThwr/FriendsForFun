@@ -1,6 +1,5 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="de">
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
@@ -17,22 +16,20 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Anmeldung</h3>
 			<br>
-			<form name="login" action="login.xml" method="post">
+			<form name="login" th:action="@{/index.html}" th:object="${nutzer}"
+				method="post">
 				<!--Hier muss ich noch rausfinden, wo er die Formulardaten hin speichert-->
-				Benutzername<br> <input type="text" name="Username" size="25"
-					maxlength="25" required><br>
+				Benutzername<br> <input type="text" name="Username"
+					th:field="*{username}" size="25" maxlength="25" required><br>
 				<br> Passwort<br> <input type="password" name="Passwort"
-					size="25" maxlength="25" required><br>
-				<br>
-				<!--            <a href="homepage.html">
-                <button>Anmelden</button>
-            </a><br>
-            <p class="kursiv_blau">Noch kein M&aelig;ty-Account?</p>-->
+					th:field="*{passwort}" size="25" maxlength="25" required><br>
+				<br><button type="submit">Anmelden</button><br>
+				<p class="kursiv_blau">Noch kein M&aelig;ty-Account?</p>
 				<!--Wenn das funktioniert, kann hier der Button wieder rein und der Anmelden-Button weiter unten wieder raus-->
 			</form>
-			<a href="homepage.html">
+			<!--   	<a href="homepage.html">
 				<button>Anmelden</button>
-			</a><br>
+			</a><br> -->
 			<p class="kursiv_blau">Noch kein M&aelig;ty-Account?</p>
 			<a href="neuer_nutzer">
 				<button>Registrieren</button>
