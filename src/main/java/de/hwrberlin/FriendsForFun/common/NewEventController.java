@@ -32,7 +32,7 @@ public class NewEventController {
 	private AktivitaetManager aktivitaetManager;
 
 
-	@PostMapping("/event/add")
+	@PostMapping("/neues_event.html")
 	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
 		try {
 			event.setZeitpunkt(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(event.getZeitpunktHelper()));
@@ -40,13 +40,13 @@ public class NewEventController {
 			System.out.println("Kann Datumsformat nicht verarbeiten: " + event.getZeitpunktHelper());
 		}
 		eventManager.createObject(event);
-		return "homepage.html";
+		return "erfolgreich_event.html";
 	}
 
 	@GetMapping("/neues_event.html")
 	public String addEvent(Model model) {
 		model.addAttribute("event", new Event());
-		return "neues_event";
+		return "neues_event.html";
 	}
 	
 	@ModelAttribute("kategorien")
