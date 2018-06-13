@@ -1,73 +1,69 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>M&aelig;ty</title>
-    <link rel="stylesheet" type="text/css" href="format.css" th:href="@{format.css}"/>
+<meta charset="UTF-8">
+<title>M&aelig;ty</title>
+<link rel="stylesheet" type="text/css" href="format.css"
+	th:href="@{format.css}" />
 </head>
 <body>
-<div class="page-wrapper">
-    <section class="intro" id="zen-intro">
-        <header role="banner">
-            <h1>M&aelig;ty</h1>
-        </header>
-    </section>
-    <form name="suche" action="suche.xml" method="post">
-        <select name="Art_Suche" class="Select_Suche">
-            <option>AktivitÃ¤t</option>
-            <option>Kategorie</option>
-            <option>Ort</option>
-        </select>
-        <input type="text" name="Suche" list="list" class="suche">
-        <datalist id="list">
-            <option value="abc">
-            <option value="abc">
-            <option value="abc">
-            <option value="abc">
-        </datalist>
-        <button>Suchen</button>
-    </form>
-    <div class="preamble" id="zen-preamble" role="article"> <!-- muss angepasst werden, je nachdem, ob Events nach AktivitÃ¤t, Kategorie oder Ort gesucht wurden -->
-        <h3>Meine Events</h3>
-        <table>
-        <tr>
-        <th>BESCHREIBUNG</th>
-        <th>ZEITPUNKT</th>
-        <th>ORGANISATOR</th>
-        <th>STATUS</th>
-        </tr>
-        <tr th:each="event : ${events}">
-        <td th:text="${event.beschreibung}"></td>
-        <td th:text="${event.zeitpunkt}"></td>
-        <td th:text="${event.nutzer}"></td>
-        <td th:text="${event.status}"></td>
-        </tr>
-        </table>
-    </div>
-    <footer>
-        <p>&copy; FriendsForFun<sup>4</sup> <a
-                href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a></p>
-    </footer>
-    <aside class="sidebar" role="complementary">
-        <div class="wrapper">
-            <div class="design-selection" id="design-selection">
-                <h1 class="grÃ¼n_sidebar">MenÃ¼</h1><br><br><br>
-                <li>
-                    <ul><a href="neues_event.html" class="menue">Neues Event</a></ul>
-                    <br>
-                    <ul><a href="neue_aktivitaet.html" class="menue">Neue AktivitÃ¤t</a></ul>
-                    <br>
-                    <ul><a href="neuer_ort.html" class="menue">Neuer Eventort</a></ul>
-                    <br>
-                    <br>
-                    <ul><a href="profil.html" class="menue">Profil</a></ul>
-                    <br>
-                    <ul><a href="logout.html" class="menue">Logout</a></ul>
-                    <br>
-                </li>
-            </div>
-        </div>
-    </aside>
-</div>
+	<div class="page-wrapper">
+		<section class="intro" id="zen-intro">
+			<header role="banner">
+				<h1>M&aelig;ty</h1>
+			</header>
+		</section>
+		<div class="preamble" id="zen-preamble" role="article">
+			<!-- muss angepasst werden, je nachdem, ob Events nach Aktivität, Kategorie oder Ort gesucht wurden -->
+			<h3>Meine Events</h3>
+			<table>
+				<tr>
+					<th>BESCHREIBUNG</th>
+					<th>ZEITPUNKT</th>
+					<th>ORGANISATOR</th>
+					<th>STATUS</th>
+				</tr>
+				<tr th:each="event : ${ergebnisse}">
+					<td th:text="${event.beschreibung}"></td>
+					<td th:text="${event.zeitpunkt}"></td>
+					<td th:text="${event.nutzer}"></td>
+					<td th:text="${event.status}"></td>
+				</tr>
+			</table>
+		</div>
+		<footer>
+			<p>
+				&copy; FriendsForFun<sup>4</sup> <a
+					href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a>
+			</p>
+		</footer>
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<div class="design-selection" id="design-selection">
+					<h1 class="grün_sidebar">Menü</h1>
+					<br>
+					<br>
+					<br>
+					<li>
+						<ul>
+							<a href="neues_event.html" class="menue">Neues Event</a>
+						</ul> <br>
+						<ul>
+							<a href="neue_aktivitaet.html" class="menue">Neue AktivitÃ¤t</a>
+						</ul> <br>
+						<ul>
+							<a href="neuer_ort.html" class="menue">Neuer Eventort</a>
+						</ul> <br> <br>
+						<ul>
+							<a href="profil.html" class="menue">Profil</a>
+						</ul> <br>
+						<ul>
+							<a href="logout.html" class="menue">Logout</a>
+						</ul> <br>
+					</li>
+				</div>
+			</div>
+		</aside>
+	</div>
 </body>
 </html>
