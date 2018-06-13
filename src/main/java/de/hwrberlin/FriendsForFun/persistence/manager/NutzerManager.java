@@ -51,7 +51,7 @@ public class NutzerManager extends AbstractEntityManager {
 		EntityManager em = emf.createEntityManager();
 		try {
 			return (Nutzer) em
-					.createQuery("UPDATE Nutzer u SET u.username = '1' WHERE u.username = :uUsername")
+					.createQuery("UPDATE Nutzer u SET u.username = '1' WHERE u.username = :uUsername") 
 					.setParameter("uUsername", username).setMaxResults(1);
 		} finally {
 			em.close();
