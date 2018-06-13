@@ -14,10 +14,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 
 @Entity
 @Table(name = "nutzer")
+@Component
+@Scope("session")
 public class Nutzer implements EntityInterface {
 
 	@Id

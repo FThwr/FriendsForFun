@@ -2,40 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Neues Event</title>
-<link rel="stylesheet" type="text/css" href="/format.css" />
+<title>M&aelig;ty</title>
+<link rel="stylesheet" type="text/css" href="format.css"
+	th:href="@{format.css}" />
 <script type="text/javascript" th:utext="${aktivitaetenListe}"></script>
 <script type="text/javascript" src="neues_event.js"></script>
 </head>
 <body>
 	<div class="page-wrapper">
-		<header>
-			<h1>M&aelig;ty</h1>
-		</header>
+		<section class="intro" id="zen-intro">
+			<header role="banner">
+				<h1>M&aelig;ty</h1>
+			</header>
+		</section>
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Erstellen Sie ein neues Event!</h3>
+			<h3>Präzisieren Sie hier Ihre Suche:</h3>
 			<br>
-			<form name="neues_event" th:action="@{/neues_event.html}"
-				th:object="${event}" method="post">
-				Kategorie*<br> <select name="Kategorie" id="kategorie"
-					th:object="${kategorien}" required
-					onchange="onCategoryChange(this)">
+			<form name="suche" th:action="@{/suche.html}" method="post">
+				Kategorie <br> <select name="Kategorie" id="kategorie"
+					th:object="${kategorien}" onchange="onCategoryChange(this)">
+					<option value="0" text="" />
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
-				</select> <br> <br> Aktivität*<br> <select type="text"
-					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list" autocomplete="off"></select><br>
-					<!-- wird per Javascript befüllt -->
-				<br> Termin<br> <input type="datetime-local"
-					class="datetime-local" th:field="*{zeitpunktHelper}" required>
-					<br>
-				<br> Beschreibung<br>
-				<textarea name="Beschreibung_event" th:field="*{beschreibung}"
-					cols="100" rows="5" maxlength="400"></textarea>
-				<br> <br>
-				<Button> Speichern </Button> 
-				<br>
-				<br>
-				<p class="pflichtfeld">*Pflichtfeld</p>
+				</select> <br> <br> Aktivität <br> <select type="text"
+					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list"
+					autocomplete="off"></select><br>
+				<!-- wird per Javascript befüllt -->
+				<br> Datum <br> <input type="datetime-local"
+					class="datetime-local"> <br> <br>Ort<br> <select
+					type="text" name="Ort" th:object="${ort}" maxlength="255"
+					autocomplete="off">
+					<option value="0" text="" />
+					<option th:each="ort : ${orte}" th:value="${ort.id}"
+						th:text="${ort.bez_ort}" />
+				</select> <br> <br>
+				<Button type="submit">Suchen</Button>
 				<br>
 			</form>
 		</div>
@@ -52,7 +53,7 @@
 					<br> <br> <br>
 					<li>
 						<ul>
-							<a href="homepage.html" class="menue">HOME</a>
+							<a href="neues_event.html" class="menue">Neues Event</a>
 						</ul> <br>
 						<ul>
 							<a href="neue_aktivitaet.html" class="menue">Neue Aktivität</a>
@@ -71,6 +72,9 @@
 			</div>
 		</aside>
 	</div>
-	<script type="text/javascript">onCategoryChange(document.getElementById('kategorie'));</script>
+	<script type="text/javascript">
+		onCategoryChange(document.getElementById('kategorie'));
+	</script>
+
 </body>
 </html>

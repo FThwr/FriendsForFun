@@ -14,7 +14,7 @@ import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 
 @Controller
 public class HomepageController {
-
+	
 	@Autowired
 	private EventManager eventmanager;
 	

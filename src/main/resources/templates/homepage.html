@@ -13,7 +13,7 @@
 				<h1>M&aelig;ty</h1>
 			</header>
 		</section>
-		<form name="suche" action="suche.xml" method="post">
+		<form name="suche" action="suche.html" method="post">
 			<select name="Art_Suche" class="Select_Suche">
 				<option>Aktivität</option>
 				<option>Kategorie</option>
@@ -25,7 +25,7 @@
 				<option value="abc">
 				<option value="abc">
 			</datalist>
-			<button>Suchen</button>
+			<button type="submit">Suchen</button>
 		</form>
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Meine Events</h3>
@@ -34,7 +34,8 @@
 					<th>BESCHREIBUNG</th>
 					<th>ZEITPUNKT</th>
 					<th>ORGANISATOR</th>
-					<th>STATUS</th> <<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
+					<th>STATUS</th>
+					<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
 				</tr>
 				<tr th:each="event : ${events}">
 					<td th:text="${event.beschreibung}"></td>

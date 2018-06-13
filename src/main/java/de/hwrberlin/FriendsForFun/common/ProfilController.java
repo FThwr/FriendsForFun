@@ -18,16 +18,15 @@ public class ProfilController {
 
 	@Autowired
 	private NutzerManager nutzermanager;
-	
+
 	@RequestMapping("/profil.html")
-    public String index(Model model){
-        return "profil.html";
-    }
-	
+	public String index(Model model) {
+		return "profil.html";
+	}
+
 	@GetMapping("/profil.html")
-    
-    public Nutzer getAktivNutzer(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
-    	return nutzermanager.getNutzer(nutzer.getUsername(), nutzer.getPasswort()) /*.get(1)*/;
-    }
-	
+	public Nutzer getAktivNutzer(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
+		return nutzermanager.getNutzer(nutzer.getUsername(), nutzer.getPasswort()) /* .get(1) */;
+	}
+
 }
