@@ -34,12 +34,25 @@ public class NutzerManager extends AbstractEntityManager {
 
 	public Nutzer getNutzer(String username, String password) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = emf.createEntityManager();System.out.println("jfjofjwwjfjwoowowjfwjfowijf    " + password + username);
 		try {
 			return (Nutzer) em
 					.createQuery("SELECT u FROM Nutzer u WHERE u.passwort = :uPassword AND u.username = :uUsername")
 					.setParameter("uPassword", password).setParameter("uUsername", username).setMaxResults(1)
 					.getSingleResult();
+			
+		} finally {
+			em.close();
+		}
+	}
+	
+	public Nutzer setNutzer(String username, String password) throws NoResultException {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			return (Nutzer) em
+					.createQuery("UPDATE Nutzer u SET u.username = '1' WHERE u.username = :uUsername")
+					.setParameter("uUsername", username).setMaxResults(1);
 		} finally {
 			em.close();
 		}

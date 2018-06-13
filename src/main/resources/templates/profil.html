@@ -11,24 +11,42 @@
 	</header>
 	<div class="page-wrapper">
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Willkommen!</h3> <!-- Hier könnte, wenn möglich noch der Name des angemeldeten Nutzers hin.... -->
+			<h3>Willkommen! </h3> <!-- Hier könnte, wenn möglich noch der Name des angemeldeten Nutzers hin.... -->
 			<br>
 			
-			<form name="nutzer_bearbeiten" th:action="@{/profil.html}" th:object="${nutzer}" method="post"></form>
-			<table>
-				<tr>
-					<th>Name</th>
-					<th>Geburtsdatum</th>
-					<th>Mail</th>
-					<th>Passwort</th> 
-				</tr>
-				<tr>
-					<td th:text="${nutzer.username}"></td>
-					<td th:text="${nutzer.geburtsdatum}"></td>
-					<td th:text="${nutzer.mail}"></td>
-					<td th:text="${nutzer.passwort}"></td>
-				</tr>
-			</table>
+			<form name="nutzer_bearbeiten" th:action="@{/profil.html}" th:object="${nutzer}" method="post">	
+		<!--  	Benutzername:  <p th:text="${nutzer.username}"></p> <br> -->
+		
+		 <table> 
+			 	<tr> 
+			 		<th>Bezeichnung </th>
+			 		<th>Inhalt</th>
+			 		<th>Notwendige Änderungen</th>
+			 	</tr>
+			 	<tr> 
+			 		<td>Benutzername </td>
+			 		<td th:text="${nutzer.username}"> </td>
+			 		 <td> <input type="text" th:field="*{username}" name="Username" size="30" maxlength="25"/> </td> 
+			 	</tr>
+			 </table>
+			 
+			 <button> Speichern </button>
+		
+			</form>
+			 <br>
+			 
+			
+          <!--    <input type="text" th:field="*{username}" name="Username" size="50" maxlength="25" required><br><br>
+            Geschlecht*<br>
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="w" required>Weiblich
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="m">Männlich<br><br>
+            Geburtsdatum*<br>
+            <input type="date" th:field="*{geburtsdatum}" name="Geburtsdatum" required><br><br>
+            E-Mail*<br>
+            <input type="email" th:field="*{mail}" name="Mail" size="50" required><br><br>
+            Passwort*<br>
+            <input type="password" th:field="*{passwort}" name="Passwort" size="50" required><br><br> -->
+
 			<!-- <form name="nutzer_bearbeiten" th:action="@{/nutzer/edit}"
 				th:object="${nutzer}" method="post">
 				Benutzername<br> Nutzer_XY<br>
