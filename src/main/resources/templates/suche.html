@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="format.css"
 	th:href="@{format.css}" />
 <script type="text/javascript" th:utext="${aktivitaetenListe}"></script>
-<script type="text/javascript" src="neues_event.js"></script>
+<script type="text/javascript" src="suche.js"></script>
 </head>
 <body>
 	<div class="page-wrapper">
@@ -18,8 +18,8 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Präzisieren Sie hier Ihre Suche:</h3>
 			<br>
-			<form name="suche" th:action="@{/suche.html}" method="post">
-				Kategorie <br> <select name="Kategorie" id="kategorie"
+			<form name="suche" th:action="@{/suchergebnisse.html}" method="post">
+				Kategorie <br> <select name="kategorie" id="kategorie"
 					th:object="${kategorien}" onchange="onCategoryChange(this)">
 					<option value="0" text="" />
 					<option th:each="kategorie : ${kategorien}"
@@ -28,9 +28,11 @@
 					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list"
 					autocomplete="off"></select><br>
 				<!-- wird per Javascript befüllt -->
-				<br> Datum <br> <input type="datetime-local"
-					class="datetime-local"> <br> <br>Ort<br> <select
-					type="text" name="Ort" th:object="${ort}" maxlength="255"
+				<br> Altersempfehlung<br> <input type="number"
+					name="Altersempfehlung" th:object="${altersempfehlung}" size="20"
+					min="16" max="99"><br> <br> Datum <br> <input
+					type="datetime-local" class="datetime-local"> <br> <br>Ort<br>
+				<select type="text" name="Ort" th:object="${ort}" maxlength="255"
 					autocomplete="off">
 					<option value="0" text="" />
 					<option th:each="ort : ${orte}" th:value="${ort.id}"
