@@ -1,7 +1,11 @@
 package de.hwrberlin.FriendsForFun.common;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
@@ -56,19 +61,28 @@ public class SuchController {
 		return ortManager.getOrte();
 	}
 
-	@ModelAttribute("altersempfehlung")
-	public int altersempfehlung() {
-		return 0;
-	}
-
 	@PostMapping("/suchergebnisse.html")
-	public String addSuchergebnisse(@ModelAttribute("aktivitaet") int aktivitaet,
-			@ModelAttribute("kategorie") int kategorie, Model model, BindingResult result) {
+	public String addSuchergebnisse(@RequestParam("aktivitaet") int aktivitaet,
+			@RequestParam("kategorie") int kategorie,
+			@RequestParam("altersempfehlung") Optional<Integer> altersempfehlung, @RequestParam("ort") int ort,
+			@RequestParam("datum") String termin, Model model) {
 		List<Event> ergebnisse = new ArrayList<Event>();
+		int alter = altersempfehlung.orElse(0);
+		Date datum = null;
+		try {
+			datum = new SimpleDateFormat("yyyy-MM-dd").parse(termin);
+		} catch (ParseException e) {
+		}
 		if (aktivitaet != 0) {
 			ergebnisse = eventManager.getEventsByAktivitaet(aktivitaet);
 		} else if (kategorie != 0) {
 			ergebnisse = eventManager.getEventsByKategorie(kategorie);
+		} else if (aktivitaet == 0 && kategorie == 0 && alter != 0) {
+			ergebnisse = eventManager.getEventsByAltersempfehlung(alter);
+		} else if (aktivitaet == 0 && kategorie == 0 && alter == 0 && datum != null) {
+			ergebnisse = eventManager.getEventsByTermin(datum);
+		} else if (aktivitaet == 0 && kategorie == 0 && alter == 0 && datum == null && ort != 0) {
+			ergebnisse = eventManager.getEventsByOrt(ort);
 		}
 		model.addAttribute("ergebnisse", ergebnisse);
 		return "suchergebnisse.html";

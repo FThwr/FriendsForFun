@@ -29,10 +29,10 @@
 					autocomplete="off"></select><br>
 				<!-- wird per Javascript befüllt -->
 				<br> Altersempfehlung<br> <input type="number"
-					name="Altersempfehlung" th:object="${altersempfehlung}" size="20"
-					min="16" max="99"><br> <br> Datum <br> <input
-					type="datetime-local" class="datetime-local"> <br> <br>Ort<br>
-				<select type="text" name="Ort" th:object="${ort}" maxlength="255"
+					name="altersempfehlung" size="20"
+					min="16" max="99"><br> <br> Datum <br> <input name="datum"
+					type="date" class="datetime-local"> <br> <br>Ort<br>
+				<select type="text" name="ort" th:object="${ort}" maxlength="255"
 					autocomplete="off">
 					<option value="0" text="" />
 					<option th:each="ort : ${orte}" th:value="${ort.id}"
