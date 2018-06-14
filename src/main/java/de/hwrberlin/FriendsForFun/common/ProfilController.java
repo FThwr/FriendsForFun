@@ -1,8 +1,6 @@
 
 package de.hwrberlin.FriendsForFun.common;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
@@ -22,23 +19,31 @@ import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 public class ProfilController {
 
 	@Autowired
-	private NutzerManager nutzermanager;
-	
+	private NutzerManager nutzerManager;
+
 	@RequestMapping("/profil.html")
-    public String index(Model model){
-        return "profil.html";
-    }
-	
-	@GetMapping("/profil.html")  
-    public Nutzer getAktivNutzer(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
-    	return nutzermanager.getNutzer(nutzer.getUsername(), nutzer.getPasswort()) /*.get(1)*/;
-    }
-	
-	@PostMapping("/profil.html")
-	public Nutzer changeUser(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
-		
-			return nutzermanager.setNutzer(nutzer.getUsername(), nutzer.getPasswort());
+	public String index(Model model) {
+		return "profil.html";
 	}
-	
-	
+
+	@GetMapping("/profil.html")
+	public Nutzer getAktivNutzer(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
+		return nutzerManager.getNutzer(nutzer.getUsername(), nutzer.getPasswort()) /* .get(1) */;
+	}
+
+	@PostMapping("/profil.html")
+	public String changeUsersettings(@ModelAttribute("nutzer") Nutzer nutzer,
+			@ModelAttribute("passwort") String password, @ModelAttribute("username") String username,
+			BindingResult result, Model model) {
+		if (!password.isEmpty()) {
+			nutzer.setPasswort(password);
+		}
+		if (!username.isEmpty()) {
+			nutzer.setUsername(username);
+		}
+		if (!username.isEmpty() || !password.isEmpty()) {
+			nutzerManager.saveObject(nutzer);
+		}
+		return "/homepage.html";
+	}
 }

@@ -34,7 +34,7 @@ public class NutzerManager extends AbstractEntityManager {
 
 	public Nutzer getNutzer(String username, String password) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();System.out.println("jfjofjwwjfjwoowowjfwjfowijf    " + password + username);
+		EntityManager em = emf.createEntityManager();
 		try {
 			return (Nutzer) em
 					.createQuery("SELECT u FROM Nutzer u WHERE u.passwort = :uPassword AND u.username = :uUsername")

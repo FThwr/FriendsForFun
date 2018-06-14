@@ -4,12 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
-import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
-import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 
 public class EventManager extends AbstractEntityManager {
 

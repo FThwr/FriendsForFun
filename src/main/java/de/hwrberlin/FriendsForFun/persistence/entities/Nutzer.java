@@ -44,20 +44,19 @@ public class Nutzer implements EntityInterface {
 
 	@Column(name = "Passwort")
 	String passwort;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn (name = "Status_ID")
+	@JoinColumn(name = "Status_ID")
 	Status status;
-	
+
 	@OneToMany(mappedBy = "nutzer")
 	Set<Eventteilnehmer> eventteilnehmer;
-	
+
 	@OneToMany(mappedBy = "nutzer")
 	Set<Event> event;
-	
+
 	@OneToMany(mappedBy = "nutzer")
 	Set<Meldung> meldung;
-	
 
 	public Nutzer() {
 
@@ -73,9 +72,9 @@ public class Nutzer implements EntityInterface {
 		this.status = status;
 
 		NutzerManager nm = new NutzerManager();
-		nm.createObject(this); 
-//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-//		pm.create(this);
+		nm.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
 	public Nutzer(String mail, String username, Date geburtsdatum, char geschlecht, String passwort) {
@@ -87,12 +86,11 @@ public class Nutzer implements EntityInterface {
 		this.passwort = passwort;
 
 		NutzerManager nm = new NutzerManager();
-		nm.createObject(this); 
-//		PersistenceManager pm = PersistenceManager.getPersistenceManager();
-//		pm.create(this);
+		nm.createObject(this);
+		// PersistenceManager pm = PersistenceManager.getPersistenceManager();
+		// pm.create(this);
 	}
 
-	
 	public int getId() {
 		return id;
 	}
@@ -114,7 +112,9 @@ public class Nutzer implements EntityInterface {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		if (!username.isEmpty()) {
+			this.username = username;
+		}
 	}
 
 	public Date getGeburtsdatum() {
@@ -138,7 +138,9 @@ public class Nutzer implements EntityInterface {
 	}
 
 	public void setPasswort(String passwort) {
-		this.passwort = passwort;
+		if (!passwort.isEmpty()) {
+			this.passwort = passwort;
+		}
 	}
 
 	public Status getStatus() {
