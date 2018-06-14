@@ -32,76 +32,54 @@ public class EventManager extends AbstractEntityManager {
 		}
 	}
 
-	public List<Event> getEventsByAktivitaet(int aktivitaetID) {
+	public List<Event> getEventsBy(int alter, int kategorieId, int aktivitaetId, Date termin, int ortId) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
+		String sql = "SELECT e FROM Event e WHERE ";
+		Date terminPlus = new Date(termin.getTime());
+
+		if (alter != 0) {
+			sql += "e.aktivitaet.altersempfehlung = :altersempfehlung AND ";
+		}
+		if (kategorieId != 0) {
+			sql += "e.aktivitaet.kategorie.id = :kategorieID AND ";
+		}
+		if (aktivitaetId != 0) {
+			sql += "e.aktivitaet.id = :aktivitaetID AND ";
+		}
+		if (termin != null) {
+			sql += "(e.zeitpunkt < :terminPlus AND e.zeitpunkt > :termin) AND ";
+		}
+		if(ortId != 0) {
+			sql += "e.ort.id = :ort AND ";
+		}
+		sql = sql.substring(0, sql.length() - 5); // letztes AND soll entfernt werden
 		try {
-			TypedQuery<Event> query = em
-					.createQuery("SELECT e FROM Event e WHERE e.aktivitaet.id = :aktivitaetID", Event.class)
-					.setParameter("aktivitaetID", aktivitaetID);
+			TypedQuery<Event> query = em.createQuery(sql, Event.class);
+			if (alter != 0) {
+				query.setParameter("altersempfehlung", alter);
+			}
+			if (kategorieId != 0) {
+				query.setParameter("kategorieID", kategorieId);
+			}
+			if (aktivitaetId != 0) {
+				query.setParameter("aktivitaetID", aktivitaetId);
+			}
+			if (termin != null) {
+				query.setParameter("termin", termin);
+				terminPlus.setDate(terminPlus.getDate()+1);
+				query.setParameter("terminPlus", terminPlus);
+			}
+			if(ortId != 0) {
+				query.setParameter("ort", ortId);
+			}
 			List<Event> list = query.getResultList();
 			return list;
 		} finally {
 			em.close();
 		}
 	}
-	
-	public List<Event> getEventsByKategorie(int kategorieID) {
-		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
-		try {
-			TypedQuery<Event> query = em
-					.createQuery("SELECT e FROM Event e WHERE e.aktivitaet.kategorie.id = :kategorieID", Event.class)
-					.setParameter("kategorieID", kategorieID);
-			List<Event> list = query.getResultList();
-			return list;
-		} finally {
-			em.close();
-		}
-	}
-	
-	public List<Event> getEventsByAltersempfehlung(int alter) {
-		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
-		try {
-			TypedQuery<Event> query = em
-					.createQuery("SELECT e FROM Event e WHERE e.aktivitaet.altersempfehlung = :altersempfehlung", Event.class)
-					.setParameter("altersempfehlung", alter);
-			List<Event> list = query.getResultList();
-			return list;
-		} finally {
-			em.close();
-		}
-	}
-	
-	public List<Event> getEventsByOrt(int ortID) {
-		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
-		try {
-			TypedQuery<Event> query = em
-					.createQuery("SELECT e FROM Event e WHERE e.ort.id = :ort", Event.class)
-					.setParameter("ort", ortID);
-			List<Event> list = query.getResultList();
-			return list;
-		} finally {
-			em.close();
-		}
-	}
-	
-	public List<Event> getEventsByTermin(Date termin) {
-		emf = pm.getEntityManagerFactory();
-		EntityManager em = emf.createEntityManager();
-		try {
-			TypedQuery<Event> query = em
-					.createQuery("SELECT e FROM Event e WHERE e.zeitpunkt = :termin", Event.class)
-					.setParameter("termin", termin, TemporalType.DATE);
-			List<Event> list = query.getResultList();
-			return list;
-		} finally {
-			em.close();
-		}
-	}
-	
+
 }
 
 // TODO: getEventsFromAktivitaet (Aktivitaet aktivitaet)

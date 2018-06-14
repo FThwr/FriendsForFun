@@ -66,24 +66,13 @@ public class SuchController {
 			@RequestParam("kategorie") int kategorie,
 			@RequestParam("altersempfehlung") Optional<Integer> altersempfehlung, @RequestParam("ort") int ort,
 			@RequestParam("datum") String termin, Model model) {
-		List<Event> ergebnisse = new ArrayList<Event>();
 		int alter = altersempfehlung.orElse(0);
 		Date datum = null;
 		try {
 			datum = new SimpleDateFormat("yyyy-MM-dd").parse(termin);
 		} catch (ParseException e) {
 		}
-		if (aktivitaet != 0) {
-			ergebnisse = eventManager.getEventsByAktivitaet(aktivitaet);
-		} else if (kategorie != 0) {
-			ergebnisse = eventManager.getEventsByKategorie(kategorie);
-		} else if (aktivitaet == 0 && kategorie == 0 && alter != 0) {
-			ergebnisse = eventManager.getEventsByAltersempfehlung(alter);
-		} else if (aktivitaet == 0 && kategorie == 0 && alter == 0 && datum != null) {
-			ergebnisse = eventManager.getEventsByTermin(datum);
-		} else if (aktivitaet == 0 && kategorie == 0 && alter == 0 && datum == null && ort != 0) {
-			ergebnisse = eventManager.getEventsByOrt(ort);
-		}
+		List<Event> ergebnisse = eventManager.getEventsBy(alter, kategorie, aktivitaet, datum, ort);
 		model.addAttribute("ergebnisse", ergebnisse);
 		return "suchergebnisse.html";
 	}
