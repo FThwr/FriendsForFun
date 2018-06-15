@@ -1,0 +1,71 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Eventdetails</title>
+<link rel="stylesheet" type="text/css" href="/format.css" />
+<script type="text/javascript" th:utext="${aktivitaetenListe}"></script>
+<script type="text/javascript" src="neues_event.js"></script>
+</head>
+<body>
+	<div class="page-wrapper">
+		<header>
+			<h1>M&aelig;ty</h1>
+		</header>
+		<div class="preamble" id="zen-preamble" role="article">
+			<h3>Event</h3>
+			<br>
+			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
+				Kategorie<br> Outdooraktivitäten<br>
+				<br>
+				Aktivität<br> Volleyball<br>
+				<br>
+				Termin<br> 24.07.2018<br>
+				<br>
+				Organisator<br> Nutzer_XY<br>
+				<br>
+				Ort<br> Takatukaland<br>
+				<br>
+				Angemeldete Teilnehmer<br> 10<br>
+				<br>
+				Status<br> aktiv<br>
+				<br>
+				<button>Teilnehmen</button>
+				<br>
+			
+		</div>
+		<footer>
+			<p>
+				&copy; FriendsForFun<sup>4</sup> <a
+					href="mailto:s_ruhkieck@stud.hwr-berlin.de?cc=s_guhl@stud.hwr-berlin.de&amp;subject=Kontaktanfrage">Kontakt</a>
+			</p>
+		</footer>
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<div class="design-selection" id="design-selection">
+					<h1 class="grün_sidebar">Menü</h1>
+					<br> <br> <br>
+					<li>
+						<ul>
+							<a href="homepage.html" class="menue">HOME</a>
+						</ul> <br>
+						<ul>
+							<a href="neue_aktivitaet.html" class="menue">Neue Aktivität</a>
+						</ul> <br>
+						<ul>
+							<a href="neuer_ort.html" class="menue">Neuer Eventort</a>
+						</ul> <br> <br>
+						<ul>
+							<a href="profil.html" class="menue">Profil</a>
+						</ul> <br>
+						<ul>
+							<a href="logout.html" class="menue">Logout</a>
+						</ul> <br>
+					</li>
+				</div>
+			</div>
+		</aside>
+	</div>
+	<script type="text/javascript">onCategoryChange(document.getElementById('kategorie'));</script>
+</body>
+</html>
