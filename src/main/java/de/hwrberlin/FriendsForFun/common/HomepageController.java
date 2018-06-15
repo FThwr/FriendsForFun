@@ -14,13 +14,13 @@ import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 
 @Controller
 public class HomepageController {
-
+	
 	@Autowired
 	private EventManager eventmanager;
 	
     @RequestMapping({"/homepage.html"})
     public String index(Model model){
-        return "homepage";
+        return "homepage.html";
     }
 
     @GetMapping("/homepage.html")

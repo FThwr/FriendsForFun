@@ -15,7 +15,7 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Erstellen Sie ein neues Event!</h3>
 			<br>
-			<form name="neues_event" th:action="@{/event/add}"
+			<form name="neues_event" th:action="@{/neues_event.html}"
 				th:object="${event}" method="post">
 				Kategorie*<br> <select name="Kategorie" id="kategorie"
 					th:object="${kategorien}" required
@@ -32,7 +32,8 @@
 				<textarea name="Beschreibung_event" th:field="*{beschreibung}"
 					cols="100" rows="5" maxlength="400"></textarea>
 				<br> <br>
-				<button>Speichern</button>
+				<Button> Speichern </Button> 
+				<br>
 				<br>
 				<p class="pflichtfeld">*Pflichtfeld</p>
 				<br>

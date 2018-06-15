@@ -20,7 +20,7 @@ public class OrtManager extends AbstractEntityManager {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Ort> query = em.createQuery("SELECT e FROM Ort e", Ort.class);
+			TypedQuery<Ort> query = em.createQuery("SELECT e FROM Ort e ORDER BY e.bez_ort", Ort.class);
 			List<Ort> list = query.getResultList();
 			return list;
 		} finally {

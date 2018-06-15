@@ -12,11 +12,11 @@
 <div class="page-wrapper">
     <div class="preamble" id="zen-preamble" role="article">
         <h3>Erstellen Sie Ihr M&aelig;ty-Konto!</h3><br>
-        <form name="neuer_nutzer" th:action="@{/nutzer/add}" th:object="${nutzer}" method="post">
+        <form name="neuer_nutzer" th:action="@{/neuer_nutzer}" th:object="${nutzer}" method="post">
             Benutzername*<br>
             <input type="text" th:field="*{username}" name="Username" size="50" maxlength="25" required><br><br>
             Geschlecht*<br>
-            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="w" checked>Weiblich
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="w" required>Weiblich
             <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="m">Männlich<br><br>
             Geburtsdatum*<br>
             <input type="date" th:field="*{geburtsdatum}" name="Geburtsdatum" required><br><br>

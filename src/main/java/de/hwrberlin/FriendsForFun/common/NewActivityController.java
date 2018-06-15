@@ -27,17 +27,17 @@ public class NewActivityController {
 	@Autowired
 	private KategorieManager kategorieManager;
 	
-	@PostMapping("/aktivitaet/add")
+	@PostMapping("/neue_aktivitaet.html")
 	public String addAktivitaet(@ModelAttribute("aktivitaet") Aktivitaet aktivitaet, BindingResult result) {
 		aktivitaetManager.createObject(aktivitaet);
-		return "homepage.html";
+		return "erfolgreich_aktivitaet.html";
 	}
 	
 
 	@GetMapping("/neue_aktivitaet.html")
 	public String addEvent(Model model) {
 		model.addAttribute("aktivitaet", new Aktivitaet());
-		return "neue_aktivitaet";
+		return "neue_aktivitaet.html";
 	}
 	
 	@ModelAttribute("kategorien")

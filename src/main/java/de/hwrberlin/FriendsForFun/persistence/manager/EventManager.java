@@ -1,5 +1,6 @@
 package de.hwrberlin.FriendsForFun.persistence.manager;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,7 +29,54 @@ public class EventManager extends AbstractEntityManager {
 		}
 	}
 
-	// TODO: getEventsFromAktivitaet (Aktivitaet aktivitaet)
-	// TODO: getEventsFromOrganisator (Nutzer organisator)
+	public List<Event> getEventsBy(int alter, int kategorieId, int aktivitaetId, Date termin, int ortId) {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		String sql = "SELECT e FROM Event e WHERE ";
+		if (termin != null) {
+			sql += "(e.zeitpunkt < :terminPlus AND e.zeitpunkt > :termin) AND ";
+		}
+		if (alter != 0) {
+			sql += "e.aktivitaet.altersempfehlung = :altersempfehlung AND ";
+		}
+		if (kategorieId != 0) {
+			sql += "e.aktivitaet.kategorie.id = :kategorieID AND ";
+		}
+		if (aktivitaetId != 0) {
+			sql += "e.aktivitaet.id = :aktivitaetID AND ";
+		}
+		if (ortId != 0) {
+			sql += "e.ort.id = :ort AND ";
+		}
+		sql = sql.substring(0, sql.length() - 5); // letztes AND soll entfernt werden
+		try {
+			TypedQuery<Event> query = em.createQuery(sql, Event.class);
+			if (alter != 0) {
+				query.setParameter("altersempfehlung", alter);
+			}
+			if (kategorieId != 0) {
+				query.setParameter("kategorieID", kategorieId);
+			}
+			if (aktivitaetId != 0) {
+				query.setParameter("aktivitaetID", aktivitaetId);
+			}
+			if (termin != null) {
+				Date terminPlus = new Date(termin.getTime());
+				query.setParameter("termin", termin);
+				terminPlus.setDate(terminPlus.getDate() + 1);
+				query.setParameter("terminPlus", terminPlus);
+			}
+			if (ortId != 0) {
+				query.setParameter("ort", ortId);
+			}
+			List<Event> list = query.getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
 
 }
+
+// TODO: getEventsFromAktivitaet (Aktivitaet aktivitaet)
+// TODO: getEventsFromOrganisator (Nutzer organisator)

@@ -5,6 +5,8 @@
 <title>M&aelig;ty</title>
 <link rel="stylesheet" type="text/css" href="format.css"
 	th:href="@{format.css}" />
+<script type="text/javascript" th:utext="${aktivitaetenListe}"></script>
+<script type="text/javascript" src="suche.js"></script>
 </head>
 <body>
 	<div class="page-wrapper">
@@ -13,37 +15,32 @@
 				<h1>M&aelig;ty</h1>
 			</header>
 		</section>
-		<form name="suche" action="suche.html" method="post">
-			<select name="Art_Suche" class="Select_Suche">
-				<option>Aktivität</option>
-				<option>Kategorie</option>
-				<option>Ort</option>
-			</select> <input type="text" name="Suche" list="list" class="suche">
-			<datalist id="list">
-				<option value="abc">
-				<option value="abc">
-				<option value="abc">
-				<option value="abc">
-			</datalist>
-			<button type="submit">Suchen</button>
-		</form>
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Meine Events</h3>
-			<table>
-				<tr>
-					<th>BESCHREIBUNG</th>
-					<th>ZEITPUNKT</th>
-					<th>ORGANISATOR</th>
-					<th>STATUS</th>
-					<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
-				</tr>
-				<tr th:each="event : ${events}">
-					<td th:text="${event.beschreibung}"></td>
-					<td th:text="${event.zeitpunkt}"></td>
-					<td th:text="${event.nutzer}"></td>
-					<td th:text="${event.status}"></td>
-				</tr>
-			</table>
+			<h3>Präzisieren Sie hier Ihre Suche:</h3>
+			<br>
+			<form name="suche" th:action="@{/suchergebnisse.html}" method="post">
+				Kategorie <br> <select name="kategorie" id="kategorie"
+					th:object="${kategorien}" onchange="onCategoryChange(this)">
+					<option value="0" text="" />
+					<option th:each="kategorie : ${kategorien}"
+						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
+				</select> <br> <br> Aktivität <br> <select type="text"
+					name="aktivitaet" th:object="${aktivitaet}" list="list" id="list"
+					autocomplete="off"></select><br>
+				<!-- wird per Javascript befüllt -->
+				<br> Altersempfehlung<br> <input type="number"
+					name="altersempfehlung" size="20" min="16" max="99"><br>
+				<br> Datum <br> <input name="datum" type="date"
+					class="datetime-local"> <br> <br>Ort<br> <select
+					type="text" name="ort" th:object="${ort}" maxlength="255"
+					autocomplete="off">
+					<option value="0" text="" />
+					<option th:each="ort : ${orte}" th:value="${ort.id}"
+						th:text="${ort.bez_ort}"></option>
+				</select> <br> <br>
+				<Button type="submit">Suchen</Button>
+				<br>
+			</form>
 		</div>
 		<footer>
 			<p>
@@ -77,5 +74,9 @@
 			</div>
 		</aside>
 	</div>
+	<script type="text/javascript">
+		onCategoryChange(document.getElementById('kategorie'));
+	</script>
+
 </body>
 </html>

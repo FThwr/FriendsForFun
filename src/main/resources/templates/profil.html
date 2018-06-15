@@ -11,34 +11,76 @@
 	</header>
 	<div class="page-wrapper">
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Willkommen!</h3> <!-- Hier könnte, wenn möglich noch der Name des angemeldeten Nutzers hin.... -->
+			<h3>Willkommen!</h3>
+			<!-- Hier könnte, wenn möglich noch der Name des angemeldeten Nutzers hin.... -->
 			<br>
+
+			<form name="nutzer_bearbeiten" th:action="@{/profil.html}" method="post">
+				<!--  	Benutzername:  <p th:text="${nutzer.username}"></p> <br> -->
+
+				<table>
+					<tr>
+						<th></th>
+						<th>Aktuell</th>
+						<th>Neu</th>
+					</tr>
+					<tr>
+						<td>Benutzername</td>
+						<td th:text="${nutzer.username}"></td>
+						<td><input type="text" name="username"
+							size="30" maxlength="25" /></td>
+					</tr>
+							<tr>
+						<td>Passwort</td>
+						<td th:text="${nutzer.passwort}"></td>
+						<td><input type="text" name="passwort"
+							size="30" maxlength="25" /></td>
+					</tr>
+				</table>
+
+				<button>Speichern</button>
+
+			</form>
+			<br>
+
+
+			<!--    <input type="text" th:field="*{username}" name="Username" size="50" maxlength="25" required><br><br>
+            Geschlecht*<br>
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="w" required>Weiblich
+            <input type="radio" th:field="*{geschlecht}" name="Geschlecht" value="m">Männlich<br><br>
+            Geburtsdatum*<br>
+            <input type="date" th:field="*{geburtsdatum}" name="Geburtsdatum" required><br><br>
+            E-Mail*<br>
+            <input type="email" th:field="*{mail}" name="Mail" size="50" required><br><br>
+            Passwort*<br>
+            <input type="password" th:field="*{passwort}" name="Passwort" size="50" required><br><br> -->
+
 			<!-- <form name="nutzer_bearbeiten" th:action="@{/nutzer/edit}"
 				th:object="${nutzer}" method="post">
 				Benutzername<br> Nutzer_XY<br>
-				<br>
-				<!-- ebenfalls aus der Datenbank; Nutzernamen würde ich auch als nicht änderbar machen -->
-				<!-- Geschlecht<br> Weiblich/Männlich<br>
+				<br> -->
+			<!-- ebenfalls aus der Datenbank; Nutzernamen würde ich auch als nicht änderbar machen -->
+			<!-- Geschlecht<br> Weiblich/Männlich<br>
 				<br>
 				<!-- das muss hier aus der Datenbank gelesen werden... wollen wir das änderbar machen?! -->
-				<!-- Geburtsdatum<br> 22.02.1997<br>
+			<!-- Geburtsdatum<br> 22.02.1997<br>
 				<br>
 				<!-- ebenfalls aus der Datenbank lesen und auch nicht änderbar -->
-				<!-- E-Mail*<br>
+			<!--  E-Mail*<br>
 				<p th:text="${aktiver_nutzer.mail}"></p>
 				<input type="email" th:field="*{mail}" name="Mail" size="50"
 					required><br>
 				<br>
 				<!-- aus der Datenbank lesen und änderbar -->
-				<!-- Passwort*<br> <input type="password" th:field="*{passwort}"
+			<!-- Passwort*<br> <input type="password" th:field="*{passwort}"
 					name="Passwort" size="50" required><br>
 				<br>
 				<!-- aus der Datenbank lesen und änderbar -->
-				<!-- <button>Speichern</button>
-				<br>
+			<!-- <button>Speichern</button> -->
+			<!--  <br>
 				<p class="pflichtfeld">*Pflichtfeld</p>
-				<br>
-			</form> -->
+				<br> -->
+			<!--  </form> -->
 		</div>
 		<footer>
 			<p>
@@ -50,9 +92,7 @@
 			<div class="wrapper">
 				<div class="design-selection" id="design-selection">
 					<h1 class="grün_sidebar">Menü</h1>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 					<li>
 						<ul>
 							<a href="homepage.html" class="menue">HOME</a>

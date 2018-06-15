@@ -14,22 +14,14 @@
 			<h1>M&aelig;ty</h1>
 		</header>
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Anmeldung</h3>
+			<h3>Anmeldung fehlgeschlagen</h3>
 			<br>
-			<form name="login" th:action="@{/index.html}" th:object="${nutzer}"
-				method="post">
-				<!--Hier muss ich noch rausfinden, wo er die Formulardaten hin speichert-->
-				Benutzername<br> <input type="text" name="Username"
-					th:field="*{username}" size="25" maxlength="25" required><br>
-				<br> Passwort<br> <input type="password" name="Passwort"
-					th:field="*{passwort}" size="25" maxlength="25" required><br>
-				<br><button>Anmelden</button><br>
-				<p class="kursiv_blau">Noch kein M&aelig;ty-Account?</p>
-				<!--Wenn das funktioniert, kann hier der Button wieder rein und der Anmelden-Button weiter unten wieder raus-->
+			<form>
+				<a href="neuer_nutzer">
+				<button>Zurück zum Login</button>
+			</a><br>
 			</form>
-			<!--   	<a href="homepage.html">
-				<button>Anmelden</button>
-			</a><br> -->
+			<p class="kursiv_blau">Noch kein M&aelig;ty-Account?</p>
 			<a href="neuer_nutzer">
 				<button>Registrieren</button>
 			</a><br>
