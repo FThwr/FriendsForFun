@@ -33,8 +33,9 @@ public class EventManager extends AbstractEntityManager {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		String sql = "SELECT e FROM Event e WHERE ";
-		Date terminPlus = new Date(termin.getTime());
-
+		if (termin != null) {
+			sql += "(e.zeitpunkt < :terminPlus AND e.zeitpunkt > :termin) AND ";
+		}
 		if (alter != 0) {
 			sql += "e.aktivitaet.altersempfehlung = :altersempfehlung AND ";
 		}
@@ -44,10 +45,7 @@ public class EventManager extends AbstractEntityManager {
 		if (aktivitaetId != 0) {
 			sql += "e.aktivitaet.id = :aktivitaetID AND ";
 		}
-		if (termin != null) {
-			sql += "(e.zeitpunkt < :terminPlus AND e.zeitpunkt > :termin) AND ";
-		}
-		if(ortId != 0) {
+		if (ortId != 0) {
 			sql += "e.ort.id = :ort AND ";
 		}
 		sql = sql.substring(0, sql.length() - 5); // letztes AND soll entfernt werden
@@ -63,11 +61,12 @@ public class EventManager extends AbstractEntityManager {
 				query.setParameter("aktivitaetID", aktivitaetId);
 			}
 			if (termin != null) {
+				Date terminPlus = new Date(termin.getTime());
 				query.setParameter("termin", termin);
-				terminPlus.setDate(terminPlus.getDate()+1);
+				terminPlus.setDate(terminPlus.getDate() + 1);
 				query.setParameter("terminPlus", terminPlus);
 			}
-			if(ortId != 0) {
+			if (ortId != 0) {
 				query.setParameter("ort", ortId);
 			}
 			List<Event> list = query.getResultList();
