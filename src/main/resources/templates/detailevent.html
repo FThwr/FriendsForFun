@@ -15,17 +15,21 @@
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
 			Kategorie
-			<br th:text="${event.beschreibung}"> <br>
-			  <br> Aktivität<br>
-			Volleyball<br>
-			<br> Termin
-			<br> 24.07.2018<br> 
-			<br> Organisator<br>
-			 Nutzer_XY<br>
-			 <br> Ort<br>
-			Takatukaland<br>
-			<br> Angemeldete Teilnehmer<br> 10<br>
-			<br> Status<br> aktiv<br> <br>
+			<p></p>
+			Aktivität
+			<p th:text="*{event.aktivitaet}">Volleyball</p>
+			Termin
+			<p th:text="*{event.zeitpunkt}">24.07.2018</p>
+			Organisator
+			<p>Nutzer_XY</p> 
+			Ort
+			<p>Takatukaland</p>
+			Angemeldete Teilnehmer
+			<p>10</p> 
+			Status
+			<p>aktiv</p>
+			Beschreibung
+			<p></p>
 			<button>Teilnehmen</button>
 			<br>
 

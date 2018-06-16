@@ -9,10 +9,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
@@ -24,6 +27,7 @@ import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
 
 @Controller
+@SessionAttributes("event")
 public class SuchController {
 
 	@Autowired
@@ -74,6 +78,11 @@ public class SuchController {
 		return "suchergebnisse.html";
 	}
 
+	@GetMapping("/suchergebnisse.html")
+	public Event getAusgewähltesEvent(@ModelAttribute("event") Event event, BindingResult result, Model model) {
+		return event;
+	}
+	
 	@RequestMapping("/suche.html")
 	public String addSuche(Model model) {
 		return "suche.html";
