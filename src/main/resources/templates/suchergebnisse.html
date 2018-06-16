@@ -22,12 +22,14 @@
 					<th>ZEITPUNKT</th>
 					<th>ORGANISATOR</th>
 					<th>STATUS</th>
+					<th></th>
 				</tr>
 				<tr th:each="event : ${ergebnisse}">
 					<td th:text="${event.beschreibung}"></td>
 					<td th:text="${event.zeitpunkt}"></td>
 					<td th:text="${event.nutzer}"></td>
 					<td th:text="${event.status}"></td>
+					<td><a href="detailevent.html">Details</a></td>
 				</tr>
 			</table>
 		</div>
@@ -45,6 +47,9 @@
 					<br>
 					<br>
 					<li>
+					<ul>
+							<a href="hompepage.html" class="menue">Home</a>
+						</ul> <br> <br>
 						<ul>
 							<a href="neues_event.html" class="menue">Neues Event</a>
 						</ul> <br>

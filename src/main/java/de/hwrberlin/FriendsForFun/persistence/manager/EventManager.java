@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
+import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 
 public class EventManager extends AbstractEntityManager {
 
@@ -28,7 +29,31 @@ public class EventManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
+	
+	/**
+	 * @return Liste mit den Events, die einen bestimmten Nutzer als Teilnehmer haben
+	 */
+	public List<Event> getEventsByNutzer(Nutzer nutzer) {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e, Eventteilnehmer t WHERE t.event = e.id AND t.nutzer = :nutzer", Event.class);
+			List<Event> list = query.setParameter("nutzer", nutzer).getResultList();
+			return list;
+		} finally {
+			em.close();
+		}
+	}
 
+	/**
+	 * 
+	 * @param alter
+	 * @param kategorieId
+	 * @param aktivitaetId
+	 * @param termin
+	 * @param ortId
+	 * @return Liste mit Events, gesucht nach bestimmten Kriterien
+	 */
 	public List<Event> getEventsBy(int alter, int kategorieId, int aktivitaetId, Date termin, int ortId) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();

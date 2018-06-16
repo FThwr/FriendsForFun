@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
 import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
+import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
@@ -29,15 +30,16 @@ public class NewEventController {
 
 	@Autowired
 	private KategorieManager kategorieManager;
-	
+
 	@Autowired
 	private AktivitaetManager aktivitaetManager;
 
-
 	@PostMapping("/neues_event.html")
-	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
+	public String addEvent(@ModelAttribute("event") Event event, @ModelAttribute("nutzer") Nutzer nutzer,
+			BindingResult result) {
 		try {
 			event.setZeitpunkt(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(event.getZeitpunktHelper()));
+			event.setNutzer(nutzer);
 		} catch (ParseException e) {
 			System.out.println("Kann Datumsformat nicht verarbeiten: " + event.getZeitpunktHelper());
 		}
@@ -50,21 +52,20 @@ public class NewEventController {
 		model.addAttribute("event", new Event());
 		return "neues_event.html";
 	}
-	
+
 	@ModelAttribute("kategorien")
-	public List<Kategorie> getKategorien(){
+	public List<Kategorie> getKategorien() {
 		return kategorieManager.getKategorien();
 	}
 
-	
 	@ModelAttribute("aktivitaeten")
-	public List<Aktivitaet> getAktivitaeten(){
+	public List<Aktivitaet> getAktivitaeten() {
 		return aktivitaetManager.getAktivitaeten();
 	}
-	
+
 	@ModelAttribute("aktivitaetenListe")
-	public String getAktivitaetenJSON(){
+	public String getAktivitaetenJSON() {
 		return "var aktivitaetenListe = " + aktivitaetManager.getAktivitaetenJSON() + ";";
 	}
-	
+
 }

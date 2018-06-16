@@ -39,7 +39,6 @@ public class LoginController {
 	public String login(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result, Model model) {
 		try {
 			nutzerManager.getNutzer(nutzer.getUsername(), nutzer.getPasswort());
-			System.out.println("User: " + nutzer.getUsername() + " Passwort: " + nutzer.getPasswort());
 			return "homepage.html";
 		} catch (NoResultException e) {
 			return "fehlgeschlagen_login.html";
