@@ -15,23 +15,29 @@
 		</section>
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Meine Events</h3>
-			<table>
-				<tr>
-					<th>BESCHREIBUNG</th>
-					<th>ZEITPUNKT</th>
-					<th>ORGANISATOR</th>
-					<th>STATUS</th>
-					<th></th>
-					<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
-				</tr>
-				<tr th:each="event : ${events}">
-					<td th:text="${event.beschreibung}"></td>
-					<td th:text="${event.zeitpunkt}"></td>
-					<td th:text="${event.nutzer}"></td>
-					<td th:text="${event.status}"></td>
-					<td><a href="detailevent.html">Details</a></td>
-				</tr>
-			</table>
+			<form name="homepage" th:action="@{/homepage.html}"
+				th:object="${event}" method="get">
+				<table>
+					<tr>
+						<th>BESCHREIBUNG</th>
+						<th>ZEITPUNKT</th>
+						<th>ORGANISATOR</th>
+						<th>ID</th>
+						<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
+					</tr>
+					<tr th:each="event : ${events}">
+						<td th:text="${event.beschreibung}"></td>
+						<td th:text="${event.zeitpunkt}"></td>
+						<td th:text="${event.nutzer}"></td>
+						<td th:text="${event.id}"></td>
+					</tr>
+				</table>
+				Bitte tragen Sie hier die ID des Events ein, zu dem Sie mehr
+				Informationen benötigen und an dem Sie evtl. teilnehmen wollen: <br>
+				<input id="id" type="number">
+				<button type="submit" name="details">Details</button>
+			</form>
+
 		</div>
 		<footer>
 			<p>
@@ -47,7 +53,8 @@
 					<li>
 						<ul>
 							<a href="suche.html" class="menue">Suche</a>
-						</ul> <br><br>
+						</ul> <br>
+					<br>
 						<ul>
 							<a href="neues_event.html" class="menue">Neues Event</a>
 						</ul> <br>

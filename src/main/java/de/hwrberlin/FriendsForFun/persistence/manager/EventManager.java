@@ -44,6 +44,21 @@ public class EventManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
+	
+	/**
+	 * @return Event mit bestimmter ID
+	 */
+	public Event getEventById(int id) {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		try {
+			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e WHERE e.id = :id", Event.class);
+			Event ergebnis = query.setParameter("id", id).getSingleResult();
+			return ergebnis;
+		} finally {
+			em.close();
+		}
+	}
 
 	/**
 	 * 

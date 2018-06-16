@@ -21,17 +21,23 @@
 					<th>BESCHREIBUNG</th>
 					<th>ZEITPUNKT</th>
 					<th>ORGANISATOR</th>
-					<th>STATUS</th>
-					<th></th>
+					<th>ID</th>
 				</tr>
 				<tr th:each="event : ${ergebnisse}">
 					<td th:text="${event.beschreibung}"></td>
 					<td th:text="${event.zeitpunkt}"></td>
 					<td th:text="${event.nutzer}"></td>
-					<td th:text="${event.status}"></td>
-					<td><a href="detailevent.html">Details</a></td>
+					<td th:text="${event.id}"></td>
 				</tr>
 			</table>
+			<form name="suchergebnisse" th:action="@{/detailevent.html}"
+				th:object="${event}" method="post">
+				Bitte tragen Sie hier die ID des Events ein, zu dem Sie mehr
+				Informationen benötigen und an dem Sie evtl. teilnehmen wollen: <br>
+				<input id="id" type="number" th:field="*{id}">
+				<button>Details</button>
+			</form>
+
 		</div>
 		<footer>
 			<p>
@@ -43,11 +49,9 @@
 			<div class="wrapper">
 				<div class="design-selection" id="design-selection">
 					<h4>Menü</h4>
-					<br>
-					<br>
-					<br>
+					<br> <br> <br>
 					<li>
-					<ul>
+						<ul>
 							<a href="hompepage.html" class="menue">Home</a>
 						</ul> <br> <br>
 						<ul>

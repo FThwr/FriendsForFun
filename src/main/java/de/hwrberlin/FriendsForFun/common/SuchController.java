@@ -80,11 +80,13 @@ public class SuchController {
 
 	@GetMapping("/suchergebnisse.html")
 	public Event getAusgewähltesEvent(@ModelAttribute("event") Event event, BindingResult result, Model model) {
+		model.addAttribute("event", new Event());
 		return event;
 	}
 	
 	@RequestMapping("/suche.html")
 	public String addSuche(Model model) {
+		model.addAttribute("event", new Event());
 		return "suche.html";
 	}
 
