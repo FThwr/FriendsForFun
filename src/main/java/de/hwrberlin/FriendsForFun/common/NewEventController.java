@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
 import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
-import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
@@ -36,7 +35,7 @@ public class NewEventController {
 
 
 	@PostMapping("/neues_event.html")
-	public String addEvent(@ModelAttribute("event") Event event, @ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
+	public String addEvent(@ModelAttribute("event") Event event, BindingResult result) {
 		try {
 			event.setZeitpunkt(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(event.getZeitpunktHelper()));
 		} catch (ParseException e) {
