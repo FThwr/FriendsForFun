@@ -22,19 +22,21 @@
 					onchange="onCategoryChange(this)">
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
-				</select> <br> <br> Aktivität*<br> <select
-					name="aktivitaet" th:field="*{aktivitaet.id}" id="list"></select><br>
-					<!-- wird per Javascript befüllt -->
+				</select> <br> <br> Aktivität*<br> <select name="aktivitaet"
+					th:field="*{aktivitaet.id}" id="list"></select><br>
+				<!-- wird per Javascript befüllt -->
 				<br> Termin*<br> <input type="datetime-local"
-					class="datetime-local" th:field="*{zeitpunktHelper}" required>
-					<br>
-				<br> Beschreibung<br>
+					class="datetime-local" th:field="*{zeitpunktHelper}" required><br>
+				<br> Ort<br> <select name="Ort" id="ort"
+					th:field="*{ort.id}">
+					<option th:each="ort : ${orte}"
+						th:value="${ort.id}" th:text="${ort.bez_ort}"></option>
+				</select> <br> <br> Beschreibung<br>
 				<textarea name="Beschreibung_event" th:field="*{beschreibung}"
 					cols="100" rows="5" maxlength="400"></textarea>
 				<br> <br>
-				<Button> Speichern </Button> 
-				<br>
-				<br>
+				<Button>Speichern</Button>
+				<br> <br>
 				<p class="pflichtfeld">*Pflichtfeld</p>
 				<br>
 			</form>
@@ -71,6 +73,8 @@
 			</div>
 		</aside>
 	</div>
-	<script type="text/javascript">onCategoryChange(document.getElementById('kategorie'));</script>
+	<script type="text/javascript">
+		onCategoryChange(document.getElementById('kategorie'));
+	</script>
 </body>
 </html>

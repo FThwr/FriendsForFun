@@ -17,9 +17,11 @@ import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
 import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
+import de.hwrberlin.FriendsForFun.persistence.entities.Ort;
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
 
 @Controller
 @SessionAttributes("nutzer")
@@ -27,6 +29,9 @@ public class NewEventController {
 
 	@Autowired
 	private EventManager eventManager;
+	
+	@Autowired
+	private OrtManager ortManager;
 
 	@Autowired
 	private KategorieManager kategorieManager;
@@ -56,6 +61,11 @@ public class NewEventController {
 	@ModelAttribute("kategorien")
 	public List<Kategorie> getKategorien() {
 		return kategorieManager.getKategorien();
+	}
+	
+	@ModelAttribute("orte")
+	public List<Ort> getOrte() {
+		return ortManager.getOrte();
 	}
 
 	@ModelAttribute("aktivitaeten")
