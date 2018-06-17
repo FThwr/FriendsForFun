@@ -14,27 +14,29 @@
 			<h3>Event</h3>
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
-				Kategorie
-				<p th:text="*{event.aktivitaet.kategorie}"></p>
-				Aktivität
-				<p th:text="*{event.aktivitaet}">Volleyball</p>
-				Termin
-				<p th:text="*{event.zeitpunkt}">24.07.2018</p>
-				Organisator
-				<p th:text="*{event.nutzer}"></p>
-				Ort
-				<p th:text="*{event.ort}">Takatukaland</p>
-				<!-- Angemeldete Teilnehmer
+			Kategorie
+			<p th:text="*{event.aktivitaet.kategorie}"></p>
+			Aktivität
+			<p th:text="*{event.aktivitaet}">Volleyball</p>
+			Termin
+			<p th:text="*{event.zeitpunkt}">24.07.2018</p>
+			Organisator
+			<p th:text="*{event.nutzer}"></p>
+			Ort
+			<p th:text="*{event.ort}">Takatukaland</p>
+			<!-- Angemeldete Teilnehmer
 				<p th:text="*{event.}">10</p> -->
-				Status
-				<p th:text="*{event.status}">aktiv</p>
-				Beschreibung
-				<p th:text="*{event.beschreibung}"></p>
-				ID
-				<p th:text="*{event.id}"></p>
-			<button>Teilnehmen</button>
+			Status
+			<p th:text="*{event.status}">aktiv</p>
+			Beschreibung
+			<p th:text="*{event.beschreibung}"></p>
+			ID
+			<p th:text="*{event.id}"></p>
+			<form name="neuer_teilnehmer" th:action="@{/erfolgreich_teilnahme.html}"
+				th:object="${eventteilnehmer}" method="post">
+				<button type="submit">Teilnehmen</button>
+			</form>
 			<br>
-
 		</div>
 		<footer>
 			<p>

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.EventteilnehmerManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
@@ -48,6 +49,11 @@ public class Application {
     	@Bean
     	public EventManager eventManager() {
     		return new EventManager();
+    	}
+    	
+    	@Bean
+    	public EventteilnehmerManager eventteilnehmerManager() {
+    		return new EventteilnehmerManager();
     	}
     
     }

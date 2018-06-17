@@ -49,7 +49,7 @@ public class NewUserController {
 //		nutzerManager.addNutzer(nutzer);
 //		return new ModelAndView("redirect:/homepage");
 //	}
-//	
+
 	@GetMapping("/neuer_nutzer")
 	public String addNutzer(Model model) {
         model.addAttribute("nutzer", new Nutzer());
