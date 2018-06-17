@@ -23,7 +23,7 @@
 					<option th:each="kategorie : ${kategorien}"
 						th:value="${kategorie.id}" th:text="${kategorie.bez_kategorie}"></option>
 				</select> <br> <br> Aktivität*<br> <select
-					name="aktivitaet" th:object="${aktivitaet}" id="list"></select><br>
+					name="aktivitaet" th:field="*{aktivitaet.id}" id="list"></select><br>
 					<!-- wird per Javascript befüllt -->
 				<br> Termin*<br> <input type="datetime-local"
 					class="datetime-local" th:field="*{zeitpunktHelper}" required>
