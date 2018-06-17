@@ -37,8 +37,8 @@ public class EventManager extends AbstractEntityManager {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e, Eventteilnehmer t WHERE t.event = e.id AND t.nutzer = :nutzer", Event.class);
-			List<Event> list = query.setParameter("nutzer", nutzer).getResultList();
+			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e, Eventteilnehmer t WHERE t.event.id = e.id AND t.nutzer.id = :nutzer", Event.class);
+			List<Event> list = query.setParameter("nutzer", nutzer.getId()).getResultList();
 			return list;
 		} finally {
 			em.close();
