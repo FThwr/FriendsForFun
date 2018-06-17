@@ -2,42 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>M&aelig;ty</title>
-<link rel="stylesheet" type="text/css" href="format.css"
-	th:href="@{format.css}" />
+<title>Eventdetails</title>
+<link rel="stylesheet" type="text/css" href="/format.css" />
 </head>
 <body>
 	<div class="page-wrapper">
-		<section class="intro" id="zen-intro">
-			<header role="banner">
-				<h1>M&aelig;ty</h1>
-			</header>
-		</section>
+		<header>
+			<h1>M&aelig;ty</h1>
+		</header>
 		<div class="preamble" id="zen-preamble" role="article">
-			<h3>Meine Events</h3>
-			<form name="homepage" th:action="@{/homepage.html}"
-				th:object="${event}" method="get">
-				<table>
-					<tr>
-						<th>BESCHREIBUNG</th>
-						<th>ZEITPUNKT</th>
-						<th>ORGANISATOR</th>
-						<th>ID</th>
-						<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
-					</tr>
-					<tr th:each="event : ${events}">
-						<td th:text="${event.beschreibung}"></td>
-						<td th:text="${event.zeitpunkt}"></td>
-						<td th:text="${event.nutzer}"></td>
-						<td th:text="${event.id}"></td>
-					</tr>
-				</table>
-				<br><br>
-				Bitte tragen Sie hier die ID des Events ein, zu dem Sie mehr
-				Informationen benötigen: <br><br>
-				<input id="id" type="number">
-				<button type="submit" name="details">Details</button>
-			</form>
+			<h3>Event</h3>
+			<br>
+			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
+				Kategorie
+				<p th:text="*{event.aktivitaet.kategorie}"></p>
+				Aktivität
+				<p th:text="*{event.aktivitaet}">Volleyball</p>
+				Termin
+				<p th:text="*{event.zeitpunkt}">24.07.2018</p>
+				Organisator
+				<p th:text="*{event.nutzer}"></p>
+				Ort
+				<p th:text="*{event.ort}">Takatukaland</p>
+				<!-- Angemeldete Teilnehmer
+				<p th:text="*{event.}">10</p> -->
+				Status
+				<p th:text="*{event.status}">aktiv</p>
+				Beschreibung
+				<p th:text="*{event.beschreibung}"></p>
+				ID
+				<p th:text="*{event.id}"></p>
+			<button>Teilnehmen</button>
+			<br>
 
 		</div>
 		<footer>
@@ -53,9 +49,8 @@
 					<br> <br> <br>
 					<li>
 						<ul>
-							<a href="suche.html" class="menue">Suche</a>
+							<a href="homepage.html" class="menue">HOME</a>
 						</ul> <br>
-					<br>
 						<ul>
 							<a href="neues_event.html" class="menue">Neues Event</a>
 						</ul> <br>
