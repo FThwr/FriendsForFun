@@ -20,12 +20,10 @@ public class EventDetailController {
 	EventManager eventManager;
 
 	@RequestMapping("/detailevent.html")
-	public String details(Model model) {
+	public String details(@ModelAttribute("id") int id, Model model) {
+		System.out.println("Event: " + eventManager.getEventById(id));
+		model.addAttribute("event", eventManager.getEventById(id));
 		return "detailevent.html";
 	}
 
-	@GetMapping("/detailevent.html")
-	public Event getDetails(@ModelAttribute("event") Event event, BindingResult result, Model model) {
-		return eventManager.getEventById(event.getId());
-	}
 }

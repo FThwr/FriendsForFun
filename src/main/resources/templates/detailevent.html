@@ -15,21 +15,23 @@
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
 				Kategorie
-				<p></p>
+				<p th:text="*{event.aktivitaet.kategorie}"></p>
 				Aktivität
 				<p th:text="*{event.aktivitaet}">Volleyball</p>
 				Termin
 				<p th:text="*{event.zeitpunkt}">24.07.2018</p>
 				Organisator
-				<p>Nutzer_XY</p>
+				<p th:text="*{event.nutzer}"></p>
 				Ort
-				<p>Takatukaland</p>
+				<p th:text="*{event.ort}">Takatukaland</p>
 				Angemeldete Teilnehmer
 				<p>10</p>
 				Status
-				<p>aktiv</p>
+				<p th:text="*{event.status}">aktiv</p>
 				Beschreibung
-				<p></p>
+				<p th:text="*{event.beschreibung}"></p>
+				ID
+				<p th:text="*{event.id}"></p>
 			<button>Teilnehmen</button>
 			<br>
 
@@ -69,8 +71,5 @@
 			</div>
 		</aside>
 	</div>
-	<script type="text/javascript">
-		onCategoryChange(document.getElementById('kategorie'));
-	</script>
 </body>
 </html>
