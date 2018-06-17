@@ -39,10 +39,10 @@ public class NewEventController {
 			BindingResult result) {
 		try {
 			event.setZeitpunkt(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(event.getZeitpunktHelper()));
-			event.setNutzer(nutzer);
 		} catch (ParseException e) {
 			System.out.println("Kann Datumsformat nicht verarbeiten: " + event.getZeitpunktHelper());
 		}
+		event.setNutzer(nutzer);
 		eventManager.createObject(event);
 		return "erfolgreich_event.html";
 	}

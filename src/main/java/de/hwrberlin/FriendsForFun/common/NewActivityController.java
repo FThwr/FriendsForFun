@@ -32,7 +32,6 @@ public class NewActivityController {
 		aktivitaetManager.createObject(aktivitaet);
 		return "erfolgreich_aktivitaet.html";
 	}
-	
 
 	@GetMapping("/neue_aktivitaet.html")
 	public String addEvent(Model model) {
