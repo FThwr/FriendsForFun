@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
+import de.hwrberlin.FriendsForFun.persistence.entities.Eventteilnehmer;
 import de.hwrberlin.FriendsForFun.persistence.entities.Kategorie;
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.entities.Ort;
 import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
+import de.hwrberlin.FriendsForFun.persistence.manager.EventteilnehmerManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
 
@@ -33,6 +35,9 @@ public class NewEventController {
 	@Autowired
 	private OrtManager ortManager;
 
+	@Autowired
+	private EventteilnehmerManager eventteilnehmerManager;
+	
 	@Autowired
 	private KategorieManager kategorieManager;
 
@@ -49,6 +54,8 @@ public class NewEventController {
 		}
 		event.setNutzer(nutzer);
 		eventManager.createObject(event);
+		Eventteilnehmer teilnehmer = new Eventteilnehmer(event, nutzer);
+		eventteilnehmerManager.saveObject(teilnehmer);
 		return "erfolgreich_event.html";
 	}
 
