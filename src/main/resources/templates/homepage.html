@@ -19,17 +19,22 @@
 				th:object="${event}" method="get">
 				<table>
 					<tr>
-						<th>BESCHREIBUNG</th>
-						<th>ZEITPUNKT</th>
-						<th>ORGANISATOR</th>
 						<th>ID</th>
+						<th>AKTIVITÄT</th>
+						<th>ORGANISATOR</th>
+						<th>ZEITPUNKT</th>
+						<th>ORT</th>
+						<th>BESCHREIBUNG</th>
 						<!-- status macht hier nur Sinn, wenn auch Events die gemeldet oder gesperrt sind, angezeigt werden -->
 					</tr>
 					<tr th:each="event : ${events}">
-						<td th:text="${event.beschreibung}"></td>
-						<td th:text="${event.zeitpunkt}"></td>
-						<td th:text="${event.nutzer}"></td>
 						<td th:text="${event.id}"></td>
+						<td th:text="${event.aktivitaet}"></td>
+						<td th:text="${event.nutzer}"></td>
+						<td th:text="${event.zeitpunkt}"></td>
+						<td th:text="${event.ort}"></td>
+						<td th:text="${event.beschreibung}"></td>
+						
 					</tr>
 				</table>
 				<br><br>
