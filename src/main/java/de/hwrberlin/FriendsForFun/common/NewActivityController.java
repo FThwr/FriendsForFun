@@ -2,6 +2,8 @@ package de.hwrberlin.FriendsForFun.common;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +31,14 @@ public class NewActivityController {
 	
 	@PostMapping("/neue_aktivitaet.html")
 	public String addAktivitaet(@ModelAttribute("aktivitaet") Aktivitaet aktivitaet, BindingResult result) {
-		aktivitaetManager.createObject(aktivitaet);
-		return "erfolgreich_aktivitaet.html";
+		try {
+			aktivitaetManager.getAktivitaet(aktivitaet.getBez_aktivitaet());
+			return "fehlermeldung_neue_aktivitaet.html";
+		} catch (NoResultException e) {
+			aktivitaetManager.createObject(aktivitaet);
+			return "erfolgreich_aktivitaet.html";
+		}
+		
 	}
 
 	@GetMapping("/neue_aktivitaet.html")

@@ -55,7 +55,8 @@ public class NewEventController {
 		event.setNutzer(nutzer);
 		eventManager.createObject(event);
 		Eventteilnehmer teilnehmer = new Eventteilnehmer(event, nutzer);
-		eventteilnehmerManager.saveObject(teilnehmer);
+	//	eventteilnehmerManager.createObject(teilnehmer); //bei saveObjekt werden Objekt nulol gesetzt = doof, bei createObjekt wird teilnehmer 2 mal erstellt = auch doof
+		
 		return "erfolgreich_event.html";
 	}
 

@@ -1,5 +1,7 @@
 package de.hwrberlin.FriendsForFun.common;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +24,15 @@ public class NewPlaceController {
 
 	@PostMapping("/neuer_ort.html")
 	public String addOrt(@ModelAttribute("ort") Ort ort, BindingResult result) {
-		ortManager.createObject(ort);
+		try {
+			ortManager.getOrte(ort.getBez_ort(), ort.getPlz(), ort.getStrasse());
+			return "fehlermeldung_neuer_ort.html";
+		}
+		catch (NoResultException e) {
+			ortManager.createObject(ort);
+		
 		return "erfolgreich_ort.html";
+		}
 	}
 
 	@GetMapping("/neuer_ort.html")

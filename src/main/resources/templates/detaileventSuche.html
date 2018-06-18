@@ -14,7 +14,30 @@
 			<h3>Event</h3>
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
-			Kategorie
+			
+			<table> 
+				<tr> 
+					<th> Kategorie </th>
+					<th> Aktivität </th>
+					<th> Termin </th>
+					<th> Organisator </th>
+					<th> Ort </th>
+					<th> Status </th>
+					<th> Beschreibung </th>
+					<th> ID </th>
+				</tr>
+				<tr>
+					<td th:text="*{event.aktivitaet.kategorie}"> </td>
+					<td th:text="*{event.aktivitaet}"> </td>
+					<td th:text="*{event.zeitpunkt}"> </td>
+					<td th:text="*{event.nutzer}"> </td>
+					<td th:text="*{event.ort}"> </td>
+					<td th:text="*{event.status}"> </td>
+					<td th:text="*{event.status}"> </td>
+					<td th:text="*{event.id}"> </td>
+				</tr>
+			</table>
+			<!-- Kategorie
 			<p th:text="*{event.aktivitaet.kategorie}"></p>
 			Aktivität
 			<p th:text="*{event.aktivitaet}">Volleyball</p>
@@ -26,12 +49,12 @@
 			<p th:text="*{event.ort}">Takatukaland</p>
 			<!-- Angemeldete Teilnehmer
 				<p th:text="*{event.}">10</p> -->
-			Status
+			<!--  Status
 			<p th:text="*{event.status}">aktiv</p>
 			Beschreibung
-			<p th:text="*{event.beschreibung}"></p>
+			<p th:text="*{event.status}"></p>
 			ID
-			<p th:text="*{event.id}"></p>
+			<p th:text="*{event.id}"></p> -->
 			<form name="neuer_teilnehmer" th:action="@{/erfolgreich_teilnahme.html}"
 				th:object="${eventteilnehmer}" method="post">
 				<button type="submit">Teilnehmen</button>
