@@ -104,7 +104,9 @@ public class Nutzer implements EntityInterface {
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
+		if (!mail.isEmpty()) {
+			this.mail = mail;
+		}
 	}
 
 	public String getUsername() {

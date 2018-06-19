@@ -1,5 +1,7 @@
 package de.hwrberlin.FriendsForFun.common;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,14 +37,17 @@ public class SuchEventDetailController {
 	@PostMapping("/erfolgreich_teilnahme.html")
 	public String addTeilnehmer(@ModelAttribute("nutzer") Nutzer nutzer, @ModelAttribute("event") Event event,
 			BindingResult result) {
-		Eventteilnehmer teilnehmer = new Eventteilnehmer(event, nutzer);
-//		if (eventteilnehmerManager.isTeilnehmerAlreadyIn(event, nutzer)) {
-//			System.out.println("Sie nehmen schon an diesem Event teil!");
-//			return "fehlermeldung.html";
-//		} else {
+		
+		try {
+		
+		eventteilnehmerManager.isTeilnehmerAlreadyIn(event, nutzer);
+			System.out.println("Sie nehmen schon an diesem Event teil!");
+			return "fehlermeldung_teilnehmen.html";
+		} catch (NoResultException e) {
+			Eventteilnehmer teilnehmer = new Eventteilnehmer(event, nutzer);
 			eventteilnehmerManager.saveObject(teilnehmer);
 			return "erfolgreich_teilnahme.html";
-//		}
+		}
 	}
 
 }

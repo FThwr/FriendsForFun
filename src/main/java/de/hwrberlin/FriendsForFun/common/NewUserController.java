@@ -41,7 +41,7 @@ public class NewUserController {
 //		return "" + nutzerManager.getNutzer().size();
 //	}
 
-	@PostMapping("/neuer_nutzer")
+	@PostMapping("/neuer_nutzer.html")
 	public String addNutzer(@ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
 		try {
 			nutzerManager.getNutzer(nutzer.getUsername());
@@ -63,10 +63,10 @@ public class NewUserController {
 //		return new ModelAndView("redirect:/homepage");
 //	}
 
-	@GetMapping("/neuer_nutzer")
+	@GetMapping("/neuer_nutzer.html")
 	public String addNutzer(Model model) {
         model.addAttribute("nutzer", new Nutzer());
-        return "neuer_nutzer";
+        return "neuer_nutzer.html";
     }
 
 }

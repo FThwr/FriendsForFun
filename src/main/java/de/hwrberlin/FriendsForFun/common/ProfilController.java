@@ -33,7 +33,7 @@ public class ProfilController {
 
 	@PostMapping("/profil.html")
 	public String changeUsersettings(@ModelAttribute("nutzer") Nutzer nutzer,
-			@ModelAttribute("passwort") String password, @ModelAttribute("username") String username,
+			@ModelAttribute("passwort") String password, @ModelAttribute("username") String username, @ModelAttribute("mail") String mail,
 			BindingResult result, Model model) {
 		if (!password.isEmpty()) {
 			nutzer.setPasswort(password);
@@ -41,7 +41,10 @@ public class ProfilController {
 		if (!username.isEmpty()) {
 			nutzer.setUsername(username);
 		}
-		if (!username.isEmpty() || !password.isEmpty()) {
+		if(!mail.isEmpty()) {
+			nutzer.setMail(mail);
+		}
+		if (!username.isEmpty() || !password.isEmpty() || !mail.isEmpty()) {
 			nutzerManager.saveObject(nutzer);
 		}
 		return "redirect:/homepage.html";
