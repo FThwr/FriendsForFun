@@ -36,8 +36,13 @@ public class SuchEventDetailController {
 	public String addTeilnehmer(@ModelAttribute("nutzer") Nutzer nutzer, @ModelAttribute("event") Event event,
 			BindingResult result) {
 		Eventteilnehmer teilnehmer = new Eventteilnehmer(event, nutzer);
-		eventteilnehmerManager.saveObject(teilnehmer);
-		return "erfolgreich_teilnahme.html";
+//		if (eventteilnehmerManager.isTeilnehmerAlreadyIn(event, nutzer)) {
+//			System.out.println("Sie nehmen schon an diesem Event teil!");
+//			return "fehlermeldung.html";
+//		} else {
+			eventteilnehmerManager.saveObject(teilnehmer);
+			return "erfolgreich_teilnahme.html";
+//		}
 	}
 
 }
