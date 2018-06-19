@@ -15,8 +15,7 @@
 		</section>
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Meine Events</h3>
-			<form name="homepage" th:action="@{/homepage.html}"
-				th:object="${event}" method="get">
+			
 				<table>
 					<tr>
 						<th>ID</th>
@@ -38,11 +37,15 @@
 					</tr>
 				</table>
 				<br><br>
+				
+				<form name="homepage" th:action="@{/detailevent.html}" 
+				th:object="${event}" method="post">
 				Bitte tragen Sie hier die ID des Events ein, zu dem Sie mehr
 				Informationen benötigen: <br><br>
-				<input id="id" type="number">
+				<input id="id" type="number" name="id" >
 				<button type="submit" name="details">Details</button>
-			</form>
+				</form>
+			
 
 		</div>
 		<footer>

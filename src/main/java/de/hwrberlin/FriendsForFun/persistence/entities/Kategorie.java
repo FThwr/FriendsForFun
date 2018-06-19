@@ -65,7 +65,7 @@ public class Kategorie implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return "ID: " + id + "; Kategorie: " + bez_kategorie;
+		return bez_kategorie;
 	}
 
 }

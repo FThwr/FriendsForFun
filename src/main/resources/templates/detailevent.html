@@ -14,24 +14,28 @@
 			<h3>Event</h3>
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
-				Kategorie
-				<p th:text="*{event.aktivitaet.kategorie}"></p>
-				Aktivität
-				<p th:text="*{event.aktivitaet}">Volleyball</p>
-				Termin
-				<p th:text="*{event.zeitpunkt}">24.07.2018</p>
-				Organisator
-				<p th:text="*{event.nutzer}"></p>
-				Ort
-				<p th:text="*{event.ort}">Takatukaland</p>
-				<!-- Angemeldete Teilnehmer
-				<p th:text="*{event.}">10</p> -->
-				Status
-				<p th:text="*{event.status}">aktiv</p>
-				Beschreibung
-				<p th:text="*{event.beschreibung}"></p>
-				ID
-				<p th:text="*{event.id}"></p>
+				<table> 
+				<tr> 
+					<th> Kategorie </th>
+					<th> Aktivität </th>
+					<th> Termin </th>
+					<th> Organisator </th>
+					<th> Ort </th>
+					<th> Status </th>
+					<th> Beschreibung </th>
+					<th> ID </th>
+				</tr>
+				<tr>
+					<td th:text="*{event.aktivitaet.kategorie}"> </td>
+					<td th:text="*{event.aktivitaet}"> </td>
+					<td th:text="*{event.zeitpunkt}"> </td>
+					<td th:text="*{event.nutzer}"> </td>
+					<td th:text="*{event.ort}"> </td>
+					<td th:text="*{event.status}"> </td>
+					<td th:text="*{event.status}"> </td>
+					<td th:text="*{event.id}"> </td>
+				</tr>
+			</table>
 			<br>
 
 		</div>

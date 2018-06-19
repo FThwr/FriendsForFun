@@ -123,7 +123,7 @@ public class Ort implements EntityInterface {
 
 	@Override
 	public String toString() {
-		return bez_ort;
+		return bez_ort + " " + plz + " " + strasse;
 	}
 
 }

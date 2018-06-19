@@ -28,9 +28,10 @@ public class SuchEventDetailController {
 	EventteilnehmerManager eventteilnehmerManager;
 
 	@RequestMapping("/detaileventSuche.html")
-	public String details(@ModelAttribute("id") int id, Model model) {
+	public String details(@ModelAttribute("id") int id, @ModelAttribute("event") Event event, Model model) {
 		System.out.println("Event: " + eventManager.getEventById(id));
 		model.addAttribute("event", eventManager.getEventById(id));
+		model.addAttribute("anzahl", eventManager.getAnzahlTeilnehmer(event).size());
 		return "detaileventSuche.html";
 	}
 

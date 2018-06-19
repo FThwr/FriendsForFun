@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Event;
+import de.hwrberlin.FriendsForFun.persistence.entities.Eventteilnehmer;
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 
 public class EventManager extends AbstractEntityManager {
@@ -44,6 +45,20 @@ public class EventManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
+	
+	public List<Eventteilnehmer> getAnzahlTeilnehmer(Event event) {
+		emf = pm.getEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+			try {
+				TypedQuery<Eventteilnehmer> query = em.createQuery(
+						"SELECT e FROM Eventteilnehmer e WHERE e.event.id = :eventId",
+						Eventteilnehmer.class);
+				return query.setParameter("eventId", event.getId()).getResultList();
+			} finally {
+				em.close();
+			}
+	}
+
 	
 	/**
 	 * @return Event mit bestimmter ID
