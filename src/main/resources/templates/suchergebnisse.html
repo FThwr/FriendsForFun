@@ -15,7 +15,7 @@
 		</section>
 		<div class="preamble" id="zen-preamble" role="article">
 			<!-- muss angepasst werden, je nachdem, ob Events nach Aktivität, Kategorie oder Ort gesucht wurden -->
-			<h3>Meine Events</h3>
+			<h3>Gefundene Events</h3>
 			<table>
 				<tr>
 					<th>BESCHREIBUNG</th>
@@ -30,11 +30,12 @@
 					<td th:text="${event.id}"></td>
 				</tr>
 			</table>
+			<br>
 			<form name="suchergebnisse" th:action="@{/detaileventSuche.html}"
 				th:object="${event}" method="post">
 				Bitte tragen Sie hier die ID des Events ein, zu dem Sie mehr
-				Informationen benötigen und an dem Sie evtl. teilnehmen wollen: <br><br>
-				<input id="id" type="number" name="id">
+				Informationen benötigen und an dem Sie evtl. teilnehmen wollen: <br>
+				<br> <input id="id" type="number" name="id">
 				<button>Details</button>
 			</form>
 
@@ -58,7 +59,7 @@
 							<a href="neues_event.html" class="menue">Neues Event</a>
 						</ul> <br>
 						<ul>
-							<a href="neue_aktivitaet.html" class="menue">Neue AktivitÃ¤t</a>
+							<a href="neue_aktivitaet.html" class="menue">Neue Aktivität</a>
 						</ul> <br>
 						<ul>
 							<a href="neuer_ort.html" class="menue">Neuer Eventort</a>

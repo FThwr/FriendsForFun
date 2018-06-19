@@ -31,16 +31,14 @@ public class SuchEventDetailController {
 	public String details(@ModelAttribute("id") int id, @ModelAttribute("event") Event event, Model model) {
 		System.out.println("Event: " + eventManager.getEventById(id));
 		model.addAttribute("event", eventManager.getEventById(id));
-		model.addAttribute("anzahl", eventManager.getAnzahlTeilnehmer(event).size());
+		model.addAttribute("anzahl", eventManager.getAnzahlTeilnehmer(event));
 		return "detaileventSuche.html";
 	}
 
 	@PostMapping("/erfolgreich_teilnahme.html")
 	public String addTeilnehmer(@ModelAttribute("nutzer") Nutzer nutzer, @ModelAttribute("event") Event event,
 			BindingResult result) {
-		
 		try {
-		
 		eventteilnehmerManager.isTeilnehmerAlreadyIn(event, nutzer);
 			System.out.println("Sie nehmen schon an diesem Event teil!");
 			return "fehlermeldung_teilnehmen.html";

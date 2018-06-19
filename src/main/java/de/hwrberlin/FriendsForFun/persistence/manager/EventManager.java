@@ -46,14 +46,14 @@ public class EventManager extends AbstractEntityManager {
 		}
 	}
 	
-	public List<Eventteilnehmer> getAnzahlTeilnehmer(Event event) {
+	public int getAnzahlTeilnehmer(Event event) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 			try {
 				TypedQuery<Eventteilnehmer> query = em.createQuery(
 						"SELECT e FROM Eventteilnehmer e WHERE e.event.id = :eventId",
 						Eventteilnehmer.class);
-				return query.setParameter("eventId", event.getId()).getResultList();
+				return query.setParameter("eventId", event.getId()).getResultList().size();
 			} finally {
 				em.close();
 			}

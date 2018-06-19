@@ -15,7 +15,7 @@
 		</section>
 		<div class="preamble" id="zen-preamble" role="article">
 			<h3>Meine Events</h3>
-			
+			<br>
 				<table>
 					<tr>
 						<th>ID</th>
@@ -28,7 +28,11 @@
 					</tr>
 					<tr th:each="event : ${events}">
 						<td th:text="${event.id}"></td>
-						<td th:text="${event.aktivitaet}"></td>
+						<td>
+							<span th:text="${event.aktivitaet.bez_aktivitaet}"></span>
+							<br>(empfohlen ab&nbsp;<span th:text="${event.aktivitaet.altersempfehlung}"></span>)<br>
+							<span th:text="${event.aktivitaet.beschreibung}"></span>
+						</td>
 						<td th:text="${event.nutzer}"></td>
 						<td th:text="${event.zeitpunkt}"></td>
 						<td th:text="${event.ort}"></td>

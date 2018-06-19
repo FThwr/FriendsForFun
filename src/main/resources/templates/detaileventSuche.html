@@ -14,41 +14,44 @@
 			<h3>Event</h3>
 			<br>
 			<!-- muss natürlich noch mit sinnvollem Inhalt aus der Datenbank gefüllt werden -->
-			
-			<table> 
+
+			<table>
 				<tr>
-					<td> ID </td>
-					<td th:text="*{event.id}"> </td>
+					<td>ID</td>
+					<td th:text="*{event.id}"></td>
 				</tr>
 				<tr>
-					<td> <b>Kategorie</b> </td>
-					<td th:text="*{event.aktivitaet.kategorie}"> </td>
+					<td><b>Kategorie</b></td>
+					<td th:text="*{event.aktivitaet.kategorie}"></td>
 				</tr>
 				<tr>
-					<td> Aktivität </td>
-					<td th:text="*{event.aktivitaet}"> </td>
+					<td>Aktivität</td>
+					<td><span th:text="${event.aktivitaet.bez_aktivitaet}"></span>
+						<br>(empfohlen ab&nbsp;<span th:text="${event.aktivitaet.altersempfehlung}"></span>)<br>
+						<span th:text="${event.aktivitaet.beschreibung}"></span></td>
 				</tr>
 				<tr>
-					<td> Zeitpunkt </td>
-					<td th:text="*{event.zeitpunkt}"> </td>
+					<td>Zeitpunkt</td>
+					<td th:text="*{event.zeitpunkt}"></td>
 				</tr>
 				<tr>
-					<td> Organisator </td>
-					<td th:text="*{event.nutzer}"> </td>
+					<td>Organisator</td>
+					<td th:text="*{event.nutzer}"></td>
 				</tr>
 				<tr>
-					<td> Ort </td>
-					<td th:text="*{event.ort}"> </td>
+					<td>Ort</td>
+					<td th:text="*{event.ort}"></td>
 				</tr>
 				<tr>
-					<td> Beschreibung </td>
-					<td th:text="*{event.beschreibung}"> </td>
+					<td>Beschreibung</td>
+					<td th:text="*{event.beschreibung}"></td>
 				</tr>
 				<tr>
-					<td> Teilnehmeranzahl </td>
-					<td th:text="*{anzahl}"> </td>
+					<td>Teilnehmeranzahl</td>
+					<td th:text="*{anzahl}"></td>
 				</tr>
 			</table>
+			<br>
 			<!-- Kategorie
 			<p th:text="*{event.aktivitaet.kategorie}"></p>
 			Aktivität
@@ -67,7 +70,8 @@
 			<p th:text="*{event.status}"></p>
 			ID
 			<p th:text="*{event.id}"></p> -->
-			<form name="neuer_teilnehmer" th:action="@{/erfolgreich_teilnahme.html}"
+			<form name="neuer_teilnehmer"
+				th:action="@{/erfolgreich_teilnahme.html}"
 				th:object="${eventteilnehmer}" method="post">
 				<button type="submit">Teilnehmen</button>
 			</form>
