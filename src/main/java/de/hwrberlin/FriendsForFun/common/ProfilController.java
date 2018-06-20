@@ -47,6 +47,6 @@ public class ProfilController {
 		if (!username.isEmpty() || !password.isEmpty() || !mail.isEmpty()) {
 			nutzerManager.saveObject(nutzer);
 		}
-		return "redirect:/homepage.html";
+		return "passwortaenderung.html";
 	}
 }

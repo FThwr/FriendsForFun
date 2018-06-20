@@ -18,16 +18,18 @@
 			<h3>Gefundene Events</h3>
 			<table>
 				<tr>
-					<th>BESCHREIBUNG</th>
-					<th>ZEITPUNKT</th>
+					<th>ID </th>
+					<th>AKTIVITÄT</th>
 					<th>ORGANISATOR</th>
-					<th>ID</th>
+					<th>ZEITPUNKT</th>
+					<th>ORT</th>
 				</tr>
 				<tr th:each="event : ${ergebnisse}">
-					<td th:text="${event.beschreibung}"></td>
-					<td th:text="${event.zeitpunkt}"></td>
-					<td th:text="${event.nutzer}"></td>
 					<td th:text="${event.id}"></td>
+					<td th:text="${event.aktivitaet.bez_aktivitaet}"></td>
+					<td th:text="${event.nutzer}"></td>
+					<td th:text="${event.zeitpunkt}"></td>
+					<td th:text="${event.ort}"></td>
 				</tr>
 			</table>
 			<br>
