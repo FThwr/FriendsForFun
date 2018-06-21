@@ -31,7 +31,7 @@
 					<tr>
 						<td>Benutzername</td>
 						<td th:text="${nutzer.username}"></td>
-						<td><input type="text" name="username" size="30"
+						<td><input type="text" name="user" size="30"
 							maxlength="25" /></td>
 					</tr>
 					<tr>
@@ -54,6 +54,7 @@
 				<br>
 				<button>Speichern</button>
 			</form>
+			<h3 th:text="${myMessage}"> </h3>
 
 		</div>
 		<footer>
@@ -70,9 +71,8 @@
 					<li>
 						<ul>
 							<a href="homepage.html" class="menue">Home</a>
-						</ul>
+						</ul> <br>
 						<ul>
-						<br>
 							<a href="suche.html" class="menue">Suche</a>
 						</ul> <br> <br>
 						<ul>
