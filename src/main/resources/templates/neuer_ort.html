@@ -21,10 +21,10 @@
 				<br> Postleitzahl*<br> <input pattern="[0-9]{5}"
 					title="12345" name="PLZ" th:field="*{plz}" size="10" required><br>
 				<br> Straße/Nr.*<br> <input type="text" name="Strasse"
-					th:field="*{strasse}" size="50"><br> <br>
+					th:field="*{strasse}" size="50" required><br> <br>
 				Beschreibung<br>
 				<textarea name="Beschreibung_ort" th:field="*{beschreibung}"
-					cols="100" rows="5" maxlength="400"></textarea>
+					cols="100" rows="5" maxlength="250"></textarea>
 				<br> <br>
 				<button>Speichern</button>
 				<br>
