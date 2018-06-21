@@ -1,7 +1,9 @@
 package de.hwrberlin.FriendsForFun.common;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,6 +21,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+    
     @Configuration
     public class AppConf {
     	@Bean
