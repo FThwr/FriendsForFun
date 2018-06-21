@@ -24,6 +24,10 @@ public class App {
 		
 		Kategorie outdoor = new Kategorie("Outdoor-Aktivität");
 		Kategorie sport = new Kategorie("Sport");
+		Kategorie brett = new Kategorie("Brettspiele");
+		Kategorie karten = new Kategorie("Kartenspiele");
+		Kategorie gruppe = new Kategorie("Gruppenaktivität");
+		Kategorie gesellschaft = new Kategorie("Gesellschaftsspiele");
 		
 		new Aktivitaet("Tennis", 2, 4, 12, "---", status, sport);
 		Aktivitaet lagerfeuer = new Aktivitaet("Lagerfeuer", 6, 30, 18, "Schönes Lagerfeuer am See", status, outdoor);
