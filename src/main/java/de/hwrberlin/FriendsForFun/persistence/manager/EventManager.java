@@ -104,6 +104,10 @@ public class EventManager extends AbstractEntityManager {
 			sql += "e.ort.id = :ort AND ";
 		}
 		sql = sql.substring(0, sql.length() - 5); // letztes AND soll entfernt werden
+		
+		if(termin == null && alter == 0 && kategorieId == 0 && aktivitaetId == 0 && ortId == 0) {
+			sql = "SELECT e FROM Event e";
+		}
 		try {
 			TypedQuery<Event> query = em.createQuery(sql, Event.class);
 			if (alter != 0) {

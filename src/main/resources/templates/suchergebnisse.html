@@ -16,9 +16,10 @@
 		<div class="preamble" id="zen-preamble" role="article">
 			<!-- muss angepasst werden, je nachdem, ob Events nach Aktivität, Kategorie oder Ort gesucht wurden -->
 			<h3>Gefundene Events</h3>
+			<br>
 			<table>
 				<tr>
-					<th>ID </th>
+					<th>ID</th>
 					<th>AKTIVITÄT</th>
 					<th>ORGANISATOR</th>
 					<th>ZEITPUNKT</th>
@@ -26,7 +27,10 @@
 				</tr>
 				<tr th:each="event : ${ergebnisse}">
 					<td th:text="${event.id}"></td>
-					<td th:text="${event.aktivitaet.bez_aktivitaet}"></td>
+					<td><span th:text="${event.aktivitaet.bez_aktivitaet}"></span>
+						<br>(empfohlen ab&nbsp;<span
+						th:text="${event.aktivitaet.altersempfehlung}"></span>)<br> <span
+						th:text="${event.aktivitaet.beschreibung}"></span></td>
 					<td th:text="${event.nutzer}"></td>
 					<td th:text="${event.zeitpunkt}"></td>
 					<td th:text="${event.ort}"></td>
