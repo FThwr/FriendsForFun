@@ -30,36 +30,42 @@ public class EventManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-	
+
 	/**
-	 * @return Liste mit den Events, die einen bestimmten Nutzer als Teilnehmer haben
+	 * @return Liste mit den Events, die einen bestimmten Nutzer als Teilnehmer
+	 *         haben
 	 */
 	public List<Event> getEventsByNutzer(Nutzer nutzer) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Event> query = em.createQuery("SELECT e FROM Event e, Eventteilnehmer t WHERE t.event.id = e.id AND t.nutzer.id = :nutzer", Event.class);
+			TypedQuery<Event> query = em.createQuery(
+					"SELECT e FROM Event e, Eventteilnehmer t WHERE t.event.id = e.id AND t.nutzer.id = :nutzer",
+					Event.class);
 			List<Event> list = query.setParameter("nutzer", nutzer.getId()).getResultList();
 			return list;
 		} finally {
 			em.close();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param event
+	 * @return gibt die Anzahl der Teilnehmer eines bestimmten Events zurück
+	 */
 	public int getAnzahlTeilnehmer(Event event) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
-			try {
-				TypedQuery<Eventteilnehmer> query = em.createQuery(
-						"SELECT e FROM Eventteilnehmer e WHERE e.event.id = :eventId",
-						Eventteilnehmer.class);
-				return query.setParameter("eventId", event.getId()).getResultList().size();
-			} finally {
-				em.close();
-			}
+		try {
+			TypedQuery<Eventteilnehmer> query = em
+					.createQuery("SELECT e FROM Eventteilnehmer e WHERE e.event.id = :eventId", Eventteilnehmer.class);
+			return query.setParameter("eventId", event.getId()).getResultList().size();
+		} finally {
+			em.close();
+		}
 	}
 
-	
 	/**
 	 * @return Event mit bestimmter ID
 	 */
@@ -104,8 +110,8 @@ public class EventManager extends AbstractEntityManager {
 			sql += "e.ort.id = :ort AND ";
 		}
 		sql = sql.substring(0, sql.length() - 5); // letztes AND soll entfernt werden
-		
-		if(termin == null && alter == 0 && kategorieId == 0 && aktivitaetId == 0 && ortId == 0) {
+
+		if (termin == null && alter == 0 && kategorieId == 0 && aktivitaetId == 0 && ortId == 0) {
 			sql = "SELECT e FROM Event e";
 		}
 		try {
@@ -136,6 +142,3 @@ public class EventManager extends AbstractEntityManager {
 	}
 
 }
-
-// TODO: getEventsFromAktivitaet (Aktivitaet aktivitaet)
-// TODO: getEventsFromOrganisator (Nutzer organisator)

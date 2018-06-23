@@ -32,6 +32,14 @@ public class NutzerManager extends AbstractEntityManager {
 		}
 	}
 
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return gibt einen bestimmten Nutzer anhand eines Nutzernamens und Passwortes
+	 *         zurück
+	 * @throws NoResultException
+	 */
 	public Nutzer getNutzer(String username, String password) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
@@ -40,37 +48,46 @@ public class NutzerManager extends AbstractEntityManager {
 					.createQuery("SELECT u FROM Nutzer u WHERE u.passwort = :uPassword AND u.username = :uUsername")
 					.setParameter("uPassword", password).setParameter("uUsername", username).setMaxResults(1)
 					.getSingleResult();
-			
+
 		} finally {
 			em.close();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param username
+	 * @return Nutzer anhand seines Nutzernames
+	 * @throws NoResultException
+	 */
 	public Nutzer getNutzer(String username) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			return (Nutzer) em
-					.createQuery("SELECT u FROM Nutzer u WHERE u.username = :uUsername")
-					.setParameter("uUsername", username).setMaxResults(1)
-					.getSingleResult();
-			
+			return (Nutzer) em.createQuery("SELECT u FROM Nutzer u WHERE u.username = :uUsername")
+					.setParameter("uUsername", username).setMaxResults(1).getSingleResult();
+
 		} finally {
 			em.close();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return Nutzer mit dem neu gesetzten Nutzernamen und Passwort
+	 * @throws NoResultException
+	 */
 	public Nutzer setNutzer(String username, String password) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			return (Nutzer) em
-					.createQuery("UPDATE Nutzer u SET u.username = '1' WHERE u.username = :uUsername") 
+			return (Nutzer) em.createQuery("UPDATE Nutzer u SET u.username = '1' WHERE u.username = :uUsername")
 					.setParameter("uUsername", username).setMaxResults(1);
 		} finally {
 			em.close();
 		}
 	}
-	// TODO: spezielle Abfragen (z.B. alle Datentupel von dieser Klasse zurückgeben)
 
 }

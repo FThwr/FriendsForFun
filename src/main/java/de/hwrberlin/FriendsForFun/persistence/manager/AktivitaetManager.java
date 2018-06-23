@@ -7,7 +7,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import de.hwrberlin.FriendsForFun.persistence.entities.Aktivitaet;
-import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 
 public class AktivitaetManager extends AbstractEntityManager {
 
@@ -29,23 +28,28 @@ public class AktivitaetManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param bez_aktivitaet
+	 * @return Aktivität nach einer bestimmten Bezeichnung
+	 * @throws NoResultException
+	 */
 	public Aktivitaet getAktivitaet(String bez_aktivitaet) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			return (Aktivitaet) em
-					.createQuery("SELECT a FROM Aktivitaet a WHERE a.bez_aktivitaet = :aBez_aktivitaet")
-					.setParameter("aBez_aktivitaet", bez_aktivitaet).setMaxResults(1)
-					.getSingleResult();
-			
+			return (Aktivitaet) em.createQuery(
+					"SELECT a FROM Aktivitaet a WHERE a.bez_aktivitaet = :aBez_aktivitaet ORDER BY e.bez_aktivitaet")
+					.setParameter("aBez_aktivitaet", bez_aktivitaet).setMaxResults(1).getSingleResult();
+
 		} finally {
 			em.close();
 		}
 	}
 
 	/**
-	 * @return Liste mit den Aktivitäten als JSON-String
+	 * @return Liste mit den Aktivitäten als JSON-String, ein bisschen geschummelt
 	 */
 	public String getAktivitaetenJSON() {
 		return getAktivitaeten().toString();
@@ -67,7 +71,5 @@ public class AktivitaetManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-
-	// TODO: getAktivitaetFromKategorie (Kategorie kategorie)
 
 }
