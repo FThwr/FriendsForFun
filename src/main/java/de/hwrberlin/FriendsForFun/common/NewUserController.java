@@ -14,59 +14,43 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import de.hwrberlin.FriendsForFun.persistence.entities.Nutzer;
 import de.hwrberlin.FriendsForFun.persistence.manager.NutzerManager;
 
+// definiert Klasse als Controller
 @Controller
+
+/**
+ * macht es möglich, dass der neue Nutzer als angemeldeter Nutzer für die
+ * Session gespeichert wird
+ */
 @SessionAttributes("nutzer")
 public class NewUserController {
 
+	// lässt den Zugriff auf den Nutzermanager zu
 	@Autowired
 	private NutzerManager nutzerManager;
 
-//	@GetMapping("/neuer_nutzer")
-//	public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-//			Model model) {
-//		model.addAttribute("name", name);
-//		return "neuer_nutzer";
-//	}
-//
-//	 @RequestMapping(method=RequestMethod.POST, value="/nutzer/add")
-//	 public String addNutzer(@ModelAttribute("nutzer") Nutzer nutzer,
-//	 BindingResult result) {
-//	 nutzerManager.addNutzer(nutzer);
-//	
-//	 return "redirect:/";
-//	 }
-//
-//	@RequestMapping(method = RequestMethod.GET, value = "/nutzer/get")
-//	public String getUser() {
-//		return "" + nutzerManager.getNutzer().size();
-//	}
-
+	/**
+	 * erstellt einen neuen Nutzer, sofern der Nutzername nicht beriets vergeben ist
+	 * und leitet zum Profil weiter, sofern die Erstellung erfolgreich weiter
+	 */
 	@PostMapping("/neuer_nutzer.html")
-	public String addNutzer(@ModelAttribute ("nutzer") Nutzer nutzer, BindingResult result) {
+	public String addNutzer(@ModelAttribute("nutzer") Nutzer nutzer, BindingResult result) {
 		try {
 			nutzerManager.getNutzer(nutzer.getUsername());
 			return "fehlermeldung_neuer_nutzer.html";
-		
-		
+
 		} catch (NoResultException e) {
 			nutzerManager.createObject(nutzer);
 			System.out.println("should now add user '" + nutzer.getUsername() + "'");
 			return "redirect:/profil.html";
 		}
-		
-		
-	}
-	
-//	@PostMapping("/nutzer/add")
-//	public ModelAndView addNutzer(@ModelAttribute Nutzer nutzer) {
-//		nutzerManager.addNutzer(nutzer);
-//		return new ModelAndView("redirect:/homepage");
-//	}
 
+	}
+
+	// lädt den Inhalt der Nutzererstellung-Seite, wenn sie aufgerufen wird
 	@GetMapping("/neuer_nutzer.html")
 	public String addNutzer(Model model) {
-        model.addAttribute("nutzer", new Nutzer());
-        return "neuer_nutzer.html";
-    }
+		model.addAttribute("nutzer", new Nutzer());
+		return "neuer_nutzer.html";
+	}
 
 }

@@ -20,15 +20,23 @@ import de.hwrberlin.FriendsForFun.persistence.manager.AktivitaetManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.EventManager;
 import de.hwrberlin.FriendsForFun.persistence.manager.KategorieManager;
 
+//definiert Klasse als Controller
 @Controller
 public class NewActivityController {
 
+	// lässt den Zugriff auf den Aktivitaetmanager zu
 	@Autowired
 	private AktivitaetManager aktivitaetManager;
 
+	// lässt den Zugriff auf den Kategoriemanager zu
 	@Autowired
 	private KategorieManager kategorieManager;
-	
+
+	/**
+	 * legt eine neue Aktivität an, sofern sie noch nicht vorhanden ist (der Name
+	 * beriets vergeben ist) und leitet zur Seite der erfolgreichen Erstellung
+	 * weiter
+	 */
 	@PostMapping("/neue_aktivitaet.html")
 	public String addAktivitaet(@ModelAttribute("aktivitaet") Aktivitaet aktivitaet, BindingResult result) {
 		try {
@@ -38,7 +46,7 @@ public class NewActivityController {
 			aktivitaetManager.createObject(aktivitaet);
 			return "erfolgreich_aktivitaet.html";
 		}
-		
+
 	}
 
 	@GetMapping("/neue_aktivitaet.html")
@@ -46,9 +54,9 @@ public class NewActivityController {
 		model.addAttribute("aktivitaet", new Aktivitaet());
 		return "neue_aktivitaet.html";
 	}
-	
+
 	@ModelAttribute("kategorien")
-	public List<Kategorie> getKategorien(){
+	public List<Kategorie> getKategorien() {
 		return kategorieManager.getKategorien();
 	}
 

@@ -17,49 +17,52 @@ import de.hwrberlin.FriendsForFun.persistence.manager.OrtManager;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	// Startet die Anwendung
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 
-    @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
-    
-    @Configuration
-    public class AppConf {
-    	@Bean
-    	public KategorieManager kategorieManager() {
-    		return new KategorieManager();
-    	}
-    	
-    	@Bean
-    	public NutzerManager nutzerManager() {
-    		return new NutzerManager();
-    	}
-    	
-    	@Bean
-    	public AktivitaetManager aktivtaetManager() {
-    		return new AktivitaetManager();
-    	}
-    	
-    	@Bean
-    	public OrtManager ortManager() {
-    		return new OrtManager();
-    	}
-    	
-    	@Bean
-    	public AktivitaetManager aktivitaetManager() {
-    		return new AktivitaetManager();
-    	}
-    
-    	@Bean
-    	public EventManager eventManager() {
-    		return new EventManager();
-    	}
-    	
-    	@Bean
-    	public EventteilnehmerManager eventteilnehmerManager() {
-    		return new EventteilnehmerManager();
-    	}
-    
-    }
-    
+	// deaktiviert die Standart Errorpage und erlaubt die Verwendung einer eigenen
+	// Errorpage
+	@EnableAutoConfiguration(exclude = { ErrorMvcAutoConfiguration.class })
+
+	@Configuration
+	public class AppConf {
+		@Bean
+		public KategorieManager kategorieManager() {
+			return new KategorieManager();
+		}
+
+		@Bean
+		public NutzerManager nutzerManager() {
+			return new NutzerManager();
+		}
+
+		@Bean
+		public AktivitaetManager aktivtaetManager() {
+			return new AktivitaetManager();
+		}
+
+		@Bean
+		public OrtManager ortManager() {
+			return new OrtManager();
+		}
+
+		@Bean
+		public AktivitaetManager aktivitaetManager() {
+			return new AktivitaetManager();
+		}
+
+		@Bean
+		public EventManager eventManager() {
+			return new EventManager();
+		}
+
+		@Bean
+		public EventteilnehmerManager eventteilnehmerManager() {
+			return new EventteilnehmerManager();
+		}
+
+	}
+
 }
