@@ -22,7 +22,7 @@ public class AktivitaetManager extends AbstractEntityManager {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Aktivitaet> query = em.createQuery("SELECT e FROM Aktivitaet e", Aktivitaet.class);
+			TypedQuery<Aktivitaet> query = em.createQuery("SELECT e FROM Aktivitaet e ORDER BY e.bez_aktivitaet", Aktivitaet.class);
 			List<Aktivitaet> list = query.getResultList();
 			return list;
 		} finally {
@@ -30,6 +30,13 @@ public class AktivitaetManager extends AbstractEntityManager {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * @param bez_aktivitaet
+	 * @return Aktivität nach einer bestimmten Bezeichnung
+	 * @throws NoResultException
+	 */
 	public Aktivitaet getAktivitaet(String bez_aktivitaet) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
@@ -45,7 +52,7 @@ public class AktivitaetManager extends AbstractEntityManager {
 	}
 
 	/**
-	 * @return Liste mit den Aktivitäten als JSON-String
+	 * @return Liste mit den Aktivitäten als JSON-String, ein bisschen geschummelt
 	 */
 	public String getAktivitaetenJSON() {
 		return getAktivitaeten().toString();
@@ -67,7 +74,5 @@ public class AktivitaetManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-
-	// TODO: getAktivitaetFromKategorie (Kategorie kategorie)
 
 }

@@ -32,6 +32,14 @@ public class NutzerManager extends AbstractEntityManager {
 		}
 	}
 
+	
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return gibt einen bestimmten Nutzer anhand eines Nutzernamens und Passwortes zurück
+	 * @throws NoResultException
+	 */
 	public Nutzer getNutzer(String username, String password) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();

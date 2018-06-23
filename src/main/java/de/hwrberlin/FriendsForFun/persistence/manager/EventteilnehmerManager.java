@@ -47,7 +47,5 @@ public class EventteilnehmerManager extends AbstractEntityManager {
 			em.close();
 		}
 	}
-	// TODO: getTeilnehmerFromEvent(Event event)
-	// TODO: getEventsFromNutzer(Nutzer nutzer)
 
 }

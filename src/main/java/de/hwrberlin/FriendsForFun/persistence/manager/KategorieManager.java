@@ -21,7 +21,7 @@ public class KategorieManager extends AbstractEntityManager {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 		try {
-			TypedQuery<Kategorie> query = em.createQuery("SELECT e FROM Kategorie e", Kategorie.class);
+			TypedQuery<Kategorie> query = em.createQuery("SELECT e FROM Kategorie e ORDER BY e.bez_kategorie", Kategorie.class);
 			List<Kategorie> list = query.getResultList();
 			return list;
 		} finally {
@@ -43,7 +43,6 @@ public class KategorieManager extends AbstractEntityManager {
 	/**
 	 * @return Kategorie mit einer bestimmten ID
 	 * 
-	 * bin mir nicht ganz sicher, aber gibt glaube ich nur eine Kopie des Objektes zurück und nicht das Objekt selbst
 	 */
 	public Kategorie getKategorieByID(int ID) {
 		emf = pm.getEntityManagerFactory();

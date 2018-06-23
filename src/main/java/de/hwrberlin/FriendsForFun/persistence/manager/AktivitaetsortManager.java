@@ -29,7 +29,4 @@ public class AktivitaetsortManager extends AbstractEntityManager {
 
 	}
 
-	// TODO: getOrtFromAktivitaet (Aktivitaet aktivitaet)
-	// TODO: getAktivitaetFromOrt (Ort ort)
-
 }

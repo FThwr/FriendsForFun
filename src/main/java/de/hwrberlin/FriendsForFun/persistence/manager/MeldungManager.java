@@ -28,10 +28,4 @@ public class MeldungManager extends AbstractEntityManager {
 		}
 	}
 
-	// TODO: getGemeldeteOrte()
-	// TODO: getGemeldeteAktivitaten()
-	// TODO: getGemeldeteEvents()
-	// TODO: getGemeldeteNutzer()
-	// TODO: getGemeldete...?
-
 }

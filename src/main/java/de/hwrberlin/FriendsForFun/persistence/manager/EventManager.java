@@ -46,6 +46,11 @@ public class EventManager extends AbstractEntityManager {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param event
+	 * @return gibt die Anzahl der Teilnehmer eines bestimmten Events zurück
+	 */
 	public int getAnzahlTeilnehmer(Event event) {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
@@ -136,6 +141,3 @@ public class EventManager extends AbstractEntityManager {
 	}
 
 }
-
-// TODO: getEventsFromAktivitaet (Aktivitaet aktivitaet)
-// TODO: getEventsFromOrganisator (Nutzer organisator)

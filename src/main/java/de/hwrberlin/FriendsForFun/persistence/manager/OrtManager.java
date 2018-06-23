@@ -15,6 +15,14 @@ public class OrtManager extends AbstractEntityManager {
 
 	}
 
+	/**
+	 * 
+	 * @param bez_ort
+	 * @param plz
+	 * @param strasse
+	 * @return gibt einen bestimmten Ort anhand einer spezifischen Adresse zurück
+	 * @throws NoResultException
+	 */
 	public Ort getOrte(String bez_ort, String plz, String strasse) throws NoResultException {
 		emf = pm.getEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
